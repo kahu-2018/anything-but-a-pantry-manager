@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "postinstall": "webpack",
-    "dev": "nodemon --watch server & webpack --watch",
+    "dev": "node server & webpack --watch",
     "start": "node server/index",
     "test": "jest",
     "watch": "nodemon -e js,jsx -x npm test",
