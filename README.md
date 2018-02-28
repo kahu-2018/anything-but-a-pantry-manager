@@ -22,14 +22,17 @@ As a user:
 * I want to log in and have a profile
 
 ### Stretch 1
+
 * I want to receive a recipe based on more than one ingredient
 * I want to be able to tick thing off a recipe list to get an accurate shopping list
 * I want to be able to plan X amounts of meals for one shopping list
   
 ### Stretch 2
+
 * I want to reject a recipe and get a new one
 * I want to give raitings to my recipes
 * I want to share with my friends
+
   ---
 
 ## Views (Client Side)
