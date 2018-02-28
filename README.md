@@ -54,7 +54,7 @@ As a user:
   | name | purpose |
   | --- | --- |
   | nav | Track which view user is on |
-  |  |  |
+  | auth | Store information regarding user logins, auth status and auth errors |
   |  |  |
   |  |  |
 
@@ -80,6 +80,9 @@ As a user:
 
 | Method | Endpoint | Protected | Usage | Response |
 | --- | --- | --- | --- | --- |
+| POST | /api/auth/login	| Yes | Log In a User	| The Users JWT Token |
+| POST | /api/auth/register	| Yes | Register a User	| The Users JWT Token |
+
 
 
 ## DB (Server Side)
