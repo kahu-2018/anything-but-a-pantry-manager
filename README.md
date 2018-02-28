@@ -30,7 +30,6 @@ As a user:
 * I want to reject a recipe and get a new one
 * I want to give raitings to my recipes
 * I want to share with my friends
-
   ---
 
 ## Views (Client Side)
