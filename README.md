@@ -33,7 +33,7 @@ As a user:
 * I want to give raitings to my recipes
 * I want to share with my friends
 
-  ---
+ ---
 
 ## Views (Client Side)
   | name | purpose |
@@ -107,15 +107,13 @@ As a user:
   | id | Integer |
   | name_of_food | String |
   
-    ### UserRestrictions
-    #### M2M
+    ### UserRestrictions M2M
   | Column Name | Data Type |
   | --- | --- |
   | user_id | Integer |
   | restriction_id | Integer |
   
-    ### UserFavorites 
-    #### M2M
+    ### UserFavorites M2M
   | Column Name | Data Type |
   | --- | --- |
   | user_id | Integer |
