@@ -96,7 +96,8 @@ As a user:
   | id | Integer |
   | user_name | String |
   | email | string |
-  | hash | text |
+  | hash | string |
+  | salt | string |
 
 ### Users
   | Column Name | Data Type |
@@ -104,7 +105,7 @@ As a user:
   | id | Integer |
   | first_name | String |
   | last_name | string |
-  | pic | ?? |
+  | pic | string |
 
 ### Ingredients (can this be an external API?)
   | Column Name | Data Type |
