@@ -106,13 +106,19 @@ As a user:
   | name_of_food | String |
   
     ### UserRestrictions
-   
     #### M2M
-  
   | Column Name | Data Type |
   | --- | --- |
   | user_id | Integer |
   | restriction_id | Integer |
+  
+    ### UserFavorites 
+    #### M2M
+  | Column Name | Data Type |
+  | --- | --- |
+  | user_id | Integer |
+  | recipe_id (external API) | Integrer |
+  
  ---
  
 
