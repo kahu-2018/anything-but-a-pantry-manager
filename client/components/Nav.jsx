@@ -3,7 +3,10 @@ import React from 'react'
 const Nav = () => {
   return(
     <div>
-      Hello
+      <div>Home</div>
+      <div>Profile</div>
+      <div>Find Recipe</div>
+      <div>Login</div>
     </div>
   )
 }
