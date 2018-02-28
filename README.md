@@ -56,8 +56,14 @@ As a user:
   | auth | Store information regarding user logins, auth status and auth errors |
   | user | Store user info |
   | generateRecipe | Collects Recipes from external API |
+  | index | Combines reducers
 
  ## Actions
+ | type | data | purpose |
+ | --- | --- | --- |
+ | login | auth, users | logs in user|
+ | logout | null |logs user out |
+ | register | auth, users |registers user |
 
  ### users
  | type | data | purpose |
