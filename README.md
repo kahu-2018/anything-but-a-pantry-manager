@@ -83,29 +83,36 @@ As a user:
 ## DB (Server Side)
   There should be HEAPS of tables
 
-### Users
+### Auth
   | Column Name | Data Type |
   | --- | --- |
   | id | Integer |
   | user_name | String |
-  | first_name | String |
-  | last_name | String |
+  | email | string | 
   | hash | text |
 
-### Other stuff
+### Users
   | Column Name | Data Type |
   | --- | --- |
+  | id | Integer |
+  | first_name | String |
+  | last_name | string | 
+  | pic | ?? |
   
-
-### Attendees (Join Table M2M)
-
-  Many Users attend Many Meetings
-
- | Column Name | Data Type |
- | --- | --- |
- | user_id | Integer |
- | meeting_id | Integer |
-
+  ### Ingredients (can this be an external API?)
+  | Column Name | Data Type |
+  | --- | --- |
+  | id | Integer |
+  | name_of_food | String |
+  
+    ### UserRestrictions
+   
+    #### M2M
+  
+  | Column Name | Data Type |
+  | --- | --- |
+  | user_id | Integer |
+  | restriction_id | Integer |
  ---
  
 
