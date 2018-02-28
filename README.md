@@ -101,19 +101,19 @@ As a user:
   | last_name | string | 
   | pic | ?? |
   
-  ### Ingredients (can this be an external API?)
+### Ingredients (can this be an external API?)
   | Column Name | Data Type |
   | --- | --- |
   | id | Integer |
   | name_of_food | String |
   
-    ### UserRestrictions M2M
+### UserRestrictions M2M
   | Column Name | Data Type |
   | --- | --- |
   | user_id | Integer |
   | restriction_id | Integer |
   
-    ### UserFavorites M2M
+### UserFavorites M2M
   | Column Name | Data Type |
   | --- | --- |
   | user_id | Integer |
