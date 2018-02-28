@@ -4,6 +4,13 @@
 
 I often come home and have no energy to be creative enough to think of what to cook, I wish there was an app that could give me ideas and plan out meals around some of the food that needs to be eaten!
 
+### Group Agreements
+* Honesty, Integrity, Kindness
+* Giving people voice
+* Celebrate and find success
+* Enjoyment in process over product
+* Respect and prioritise learning objectives
+
 
 ## User Stories
 
@@ -29,12 +36,15 @@ As a user:
 ## Views (Client Side)
   | name | purpose |
   | --- | --- |
-  | App |  |
-  | Login |  |
-  | Register |  |
-  | Profile |  |
-  | GenerateRecipe |  |
-  | Recipe |  |
+  | App | The component that holds everything |
+  | Home | '/' route, base page for info and what our app is |
+  | Nav | The nav bar - on every page |
+  | Auth | A place where you go to log in or register - holds both of those comps |
+  | Login | Where you go to login |
+  | Register | Where you go to register |
+  | Profile | All your personal info is here, where you can edit your details |
+  | GenerateRecipe | Give it an item and recieve a recipe from (external)? API |
+  | Recipe | Visualizes the recipe from GenerateRecipe |
 
 
 ## Reducers (Client Side)
