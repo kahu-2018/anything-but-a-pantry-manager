@@ -53,27 +53,25 @@ As a user:
 
   | name | purpose |
   | --- | --- |
-  | nav | Track which view user is on |
   | auth | Store information regarding user logins, auth status and auth errors |
-  |  |  |
-  |  |  |
+  | user | Store user info |
+  | generateRecipe | Collects Recipes from external API |
 
  ## Actions
-
- ### nav
-
- | type | data | purpose |
- | SELECT_NAV | null | assign given view as selected | 
 
  ### users
  | type | data | purpose |
  | --- | --- | --- |
+ | RECEIVE_USERS | users | retreive the users from the server |
+ | RECIEVE_USER | users | retrieve one user and their dietary stuff (join table yo) |
+ | UPDATE_USER | users | Edit profile info |
+ 
 
- ### currentMeeting
-  | type | data | purpose |
+ ### generateRecipe
+| type | data | purpose |
 | --- | --- | --- |
-
-
+| GET_RECIPES | (external API) | Retrieve all recipe info |
+| SET_RECIPE | null | Save one recipe to global state |
 
 
 ## API (Client - Server)
@@ -82,6 +80,10 @@ As a user:
 | --- | --- | --- | --- | --- |
 | POST | /api/auth/login	| Yes | Log In a User	| The Users JWT Token |
 | POST | /api/auth/register	| Yes | Register a User	| The Users JWT Token |
+| GET | /api/users	| Yes | Get user profile info	| Array of user objects |
+| POST | /api/users | Yes | Edit profile info | Edits/adds database info |
+| GET | (external API) | Yes | Get all recipes | Array of Recipe Objects (we think) |
+
 
 
 
