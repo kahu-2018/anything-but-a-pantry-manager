@@ -1,0 +1,63 @@
+{
+  "name": "anything-but-a-pantry-manager",
+  "version": "1.0.0",
+  "description": "a generator of recipes and meal planning",
+  "main": "server/index.js",
+  "repository": "https://github.com/kahu-2018/anything-but-a-pantry-manager.git",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "webpack",
+    "dev": "nodemon --watch server & webpack --watch",
+    "start": "node server/index",
+    "test": "jest",
+    "watch": "nodemon -e js,jsx -x npm test",
+    "h:deploy": "git push heroku master",
+    "h:migrate": "heroku run knex migrate:latest",
+    "h:rollback": "heroku run knex migrate:rollback",
+    "h:seed": "heroku run knex seed:run",
+    "knex": "knex"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-0"
+    ]
+  },
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.3",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
+    "enzyme": "^3.3.0",
+    "express": "^4.16.2",
+    "express-jwt": "^5.3.0",
+    "jest": "^22.4.2",
+    "jsdom": "^11.6.2",
+    "jsonwebtoken": "^8.1.1",
+    "jsx-loader": "^0.13.2",
+    "jwt-decode": "^2.2.0",
+    "knex": "^0.14.4",
+    "nodemon": "^1.17.1",
+    "passport": "^0.4.0",
+    "pg": "^7.4.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "react-test-renderer": "^16.2.0",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "sqlite3": "^3.1.13",
+    "superagent": "^3.8.2",
+    "supertest": "^3.0.0",
+    "webpack": "^4.0.1",
+    "webpack-dev-server": "^3.1.0"
+  }
+}
