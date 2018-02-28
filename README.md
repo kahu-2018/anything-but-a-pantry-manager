@@ -26,7 +26,7 @@ As a user:
 * I want to receive a recipe based on more than one ingredient
 * I want to be able to tick thing off a recipe list to get an accurate shopping list
 * I want to be able to plan X amounts of meals for one shopping list
-  
+
 ### Stretch 2
 
 * I want to reject a recipe and get a new one
@@ -53,25 +53,25 @@ As a user:
 
   | name | purpose |
   | --- | --- |
+  | nav | Track which view user is on |
   |  |  |
   |  |  |
   |  |  |
-  |  |  |
-  
- ## Actions
- 
- ### meetings
- 
- | type | data | purpose | 
- | --- | --- | --- | 
 
- ### users 
+ ## Actions
+
+ ### nav
+
+ | type | data | purpose |
+ | SELECT_NAV | null | assign given view as selected | 
+
+ ### users
  | type | data | purpose |
  | --- | --- | --- |
- 
- ### currentMeeting 
-  | type | data | purpose | 
-| --- | --- | --- | 
+
+ ### currentMeeting
+  | type | data | purpose |
+| --- | --- | --- |
 
 
 
@@ -90,7 +90,7 @@ As a user:
   | --- | --- |
   | id | Integer |
   | user_name | String |
-  | email | string | 
+  | email | string |
   | hash | text |
 
 ### Users
@@ -98,29 +98,29 @@ As a user:
   | --- | --- |
   | id | Integer |
   | first_name | String |
-  | last_name | string | 
+  | last_name | string |
   | pic | ?? |
-  
+
 ### Ingredients (can this be an external API?)
   | Column Name | Data Type |
   | --- | --- |
   | id | Integer |
   | name_of_food | String |
-  
+
 ### UserRestrictions M2M
   | Column Name | Data Type |
   | --- | --- |
   | user_id | Integer |
   | restriction_id | Integer |
-  
+
 ### UserFavorites M2M
   | Column Name | Data Type |
   | --- | --- |
   | user_id | Integer |
   | recipe_id (external API) | Integrer |
-  
+
  ---
- 
+
 
 ## Setup
 
