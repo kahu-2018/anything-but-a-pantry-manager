@@ -10,7 +10,6 @@ beforeEach(() => {
 afterEach(() => env.cleanup(testDb))
 
 test('read users db', () => {
-  console.log(usersDb)
   return usersDb.getUsers(testDb)
     .then(users => {
       expect(users.length).toBe(1)
