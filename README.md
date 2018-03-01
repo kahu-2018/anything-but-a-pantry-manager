@@ -113,7 +113,7 @@ As a user:
   | last_name | string |
   | pic | string |
 
-### Ingredients (can this be an external API?)
+### Pantry
   | Column Name | Data Type |
   | --- | --- |
   | id | Integer |
