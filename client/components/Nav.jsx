@@ -22,15 +22,15 @@ const Nav = (props) => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
-                <Link to='/profile' className="nav-link" href="#">Profile </Link>
+                <Link to='/profile' className="nav-link">Profile </Link>
               </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Generate Recipe</a>
+            <Link to='/generateRecipe' className="nav-link">Generate Recipe</Link>
           </li>
         </ul>
           <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <Link to='/login' className="nav-link" href="#"><i className="fas fa-user-circle"></i>Login/Register</Link>
+            <Link to='/login' className="nav-link"><i className="fas fa-user-circle">&nbsp;</i>Login/Register</Link>
             </li>
           </ul>
         <form className="form-inline my-2 my-lg-0">
@@ -38,7 +38,7 @@ const Nav = (props) => {
           <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>
-    </nav>s
+    </nav>
 
     <Route exact path='/' component={Home} />
     <Route exact path='/login' component={Auth} />
