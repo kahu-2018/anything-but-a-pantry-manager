@@ -49,7 +49,7 @@ class Register extends React.Component {
                         <div className="col-md-5 mb-3">
                             <label htmlFor="inputLastname">Last Name</label>
                             <div>
-                                <input id="inputLastname" className="form-control" placeholder="First Name" type="text" required name="last_name" onChange={this.updateDetails} />
+                                <input id="inputLastname" className="form-control" placeholder="Last Name" type="text" required name="last_name" onChange={this.updateDetails} />
                             </div>
                         </div>
                     </div>
