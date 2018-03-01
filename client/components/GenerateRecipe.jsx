@@ -34,7 +34,8 @@ class GenerateRecipe extends React.Component{
     this.setState({recipeVisible: true})
   }
 
-  render() {
+
+  render(props) {
     return (
       <div>
 
@@ -51,15 +52,14 @@ class GenerateRecipe extends React.Component{
         <br/>Powered by <a href="http://www.recipepuppy.com">Recipe Puppy</a>
 
       </div>
-
-  )
-
+    )
   }
 }
 
-const mapStateToProps = ({auth}) => {
+const mapStateToProps = (props) => {
   return {
-    auth
+    auth: props.auth,
+    recipes: props.recipes
   }
 }
 

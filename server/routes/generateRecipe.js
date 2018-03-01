@@ -5,17 +5,16 @@ const request = require('superagent')
 const baseUrl = "http://www.recipepuppy.com/api/"
 
 router.get('/', (req, res) => {
-  console.log('hi')
-  console.log(pantryIngredients)
   request
-  .get(baseUrl + '/recipes')
+  .get(baseUrl)
   .query({
-    i: pantryIngredients,
-    q: dietaryRestrictions,
+    i: req.query.i,
+    q: req.query.q,
     onlyImages: 1
   })
-    .then(recipes => {
-    res.json({recipes: recipes})
+    .then(extres => {
+      console.log('ext', extres.text)
+    res.json(JSON.parse(extres.text))
   })
   .catch(err => {
     res.status(500).send('DATABASE ERROR: ' + err.message)
