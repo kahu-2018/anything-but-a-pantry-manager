@@ -2,7 +2,6 @@ import request from '../utils/api'
 import { get } from '../utils/localstorage'
 
 function receiveRecipes(recipes) {
-  console.log('hello', typeof recipes)
   return {
     type: 'RECEIVE_RECIPES',
     recipes
