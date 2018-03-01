@@ -15,14 +15,6 @@ function getUserByAuthId (id, testDb) {
   .first()
 }
 
-// function getUserByAuthId(first_name, testDb) {
-//   const db = testDb || liveDb
-//   return getAuthId()
-//   .then()db('users')
-//   .where('user_name', user_name)
-//   .first()
-// }
-
 // function editUser(user_name, db, testDb) {
 //   const db = testDb || liveDb
 // }

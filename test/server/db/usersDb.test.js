@@ -21,7 +21,6 @@ test('get user by auth_id', () => {
   return usersDb.getUserByAuthId(1, testDb)
   .then(user => {
     expect(user.id).toEqual(1)
-    // expect(user.user_name[0].hasOwnProperty('first_name')).toBeTruthy()
     })
 })
 
