@@ -1,9 +1,12 @@
-const db = require('./connection')
+const liveDb = require('./connection')
 
-function getAuth(testDb) {
-  return (testDb || db)('auth')
+function getAuthById(id, testDb) {
+  const db = testDb || liveDb
+
+  return db('auth').where('id', id).first()
+
 }
 
 module.exports = {
-  getAuth
+  getAuthById
 }
