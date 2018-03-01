@@ -112,6 +112,7 @@ As a user:
   | first_name | String |
   | last_name | string |
   | image | string |
+  | auth_id | integer |
 
 ### Pantry
   | Column Name | Data Type |
@@ -119,7 +120,7 @@ As a user:
   | id | Integer |
   | name_of_food | String |
   
- ### DietartyRestrictions
+ ### DietaryRestrictions
   | Column Name | Data Type |
   | --- | --- |
   | id | Integer |
