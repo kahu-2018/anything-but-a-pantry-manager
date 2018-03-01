@@ -1,15 +1,26 @@
 import request from 'superagent'
 
-const baseUrl = "http://www.recipepuppy.com/api/"
+const baseUrl = "/api"
 
 //API call to external for filtered recipes
-export function getRecipes (callback, pantryIngredients, dietaryRestrictions) {
-  request
-    .get(baseUrl + '/?i=' + pantryIngredients + '&q=' + dietaryRestrictions + '&onlyImages=1')
-    .then(recipes => {
-
+export function getRecipes (pantryIngredients, dietaryRestrictions) {
+  return (dispatch) => {
+    console.log('hello', pantryIngredients)
+    request
+    .get(baseUrl + '/recipes')
+    .query({
+      i: pantryIngredients,
+      q: dietaryRestrictions,
+      onlyImages: 1
     })
+    // .then(
+    //dispatch(receiveRec)
+    // (data) => {
+    //   console.log(data)
+    // })
     .end((err, res) => {
-      callback(err, res.body)
+      console.log(err)
+      // callback(err, res.body)
     })
+  }
 }
