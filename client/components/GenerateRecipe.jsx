@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+
 import Recipe from './Recipe.jsx'
 
 
@@ -29,12 +30,13 @@ class GenerateRecipe extends React.Component{
   }
 
   handleClick() {
-    console.log('props', this.props)
-    this.props.dispatch(getRecipes(this.selectedIngredients, this.dietaryRestrictions))
+    console.log('props', this.state.selectedIngredients)
+    this.props.dispatch(getRecipes(this.state.selectedIngredients, this.state.dietaryRestrictions))
     this.setState({recipeVisible: true})
   }
 
   render() {
+    console.log(this.state)
     return (
       <div>
 
@@ -45,13 +47,14 @@ class GenerateRecipe extends React.Component{
         {this.state.recipeVisible && <Recipe />}
 
         <div className={this.state.noRecipe ? "show" : "hide"}>
-          <p>No recipe found :(</p>
+          <p>No recipe found :( </p>
         </div>
 
         <br/>Powered by <a href="http://www.recipepuppy.com">Recipe Puppy</a>
 
       </div>
-    )
+
+  )
 
   }
 }
