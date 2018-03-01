@@ -38,7 +38,7 @@ const Nav = (props) => {
           <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>
-    </nav>
+    </nav>s
 
     <Route exact path='/' component={Home} />
     <Route exact path='/login' component={Auth} />
