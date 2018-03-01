@@ -111,7 +111,7 @@ As a user:
   | id | Integer |
   | first_name | String |
   | last_name | string |
-  | pic | string |
+  | image | string |
 
 ### Pantry
   | Column Name | Data Type |
