@@ -18,8 +18,7 @@ test('get users from database', () => {
 })
 
 test('get user by user_name', () => {
- 
-  return usersDb.getUserByName(user_name, testDb)
+  return usersDb.getUserByName('Kubo', testDb)
   .then(user => {
     expect(user.user_name).toBe('Kubo')
     // expect(user.user_name[0].hasOwnProperty('first_name')).toBeTruthy()
