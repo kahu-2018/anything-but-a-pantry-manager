@@ -5,6 +5,7 @@ const baseUrl = "/api"
 //API call to external for filtered recipes
 export function getRecipes (pantryIngredients, dietaryRestrictions) {
   return (dispatch) => {
+    console.log('hello', pantryIngredients)
     request
     .get(baseUrl + '/recipes')
     .query({
@@ -17,8 +18,9 @@ export function getRecipes (pantryIngredients, dietaryRestrictions) {
     // (data) => {
     //   console.log(data)
     // })
-    // .end((err, res) => {
-    //   callback(err, res.body)
-    // })
+    .end((err, res) => {
+      console.log(err)
+      // callback(err, res.body)
+    })
   }
 }

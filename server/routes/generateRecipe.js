@@ -1,12 +1,12 @@
 const express = require('express')
-const app = express()
-var server = require('../server')
 const router = express.Router()
 const request = require('superagent')
 
 const baseUrl = "http://www.recipepuppy.com/api/"
 
-router.get('/api/recipes', (req, res) => {
+router.get('/', (req, res) => {
+  console.log('hi')
+  console.log(pantryIngredients)
   request
   .get(baseUrl + '/recipes')
   .query({

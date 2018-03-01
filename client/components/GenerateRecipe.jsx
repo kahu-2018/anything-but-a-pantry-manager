@@ -30,13 +30,11 @@ class GenerateRecipe extends React.Component{
   }
 
   handleClick() {
-    console.log('props', this.state.selectedIngredients)
     this.props.dispatch(getRecipes(this.state.selectedIngredients, this.state.dietaryRestrictions))
     this.setState({recipeVisible: true})
   }
 
   render() {
-    console.log(this.state)
     return (
       <div>
 
