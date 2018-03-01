@@ -7,13 +7,21 @@ function getUsers(testDb) {
   .select()
 }
 
-function getUserByName(first_name, testDb) {
+function getUserByAuthId (id, testDb) {
   const db = testDb || liveDb
-  user_name = user_name == undefined? '' : user_name
+  id = id == undefined? '' : id
   return db('users')
-  .where('user_name', user_name)
+  .where('auth_id', id)
   .first()
 }
+
+// function getUserByAuthId(first_name, testDb) {
+//   const db = testDb || liveDb
+//   return getAuthId()
+//   .then()db('users')
+//   .where('user_name', user_name)
+//   .first()
+// }
 
 // function editUser(user_name, db, testDb) {
 //   const db = testDb || liveDb
@@ -21,6 +29,5 @@ function getUserByName(first_name, testDb) {
 
 module.exports = {
   getUsers,
-  getUserByName
-  // editUser
+  getUserByAuthId  // editUser
 }
