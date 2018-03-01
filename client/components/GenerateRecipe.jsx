@@ -3,7 +3,7 @@ import React from 'react'
 import Recipe from './Recipe.jsx'
 
 import {getRecipes} from '../actions/generateRecipe'
-// import {getUser} from '../actions/users'
+import {getUserRestrictions} from '../actions/users'
 
 class GenerateRecipe extends React.Component{
   constructor(props) {
@@ -11,56 +11,45 @@ class GenerateRecipe extends React.Component{
     this.state = {
       recipeVisible: false,
       noRecipe: null,
-      selectedIngredient: null
+      selectedIngredients: null,
+      dietaryRestrictions: null
     }
+    this.handleChange = this.handleChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
-    this.filterRecipes = this.filterRecipes.bind(this)
-
   }
 
-  handleChange() {
-    this.setState({selectedIngredient: e.target.value})
+  ComponentDidMount() {
+    let dietaryRestrictions = getUserRestrictions()
+    this.setState({dietaryRestrictions: dietaryRestrictions})
+  }
+
+  handleChange(e) {
+    this.setState({selectedIngredients: e.target.value})
   }
 
   handleClick() {
-    this.props.dispatch(getRecipes())
-    // this.props.dispatch(getUser())
-    filterRecipes()
+    this.props.dispatch(getRecipes(this.selectedIngredients, this.dietaryRestrictions))
+    this.setState({recipeVisible: true})
   }
-
-  filterRecipes() {
-    let recipeArray = this.props.recipes
-    let selectedRecipe = recipeArray.filter(recipe => {
-      return (
-        (recipe.ingredients == this.selectedIngredient) &&
-        (recipe.ingredients != user.dietaryrestr)
-      )
-    })
-
-    if (selectedRecipe.length > 0) {
-      this.setState({noRecipe: false})
-    } else {
-      this.setState({noRecipe: true})
-    }
-  }
-
-
 
   render() {
     return (
       <div>
-        <select onChange={this.handleChange}>
-          <option>.map thru ingredients DB</option>
-          <option>ingredient 1</option>
-          <option>ingredient 2</option>
-          <option>ingredient 3</option>
-          <option>ingredient 4</option>
-        </select>
+
+        <form method="get">
+          <label>Recipe Search by Ingredients:</label>
+          <input type="text" name="i" id="i" onChange={this.handleChange} />
+        </form>
+
         <button type="button" onClick={this.handleClick}>Find Recipe!</button>
         {this.state.recipeVisible && <Recipe />}
+
         <div className={this.state.noRecipe ? "show" : "hide"}>
           <p>No recipe found :(</p>
         </div>
+
+        <br/>Powered by <a href="http://www.recipepuppy.com">Recipe Puppy</a>
+
       </div>
     )
 
