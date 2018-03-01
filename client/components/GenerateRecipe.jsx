@@ -1,6 +1,7 @@
 import React from 'react'
-
+import { connect } from 'react-redux'
 import Recipe from './Recipe.jsx'
+
 
 import {getRecipes} from '../actions/generateRecipe'
 import {getUserRestrictions} from '../actions/users'
@@ -28,6 +29,7 @@ class GenerateRecipe extends React.Component{
   }
 
   handleClick() {
+    console.log('props', this.props)
     this.props.dispatch(getRecipes(this.selectedIngredients, this.dietaryRestrictions))
     this.setState({recipeVisible: true})
   }
@@ -36,10 +38,8 @@ class GenerateRecipe extends React.Component{
     return (
       <div>
 
-        <form method="get">
           <label>Recipe Search by Ingredients:</label>
           <input type="text" name="i" id="i" onChange={this.handleChange} />
-        </form>
 
         <button type="button" onClick={this.handleClick}>Find Recipe!</button>
         {this.state.recipeVisible && <Recipe />}
@@ -56,4 +56,10 @@ class GenerateRecipe extends React.Component{
   }
 }
 
-export default GenerateRecipe
+const mapStateToProps = ({auth}) => {
+  return {
+    auth
+  }
+}
+
+export default connect(mapStateToProps)(GenerateRecipe)
