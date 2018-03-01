@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { registerUserRequest } from '../actions/register'
 import { loginError } from '../actions/login'
+import { Link } from 'react-router-dom'
+
 
 class Register extends React.Component {
     constructor(props) {
@@ -87,7 +89,7 @@ class Register extends React.Component {
 
                     <input className="btn btn-lg btn-primary btn-block text-center center-column mb-3" value="Register" type="submit" />
                     <div className="text-center mb-5" >
-                    <a className="text-warning font-weight-bold" href='#'>Already have an account? Sign in here</a>
+                    <Link to ='./login' className="text-warning font-weight-bold" href='#'>Already have an account? Sign in here</Link>
                     </div>
 
                 </form>
@@ -103,4 +105,3 @@ const mapStateToProps = ({ auth }) => {
 }
 
 export default connect(mapStateToProps)(Register)
-

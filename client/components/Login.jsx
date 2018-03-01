@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { loginUser, loginError } from '../actions/login'
+import {Link} from 'react-router-dom'
+
 
 class Login extends React.Component {
     constructor(props) {
@@ -44,7 +46,7 @@ class Login extends React.Component {
                     <input className="btn btn-lg btn-primary btn-block mb-3" value='Login' type="submit" />
                 </form>
                 <div className="mb-5"><a className="text-secondary" href='#'>Forgot Password</a></div>
-                <div className="mb-5"><a href='#' className="btn btn-lg btn-outline-warning">Create a new account</a></div>
+                <div className="mb-5"><Link to='/register' className="btn btn-lg btn-outline-warning">Create a new account</Link></div>
             </div>
         )
     }
@@ -57,4 +59,3 @@ const mapStateToProps = ({ auth }) => {
 }
 
 export default connect(mapStateToProps)(Login)
-

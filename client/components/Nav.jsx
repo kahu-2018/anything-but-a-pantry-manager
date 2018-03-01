@@ -8,6 +8,7 @@ import Home from './Home'
 import Profile from './Profile'
 import GenerateRecipe from './GenerateRecipe'
 import Recipe from './Recipe'
+import Register from './Register'
 
 const Nav = (props) => {
   return (
@@ -45,6 +46,7 @@ const Nav = (props) => {
     <Route exact path='/profile' component={Profile} />
     <Route exact path='/generateRecipe' component={GenerateRecipe} />
     <Route exact path='/recipe' component={Recipe} />
+    <Route exact path='/register' component={Register} />
 
     </div>
 
