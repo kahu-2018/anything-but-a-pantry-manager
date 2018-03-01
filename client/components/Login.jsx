@@ -43,8 +43,8 @@ class Login extends React.Component {
                     <input id="inputPassword" className="form-control mb-3" placeholder="Password" name="password" type="password" required onChange={this.updateDetails} />
                     <input className="btn btn-lg btn-primary btn-block mb-3" value='Login' type="submit" />
                 </form>
-                <div className="mb-5 text-secondary"><a className="text-secondary" href='#'>Forgot Password</a></div>
-                <div><a href='#' className="btn btn-lg btn-outline-warning">Create a new account</a></div>
+                <div className="mb-5"><a className="text-secondary" href='#'>Forgot Password</a></div>
+                <div className="mb-5"><a href='#' className="btn btn-lg btn-outline-warning">Create a new account</a></div>
             </div>
         )
     }
