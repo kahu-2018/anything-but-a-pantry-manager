@@ -103,3 +103,4 @@ const mapStateToProps = ({ auth }) => {
 }
 
 export default connect(mapStateToProps)(Register)
+

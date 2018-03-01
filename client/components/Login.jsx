@@ -57,3 +57,4 @@ const mapStateToProps = ({ auth }) => {
 }
 
 export default connect(mapStateToProps)(Login)
+

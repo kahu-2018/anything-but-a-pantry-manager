@@ -1,27 +1,36 @@
 import React from 'react'
+import {HashRouter as Router, Route, Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 
-const Nav = () => {
+
+import Auth from './Auth'
+import Home from './Home'
+import Profile from './Profile'
+import GenerateRecipe from './GenerateRecipe'
+import Recipe from './Recipe'
+
+const Nav = (props) => {
   return (
-    <div>
+    <Router>
+      <div>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <Link to='/' className="navbar-brand"><i className="fas fa-home"></i></Link>
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
 
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <a className="navbar-brand" href="#"><i class="fas fa-home"></i></a>
-      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
-      </button>
-
-      <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav mr-auto">
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item">
+                <Link to='/profile' className="nav-link">Profile </Link>
+              </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Profile </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">Generate Recipe</a>
+            <Link to='/generateRecipe' className="nav-link">Generate Recipe</Link>
           </li>
         </ul>
           <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <a className="nav-link" href="#"><i class="fas fa-user-circle"></i>Login/Register</a>
+            <Link to='/login' className="nav-link"><i className="fas fa-user-circle">&nbsp;</i>Login/Register</Link>
             </li>
           </ul>
         <form className="form-inline my-2 my-lg-0">
@@ -30,8 +39,23 @@ const Nav = () => {
         </form>
       </div>
     </nav>
-  </div>
+
+    <Route exact path='/' component={Home} />
+    <Route exact path='/login' component={Auth} />
+    <Route exact path='/profile' component={Profile} />
+    <Route exact path='/generateRecipe' component={GenerateRecipe} />
+    <Route exact path='/recipe' component={Recipe} />
+
+    </div>
+
+  </Router>
   )
 }
 
+// const mapStateToProps = (state) => {
+//   return (
+//
+//   )
+// }
 export default Nav
+// export default connect(mapStateToProps)(Nav)
