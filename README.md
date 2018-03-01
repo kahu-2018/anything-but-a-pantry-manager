@@ -118,6 +118,12 @@ As a user:
   | --- | --- |
   | id | Integer |
   | name_of_food | String |
+  
+ ### DietartyRestrictions
+  | Column Name | Data Type |
+  | --- | --- |
+  | id | Integer |
+  | restricted_food | String |
 
 ### UserRestrictions M2M
   | Column Name | Data Type |
