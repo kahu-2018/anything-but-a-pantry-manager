@@ -1,26 +1,23 @@
-import request from 'superagent'
+import request from '../utils/api'
+import { get } from '../utils/localstorage'
 
-const baseUrl = "/api"
+function receiveRecipes(recipes) {
+  console.log('hello', typeof recipes)
+  return {
+    type: 'RECEIVE_RECIPES',
+    recipes
+  }
+}
 
-//API call to external for filtered recipes
 export function getRecipes (pantryIngredients, dietaryRestrictions) {
-  return (dispatch) => {
-    console.log('hello', pantryIngredients)
-    request
-    .get(baseUrl + '/recipes')
-    .query({
-      i: pantryIngredients,
-      q: dietaryRestrictions,
-      onlyImages: 1
+  return function (dispatch) {
+    return request ('get', 'recipes', {i: pantryIngredients, q: dietaryRestrictions, onlyImages: 1})
+    .then(res => {
+      dispatch(receiveRecipes(res.body.results))
     })
-    // .then(
-    //dispatch(receiveRec)
-    // (data) => {
-    //   console.log(data)
-    // })
-    .end((err, res) => {
-      console.log(err)
-      // callback(err, res.body)
+    .catch((err, res) => {
+      console.log('error', err)
+      //(err, res.body)
     })
   }
 }
