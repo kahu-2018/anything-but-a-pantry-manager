@@ -1,9 +1,20 @@
 const db = require('./connection')
+const {getUserByName} = require('./usersDb')
 
-function getUserFavourites(testDb) {
-  return (testDb || db)('userFavourites')
+function getUserFavourites(db, testDb) {
+  return (testDb || db)('userFavourites').select()
+}
+
+function createFavourite(user_name, food, db, testDb) {
+
+}
+
+function deleteFavourite(user_name, food, db, testDb) {
+
 }
 
 module.exports = {
-  getUserFavourites
+  getUserFavourites,
+  createFavourite,
+  deleteFavourite
 }
