@@ -2,7 +2,7 @@ import React from 'react'
 
 import Recipe from './Recipe.jsx'
 
-// import {getRecipes} from '../actions/generateRecipe'
+import {getRecipes} from '../actions/generateRecipe'
 // import {getUser} from '../actions/users'
 
 class GenerateRecipe extends React.Component{
@@ -23,7 +23,7 @@ class GenerateRecipe extends React.Component{
   }
 
   handleClick() {
-    // this.props.dispatch(getRecipes())
+    this.props.dispatch(getRecipes())
     // this.props.dispatch(getUser())
     filterRecipes()
   }
