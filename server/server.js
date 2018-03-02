@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 
 const generateRecipe = require('./routes/generateRecipe')
+const users = require('./routes/users')
 
 const server = express()
 
@@ -13,5 +14,6 @@ server.use(bodyParser.json())
 server.use(express.static(path.join(__dirname, '../public')))
 
 server.use('/api/recipes', generateRecipe)
+server.use('/api/users', users)
 
 module.exports = server

@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const {getUserByName} = require('../db/users')
+const {getUserByName} = require('../db/usersDb')
 const verifyJwt = require('express-jwt')
 const {compare} = require('./hash')
 
@@ -23,7 +23,7 @@ function issue (req, res) {
 
 function createToken (user, secret) {
   return jwt.sign({
-    user_id:user.user_id,
+    auth_id: user.id,
     user_name: user.user_name
   }, secret, {
     expiresIn: '24h'

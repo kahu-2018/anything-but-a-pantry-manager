@@ -17,10 +17,10 @@ test('get users from database', () => {
     })
 })
 
-test('get user by user_name', () => {
-  return usersDb.getUserByName('Kubo', testDb)
+test('get user by auth_id', () => {
+  return usersDb.getUserByAuthId(1, testDb)
   .then(user => {
-    expect(user.user_name).toBe('Kubo')
-    // expect(user.user_name[0].hasOwnProperty('first_name')).toBeTruthy()
+    expect(user.id).toEqual(1)
     })
 })
+
