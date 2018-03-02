@@ -1,9 +1,21 @@
 import request from 'superagent'
 
 
-//API call to user db for restrictions
-export function getUserRestrictions() {
-  request()
+function receiveDietaryRestrictions(userDietaryRestrictions) {
+  return {
+    type: 'SET_RESTRICTIONS',
+    userDietaryRestrictions
+  }
+}
+
+export function getUserRestrictions(userId) {
+  return function (dispatch) {
+    request('get', 'users/restrictions', userId)
+    .then(res => {
+      dispatch(receiveDietaryRestrictions(res.body))
+    })
+    .catch(err => console.log('error', err))
+   }
 }
 
 export function getUserProfile(user) {
