@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {editProfileRequest} from '../actions/user'
 
 
-class Profile extends React.Component {
+class EditProfile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
