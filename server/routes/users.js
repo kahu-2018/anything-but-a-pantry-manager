@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 
 router.get('/restrictions', (req, res) => {
   db.getRestrictions(userId)
-  .then(dietaryRestrictions = > {
+  .then(dietaryRestrictions => {
     res.json({dietaryRestrictions: dietaryRestrictions})
   })
   .catch(err => {
