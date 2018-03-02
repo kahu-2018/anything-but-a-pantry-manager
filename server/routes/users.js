@@ -16,6 +16,16 @@ router.get('/', (req, res) => {
   })
 })
 
+router.get('/restrictions', (req, res) => {
+  db.getRestrictions(userId)
+  .then(dietaryRestrictions = > {
+    res.json({dietaryRestrictions: dietaryRestrictions})
+  })
+  .catch(err => {
+    console.log('error', err)
+  })
+
+})
 // waiting on auth to test this uncomment path to decode when ready
 // router.get('/profile', decode, (req, res) => {
 //   db.getUserByAuthId(req.user.auth_id)
@@ -27,4 +37,4 @@ router.get('/', (req, res) => {
 //   })
 // })
 
-module.exports = router 
+module.exports = router

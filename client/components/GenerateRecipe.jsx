@@ -21,7 +21,7 @@ class GenerateRecipe extends React.Component{
   }
 
   ComponentDidMount() {
-    let dietaryRestrictions = getUserRestrictions()
+    let dietaryRestrictions = getUserRestrictions(1)
     this.setState({dietaryRestrictions: dietaryRestrictions})
   }
 

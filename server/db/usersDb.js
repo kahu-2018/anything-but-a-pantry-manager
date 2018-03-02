@@ -15,6 +15,12 @@ function getUserByAuthId (id, testDb) {
   .first()
 }
 
+function getRestrictions(testDb, userId) {
+  const db = testDb || liveDb
+  return db('users')
+  .where('id', userId)
+  .select(users.dietaryRestrictions)
+}
 // function editUser(user_name, db, testDb) {
 //   const db = testDb || liveDb
 // }
