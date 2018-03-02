@@ -12,7 +12,7 @@ afterEach(() => env.cleanup(testDb))
 test('read userRestrictions db', () => {
   return userRestrictionsDb.getUserRestrictions(testDb)
     .then(userRestrictions => {
-      expect(userRestrictions.length).toBe(1)
       expect(userRestrictions[0].hasOwnProperty('user_id')).toBeTruthy()
+      expect(userRestrictions[0].hasOwnProperty('restriction_id')).toBeTruthy()
     })
 })
