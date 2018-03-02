@@ -17,21 +17,21 @@ I often come home and have no energy to be creative enough to think of what to c
 ### MVP
 
 As a user:
-* I want to recieve a recipe based on 1 ingredient
-* I want to recieve a recipe that knows my dietary and personal food preference
-* I want to log in and have a profile
+[ x ] I want to recieve a recipe based on 1 ingredient
+[ ] I want to recieve a recipe that knows my dietary and personal food preference
+[ ] I want to log in and have a profile
 
 ### Stretch 1
 
-* I want to receive a recipe based on more than one ingredient
-* I want to be able to tick thing off a recipe list to get an accurate shopping list
-* I want to be able to plan X amounts of meals for one shopping list
-  
+[ ] I want to receive a recipe based on more than one ingredient
+[ ] I want to be able to tick thing off a recipe list to get an accurate shopping list
+[ ] I want to be able to plan X amounts of meals for one shopping list
+
 ### Stretch 2
 
-* I want to reject a recipe and get a new one
-* I want to give raitings to my recipes
-* I want to share with my friends
+[ ] I want to reject a recipe and get a new one
+[ ] I want to give raitings to my recipes
+[ ] I want to share with my friends
 
  ---
 
@@ -53,33 +53,44 @@ As a user:
 
   | name | purpose |
   | --- | --- |
-  |  |  |
-  |  |  |
-  |  |  |
-  |  |  |
-  
- ## Actions
- 
- ### meetings
- 
- | type | data | purpose | 
- | --- | --- | --- | 
+  | auth | Store information regarding user logins, auth status and auth errors |
+  | user | Store user info |
+  | generateRecipe | Collects Recipes from external API |
+  | index | Combines reducers
 
- ### users 
+ ## Actions
  | type | data | purpose |
  | --- | --- | --- |
+ | login | auth, users | logs in user|
+ | logout | null |logs user out |
+ | register | auth, users |registers user |
+
+ ### users
+ | type | data | purpose |
+ | --- | --- | --- |
+ | RECEIVE_USERS | users | retreive the users from the server |
+ | RECIEVE_USER | users | retrieve one user and their dietary stuff (join table yo) |
+ | UPDATE_USER | users | Edit profile info |
  
- ### currentMeeting 
-  | type | data | purpose | 
-| --- | --- | --- | 
 
-
+ ### generateRecipe
+| type | data | purpose |
+| --- | --- | --- |
+| GET_RECIPES | (external API) | Retrieve all recipe info |
+| SET_RECIPE | null | Save one recipe to global state |
 
 
 ## API (Client - Server)
 
 | Method | Endpoint | Protected | Usage | Response |
 | --- | --- | --- | --- | --- |
+| POST | /api/auth/login	| Yes | Log In a User	| The Users JWT Token |
+| POST | /api/auth/register	| Yes | Register a User	| The Users JWT Token |
+| GET | /api/users	| Yes | Get user profile info	| Array of user objects |
+| POST | /api/users | Yes | Edit profile info | Edits/adds database info |
+| GET | (external API) | Yes | Get all recipes | Array of Recipe Objects (we think) |
+
+
 
 
 ## DB (Server Side)
@@ -90,37 +101,45 @@ As a user:
   | --- | --- |
   | id | Integer |
   | user_name | String |
-  | email | string | 
-  | hash | text |
+  | email | string |
+  | hash | string |
+  | salt | string |
 
 ### Users
   | Column Name | Data Type |
   | --- | --- |
   | id | Integer |
   | first_name | String |
-  | last_name | string | 
-  | pic | ?? |
-  
-### Ingredients (can this be an external API?)
+  | last_name | string |
+  | image | string |
+  | auth_id | integer |
+
+### Pantry
   | Column Name | Data Type |
   | --- | --- |
   | id | Integer |
   | name_of_food | String |
   
+ ### DietaryRestrictions
+  | Column Name | Data Type |
+  | --- | --- |
+  | id | Integer |
+  | restricted_food | String |
+
 ### UserRestrictions M2M
   | Column Name | Data Type |
   | --- | --- |
   | user_id | Integer |
   | restriction_id | Integer |
-  
+
 ### UserFavorites M2M
   | Column Name | Data Type |
   | --- | --- |
   | user_id | Integer |
   | recipe_id (external API) | Integrer |
-  
+
  ---
- 
+
 
 ## Setup
 
