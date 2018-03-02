@@ -13,7 +13,6 @@ router.get('/', (req, res) => {
     onlyImages: 1
   })
     .then(extres => {
-      console.log('ext', extres.text)
     res.json(JSON.parse(extres.text))
   })
   .catch(err => {
