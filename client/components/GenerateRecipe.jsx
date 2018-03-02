@@ -5,7 +5,7 @@ import Recipe from './Recipe.jsx'
 
 
 import {getRecipes} from '../actions/generateRecipe'
-import {getUserRestrictions} from '../actions/users'
+import {getUserRestrictions} from '../actions/user'
 
 class GenerateRecipe extends React.Component{
   constructor(props) {

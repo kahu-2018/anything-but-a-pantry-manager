@@ -1,14 +1,49 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import EditProfile from './EditProfile'
+
+import {getUserProfile} from '../actions/user'
 
 class Profile extends React.Component {
+  constructor(props){
+    super(props)
+    this.state={
+      editVisible:false
+    }
+    this.toggleButton = this.toggleButton.bind(this)
+  }
+
+  toggleButton(){
+    this.setState({editVisible: !this.state.editVisible
+    })
+  }
   render() {
+    const buttonText = this.state.editVisible ? 'Close' : 'Edit'
     return (
       <div>
-        <h1>Hello World from Profile</h1>
+        <h1>Profile</h1>            
+        <button type="edit" className="btn btn-primary" onClick={this.toggleButton}>{buttonText}</button>
+
+        {this.state.editVisible && <EditProfile />}
+        <h3>Welcome {this.props.user.first_name} {this.props.user.last_name}</h3>
+
+        <h3>Dietary Requirements:</h3> 
+
+        <h3>Favorite Foods:</h3> 
+
+        <h3>Favorite Recipes:</h3> 
+
+        <h3>Food I don't like:</h3> 
+
+        
+
       </div>
     )
   }
 }
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {user: state.user}
+}
 
-
-export default Profile
+export default connect(mapStateToProps)(Profile)
