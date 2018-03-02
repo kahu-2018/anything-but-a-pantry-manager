@@ -55,4 +55,4 @@ const mapStateToProps = ({userDetails}) => {
   return {userDetails}
 }
 
-export default connect(mapStateToProps)(Profile)
+export default connect(mapStateToProps)(EditProfile)
