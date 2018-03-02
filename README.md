@@ -23,7 +23,7 @@ As a user:
 
 ### Stretch 1
 
-* [ ] I want to receive a recipe based on more than one ingredient
+* [X] I want to receive a recipe based on more than one ingredient
 * [ ] I want to be able to tick thing off a recipe list to get an accurate shopping list
 * [ ] I want to be able to plan X amounts of meals for one shopping list
 
