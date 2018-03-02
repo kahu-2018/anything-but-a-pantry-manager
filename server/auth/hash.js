@@ -1,20 +1,15 @@
 const bcrypt = require('bcrypt')
-const crypto = require('crypto')
+const saltRound = 13
 
-function generate(password, cb) {
-  bcrypt.hash(password, 12, cb)
+function generateHash(password, cb) {
+  bcrypt.hash(password, saltRound, cb)
 }
 
-function compare (password, hash, cb) {
+function compareHash(password, hash, cb) {
   bcrypt.compare(password, hash, cb)
 }
 
-function getRandomSalt() {
-  return crypto.randomBytes(20).toString('Hex') 
-}
-
 module.exports = {
-  generate,
-  compare,
-  getRandomSalt
+  generateHash,
+  compareHash
 }
