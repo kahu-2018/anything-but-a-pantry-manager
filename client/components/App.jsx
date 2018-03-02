@@ -7,7 +7,7 @@ import Nav from './Nav'
 
 
 class App extends React.Component {
-  
+
   // componentDidMount() {
   //   if (this.props.auth.isAuthenticated) {
   //     //do api request stuff for user data
@@ -26,8 +26,6 @@ class App extends React.Component {
     return (
       <div>
         <Nav />
-        <h1>Hello World from App.jsx</h1>
-
       </div>
     )
   }

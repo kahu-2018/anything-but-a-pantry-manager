@@ -8,24 +8,26 @@ class Recipe extends React.Component {
       }
   }
 
-  render(props) {
+  render() {
+    console.log(this.props);
     return (
       <div>
-        <h3>Here's your Recipe</h3>
-        <ul>
-          {console.log(this.props.recipes)}
-          {this.props.recipes.map(recipe => <li>{recipe.title}</li>)}
-
-      </ul>
+        <h1>Here's your Recipe</h1>
+          <div>
+          {this.props.recipes.map(recipe =>
+            <a href={recipe.href} target="_blank"><img className='img' src={recipe.thumbnail} alt="food" /><h4>{recipe.title}</h4></a>
+            )
+          }
+        </div>
       </div>
     )
   }
 }
 
-const mapStateToProps = (props) => {
+const mapStateToProps = (state) => {
   return {
-    auth: props.auth,
-    recipes: props.recipes
+    auth: state.auth,
+    recipes: state.recipes
   }
 }
 

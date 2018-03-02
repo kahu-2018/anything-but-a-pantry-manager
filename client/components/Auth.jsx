@@ -8,6 +8,7 @@ class Auth extends React.Component {
       <div>
         <h1>Hello World from Auth</h1>
           <Login />
+
       </div>
     )
   }

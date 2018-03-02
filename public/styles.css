@@ -9,7 +9,17 @@ p {
 h1 {
   font-family: 'Lobster', cursive !important;
 }
+h3 {
+  font-family: 'Lobster', cursive !important;
+}
+h4 {
+  font-family: 'Lobster', cursive !important;
+}
 
+.img {
+  margin: 20px;
+
+}
 .navBar {
   font-family: 'Lobster', cursive;
   font-size: 20px;
