@@ -1,4 +1,3 @@
-
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('users', table => {
     table.increments('id')
@@ -7,6 +6,7 @@ exports.up = function(knex, Promise) {
     table.string('image')
     table.string('dietary_restrictions')
     table.integer('auth_id')
+    table.string('user_name')
   })
 };
 
