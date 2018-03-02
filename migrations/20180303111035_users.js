@@ -5,6 +5,7 @@ exports.up = function(knex, Promise) {
     table.string('first_name')
     table.string('last_name')
     table.string('image')
+    table.string('dietary_restrictions')
     table.integer('auth_id')
   })
 };
