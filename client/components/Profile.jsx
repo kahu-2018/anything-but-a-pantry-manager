@@ -49,9 +49,6 @@ class Profile extends React.Component {
                 <input className="btn btn-lg btn-green btn-block mb-3" value="History" type="submit" />
               </div>
 
-<<<<<<< HEAD
-        <h3>Food I don't like:</h3>
-=======
               <div className="col-sm-3">
                 <input className="btn btn-lg btn-green btn-block mb-3" value="Favorite Recipes" type="submit" />
                 <input className="btn btn-sm btn-outline-green btn-block mb-3" type='submit' value='Apple Salad'/>
@@ -66,7 +63,7 @@ class Profile extends React.Component {
                   <p>Apples</p>
                   <h4 className ='greenText'>I don't Like</h4>
                   <p>Rice</p>
->>>>>>> done the profile page
+
 
               </div>
               <div className="col-sm-3 centered">
