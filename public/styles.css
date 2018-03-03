@@ -9,6 +9,9 @@ p {
 h1 {
   font-family: 'Lobster', cursive !important;
 }
+h2 {
+  font-family: 'Lobster', cursive !important;
+}
 h3 {
   font-family: 'Lobster', cursive !important;
 }
@@ -27,9 +30,35 @@ h4 {
   background-color: #12D6BC;
   color: white;
 }
+
+.inputBackground {
+  background-color: #12D6BC;
+}
+
+.btn-outline-green{
+  font-family: 'Lobster', cursive !important;
+  color: #12D6BC !important;
+  border-radius: 5px;
+  border-color: #12D6BC !important;
+}
+.btn-outline-green:hover{
+  background-color: #12D6BC !important;
+  color: white !important;
+
+}
+
 a:hover{
   text-decoration: none !important;
-
+  color: #000000 !important;
+}
+a {
+  color: #000000 !important;
+}
+a:visited {
+  color: #000000;
+}
+a:active: {
+  color: #000000 !important;
 }
 
 .textColourNav {

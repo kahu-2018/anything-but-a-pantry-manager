@@ -34,20 +34,23 @@ class Login extends React.Component {
         const { auth } = this.props
 
         return (
+          <div>
+            <img className='headerImage' src="images/pantry-to-plate-sml.jpg" alt='header'/>
             <div className="center-column text-center">
                 <form onSubmit={this.submit}>
-                    <img src="./images/PantryToPlate.png" alt="" width="150" height="150" />
                     <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-                    {auth.errorMessage && <div className="text-danger mb-3">{auth.errorMessage}</div>}
-                    <label htmlFor="inputUsername" className="sr-only">Email address</label>
+                    {auth.errorMessage && <span className="text-danger display-4">{auth.errorMessage}</span>}
+                    <label htmlFor="inputUsername" className="sr-only inputBackground">Email address</label>
+
                     <input id="inputUsername" className="form-control mb-1" placeholder="User name" name="user_name" type="text" required autoFocus="" onChange={this.updateDetails} />
                     <label htmlFor="inputPassword" className="sr-only">Password</label>
                     <input id="inputPassword" className="form-control mb-3" placeholder="Password" name="password" type="password" required onChange={this.updateDetails} />
-                    <input className="btn btn-lg btn-primary btn-block mb-3" value='Login' type="submit" />
+                    <input className="btn btn-lg btn-green btn-block mb-3" value='Login' type="submit" />
                 </form>
-                <div className="mb-5"><a className="text-secondary" href='#'>Forgot Password</a></div>
-                <div className="mb-5"><Link to='/register' className="btn btn-lg btn-outline-warning">Create a new account</Link></div>
+                <div className="mb-5"><a href='#'><p>Forgot Password</p></a></div>
+                <div className="mb-5"><Link to='/register' className="btn btn-lg btn-outline-green">Create a new account</Link></div>
             </div>
+          </div>
         )
     }
 }
