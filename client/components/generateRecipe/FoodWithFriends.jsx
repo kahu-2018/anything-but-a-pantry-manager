@@ -4,17 +4,14 @@ import { connect } from 'react-redux'
 import {getRecipes} from '../../actions/generateRecipe'
 import {getUserRestrictions} from '../../actions/user'
 
-class OneRecipe extends React.Component{
+class FoodWithFriends extends React.Component{
   constructor(props) {
     super(props)
     this.state = {
       recipeVisible: false,
-      noRecipe: null,
       selectedIngredients: null,
       dietaryRestrictions: null,
     }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleClick = this.handleClick.bind(this)
 
   }
 
@@ -23,40 +20,25 @@ class OneRecipe extends React.Component{
     this.setState({dietaryRestrictions: dietaryRestrictions})
   }
 
-  handleChange(e) {
-    this.setState({selectedIngredients: e.target.value})
-  }
-
-  handleClick(e) {
-    e.preventDefault()
-    this.props.dispatch(getRecipes(this.state.selectedIngredients, this.state.dietaryRestrictions))
-    this.setState({recipeVisible: true})
-  }
 
   render(props) {
-    let recipe = this.props.recipes
-    let randomNumber = Math.floor(Math.random()*10)
-
-    console.log(randomNumber)
-    console.log(recipe[0])
 
     return (
       <div>
-        <form onSubmit={this.handleClick}>
+        <div class="form-group">
+          <label for="exampleSelect1">Select Friend</label>
+          <select class="form-control" id="exampleSelect1">
+            <option>Jess</option>
+            <option>Maia</option>
+            <option>Nick</option>
+            <option>Brian</option>
+            <option>Mel</option>
+          </select>
+        </div>
         <input id="inputfood" className="form-control mb-1 font-pLato" placeholder="Ingredients you have" name="user_name" type="text" required autoFocus="" onKeyPress={this.handleButtonPress} onChange={this.handleChange}/>
         <input className="btn btn-lg btn-green btn-block mb-3" value="Add ingredient" type="submit" />
         <input className="btn btn-lg btn-outline-green btn-block mb-3" value='Find' type="submit" />
-
-
-          {this.props.recipes.map(recipe =>
-            <a href={recipe.href} target="_blank"><img className='img' src={recipe.thumbnail} alt="food" /><h4>{recipe.title}</h4></a>
-            )}
-      </form>
-        <div>
-
-        </div>
       </div>
-
     )}
 }
 
@@ -67,4 +49,4 @@ const mapStateToProps = (props) => {
   }
 }
 
-export default connect(mapStateToProps)(OneRecipe)
+export default connect(mapStateToProps)(FoodWithFriends)

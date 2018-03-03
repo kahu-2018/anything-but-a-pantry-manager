@@ -3,6 +3,10 @@ import { connect } from 'react-redux'
 
 import Recipe from './Recipe.jsx'
 import OneRecipe from './generateRecipe/OneRecipe'
+import RandomRecipe from './generateRecipe/RandomRecipe'
+import WeeklyOptions from './generateRecipe/WeeklyOptions'
+import FoodWithFriends from './generateRecipe/FoodWithFriends'
+
 
 
 import {getRecipes} from '../actions/generateRecipe'
@@ -42,6 +46,7 @@ class GenerateRecipe extends React.Component{
   }
 
   render(props) {
+    const {isToggled} = this.state
     return (
       <div>
         <img className='headerImage' src="images/pantry-to-plate-sml.jpg" alt='header'/>
@@ -52,13 +57,17 @@ class GenerateRecipe extends React.Component{
               {this.state.isToggled && <OneRecipe />}
             </div>
             <div className="col-sm-3">
-              <input className="btn btn-lg btn-green btn-block mb-3" value="Generate Weekly" type="submit" />
+              <input className="btn btn-lg btn-green btn-block mb-3" onClick={this.toggleButton} value="Generate Weekly" type="submit" />
+              {this.state.isToggled && <WeeklyOptions />}
             </div>
             <div className="col-sm-3">
-              <input className="btn btn-lg btn-green btn-block mb-3" value="Random Recipe" type="submit" />
-            </div>
+              <input className="btn btn-lg btn-green btn-block mb-3" onClick={this.toggleButton}value="Random Recipe" type="submit" />
+              {this.state.isToggled && <FoodWithFriends />}
+
+          </div>
             <div className="col-sm-3">
-              <input className="btn btn-lg btn-green btn-block mb-3" value="Food with Friends" type="submit" />
+              <input className="btn btn-lg btn-green btn-block mb-3" onClick={this.toggleButton} value="Food with Friends" type="submit" />
+              {this.state.isToggled && <RandomRecipe />}
             </div>
           </div>
         </div>
