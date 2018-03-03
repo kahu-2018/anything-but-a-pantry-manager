@@ -5,6 +5,7 @@ const request = require('superagent')
 const baseUrl = "http://www.recipepuppy.com/api/"
 
 router.get('/', (req, res) => {
+  console.log('test2')
   request
   .get(baseUrl)
   .query({

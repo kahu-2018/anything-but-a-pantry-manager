@@ -1,4 +1,4 @@
-function generateUserRestrictions(state=[], action) {
+function setUserRestrictions(state=[], action) {
   switch (action.type) {
     case 'SET_RESTRICTIONS':
       return [...state, action.userDietaryRestrictions]
@@ -8,4 +8,4 @@ function generateUserRestrictions(state=[], action) {
   }
 }
 
-export default generateUserRestrictions
+export default setUserRestrictions

@@ -4,9 +4,8 @@ import { connect } from 'react-redux'
 import Recipe from './Recipe.jsx'
 import OneRecipe from './generateRecipe/OneRecipe'
 
-
 import {getRecipes} from '../actions/generateRecipe'
-import {getUserRestrictions} from '../actions/user'
+import {getUserProfile} from '../actions/user'
 
 class GenerateRecipe extends React.Component{
   constructor(props) {
@@ -23,9 +22,8 @@ class GenerateRecipe extends React.Component{
     this.toggleButton = this.toggleButton.bind(this)
   }
 
-  ComponentDidMount() {
-    let dietaryRestrictions = getUserRestrictions(1)
-    this.setState({dietaryRestrictions: dietaryRestrictions})
+  componentDidMount() {
+    getUserProfile(this.props.auth.user.id)
   }
 
   handleChange(e) {
@@ -34,6 +32,9 @@ class GenerateRecipe extends React.Component{
 
   handleClick(e) {
     e.preventDefault()
+
+    this.props.dispatch(getUserProfile(this.props.auth.user.id))
+
     this.props.dispatch(getRecipes(this.state.selectedIngredients, this.state.dietaryRestrictions))
     this.setState({recipeVisible: true})
   }
