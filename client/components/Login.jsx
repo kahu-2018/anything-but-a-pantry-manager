@@ -27,7 +27,7 @@ class Login extends React.Component {
         e.preventDefault()
         let { user_name, password } = this.state
         console.log('submit: ', user_name, ' ', password)
-        //this.props.dispatch(loginUser({user_name, password}))
+        this.props.dispatch(loginUser({user_name, password}))
     }
 
     render() {
@@ -38,7 +38,7 @@ class Login extends React.Component {
                 <form onSubmit={this.submit}>
                     <img src="./images/PantryToPlate.png" alt="" width="150" height="150" />
                     <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-                    {auth.errorMessage && <span className="text-danger display-4">{auth.errorMessage}</span>}
+                    {auth.errorMessage && <div className="text-danger mb-3">{auth.errorMessage}</div>}
                     <label htmlFor="inputUsername" className="sr-only">Email address</label>
                     <input id="inputUsername" className="form-control mb-1" placeholder="User name" name="user_name" type="text" required autoFocus="" onChange={this.updateDetails} />
                     <label htmlFor="inputPassword" className="sr-only">Password</label>
