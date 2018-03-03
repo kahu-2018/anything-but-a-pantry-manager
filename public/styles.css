@@ -16,6 +16,26 @@ h4 {
   font-family: 'Lobster', cursive !important;
 }
 
+.headerImage{
+  width: 100% !important;
+  margin-bottom: 30px;
+}
+
+
+.btn-green {
+  font-family: 'Lobster', cursive !important;
+  background-color: #12D6BC;
+  color: white;
+}
+a:hover{
+  text-decoration: none !important;
+
+}
+
+.textColourNav {
+  color: #12D6BC;
+}
+
 .img {
   margin: 20px;
 
