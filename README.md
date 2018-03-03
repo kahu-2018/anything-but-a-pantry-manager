@@ -103,7 +103,6 @@ As a user:
   | user_name | String |
   | email | string |
   | hash | string |
-  | salt | string |
 
 ### Users
   | Column Name | Data Type |

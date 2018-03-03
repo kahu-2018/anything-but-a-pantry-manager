@@ -26,15 +26,17 @@ router.get('/restrictions', (req, res) => {
   })
 
 })
-// waiting on auth to test this uncomment path to decode when ready
-// router.get('/profile', decode, (req, res) => {
-//   db.getUserByAuthId(req.user.auth_id)
-//   .then(user => {
-//     res.json({user: user})
-//   })
-//   .catch(err => {
-//     res.status(500).send('Database Error: ', err.message)
-//   })
-// })
+
+router.get('/profile', (req, res) => {
+  db.getUserByAuthId(req.user.auth_id)
+  .then(user => {
+    res.json({user: user})
+  })
+  .catch(err => {
+    res.status(500).send('Database Error: ', err.message)
+  })
+})
+
+
 
 module.exports = router

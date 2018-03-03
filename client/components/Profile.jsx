@@ -29,9 +29,9 @@ class Profile extends React.Component {
 
         <h3>Dietary Requirements:</h3> 
 
-        <h3>Favorite Foods:</h3> 
+        <h3>Favourite Food:</h3> 
 
-        <h3>Favorite Recipes:</h3> 
+        <h3>Favourite Recipes:</h3> 
 
         <h3>Food I don't like:</h3> 
 
@@ -42,7 +42,6 @@ class Profile extends React.Component {
   }
 }
 const mapStateToProps = (state) => {
-  console.log(state)
   return {user: state.user}
 }
 
