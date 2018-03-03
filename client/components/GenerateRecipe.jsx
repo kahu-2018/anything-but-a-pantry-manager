@@ -2,6 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import Recipe from './Recipe.jsx'
+import OneRecipe from './generateRecipe/OneRecipe'
+import RandomRecipe from './generateRecipe/RandomRecipe'
+import WeeklyOptions from './generateRecipe/WeeklyOptions'
+import FoodWithFriends from './generateRecipe/FoodWithFriends'
 
 import {getRecipes} from '../actions/generateRecipe'
 import {getUserProfile} from '../actions/user'
@@ -13,11 +17,13 @@ class GenerateRecipe extends React.Component{
       recipeVisible: false,
       noRecipe: null,
       selectedIngredients: null,
-      dietaryRestrictions: null
+      dietaryRestrictions: null,
+      isToggled: true
     }
     this.props = props
     this.handleChange = this.handleChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
+    this.toggleButton = this.toggleButton.bind(this)
   }
 
   componentWillMount() {
@@ -39,25 +45,50 @@ class GenerateRecipe extends React.Component{
     this.props.dispatch(getRecipes(this.state.selectedIngredients, this.state.dietaryRestrictions))
     this.setState({recipeVisible: true})
   }
+  toggleButton(){
+    this.setState({isToggled: !this.state.isToggled})
+  }
+
+
+ 
+    
 
   render() {
-    console.log('render generate ', this.props)
+    const {isToggled} = this.state
     return (
-      <form onSubmit={this.handleClick}>
-          <label>Recipe Search by Ingredients:</label>
-          <input type="text" name="i" id="i" onKeyPress={this.handleButtonPress} onChange={this.handleChange} />
-        <input type="submit" value="Find Recipe" />
-        {this.state.recipeVisible && <Recipe />}
+      <div>
+        <img className='headerImage' src="images/pantry-to-plate-sml.jpg" alt='header'/>
+        <div className="container-fluid full-width">
+          <div className="row">
+            <div className="col-sm-3">
+              <input className="btn btn-lg btn-green btn-block mb-3" onClick={this.toggleButton} value="One Recipe" type="submit" />
+              {this.state.isToggled && <OneRecipe />}
+            </div>
+            <div className="col-sm-3">
+              <input className="btn btn-lg btn-green btn-block mb-3" onClick={this.toggleButton} value="Generate Weekly" type="submit" />
+              {this.state.isToggled && <WeeklyOptions />}
+            </div>
+            <div className="col-sm-3">
+              <input className="btn btn-lg btn-green btn-block mb-3" onClick={this.toggleButton}value="Random Recipe" type="submit" />
+              {this.state.isToggled && <FoodWithFriends />}
 
-        <div className={this.state.noRecipe ? "show" : "hide"}>
-          <p>No recipe found :( </p>
+          </div>
+            <div className="col-sm-3">
+              <input className="btn btn-lg btn-green btn-block mb-3" onClick={this.toggleButton} value="Food with Friends" type="submit" />
+              {this.state.isToggled && <RandomRecipe />}
+            </div>
+          </div>
         </div>
 
-        <br/>Powered by <a href="http://www.recipepuppy.com">Recipe Puppy</a>
 
-      </form>
-    )
-  }
+
+
+
+      <div id='footer' target="_blank" className='text-green'>Powered by
+        <a href="http://www.recipepuppy.com"> Recipe Puppy</a>
+      </div>
+    </div>
+    )}
 }
 
 const mapStateToProps = (props) => {

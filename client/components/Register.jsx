@@ -88,7 +88,7 @@ class Register extends React.Component {
                     </div>
 
                     <input className="btn btn-lg btn-green btn-block text-center center-column mb-3" value="Register" type="submit" />
-                    <div className="text-center mb-5" >
+                    <div className="text-center mb-5">
                     <Link to ='./login' className="text-green" href='#'>Already have an account? Sign in here</Link>
                     </div>
 

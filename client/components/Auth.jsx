@@ -7,7 +7,6 @@ class Auth extends React.Component {
     return (
       <div>
           <Login />
-
       </div>
     )
   }
