@@ -3,7 +3,7 @@ import { isAuthenticated, getUserTokenInfo } from '../utils/auth'
 const initialState = {
   isFetching: false,
   isAuthenticated: isAuthenticated(),
-  user: {auth_id: 16, id: 3, user_name: 'kubo_the_dog', email: 'kubo@thedog.com', first_name: 'Kubo', last_name: 'Mepham', image: '', dietary_restrictions: 'vegan'},
+  user: {},
   errorMessage: ''
 }
 
@@ -17,11 +17,12 @@ export default function auth (state = initialState, action) {
         errorMessage: ''
       }
     case 'LOGIN_SUCCESS':
+    console.log('login success ', action)
       return {
         ...state,
         isFetching: action.isFetching,
         isAuthenticated: action.isAuthenticated,
-        user: action.user
+        user: {...action.user}
       }
     case 'LOGIN_FAILURE':
       return {

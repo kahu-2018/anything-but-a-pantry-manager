@@ -4,9 +4,14 @@ const router = express.Router()
 const db = require('../db/usersDb')
 
 
-router.get('/', (req, res) => {
-  console.log('getDR 2')
-  db.getUser(req.body, req.app.get('db'))
+router.get('/:id', (req, res) => {
+  console.log('params ', req.params.id)
+  db.getUserByUserId(req.params.id)
+    .then(user => {
+      console.log('route userID: ', user)
+      res.json({user: user})
+    })
+  // db.getUser(req.body)
   // .then(response => {
   //   res.json({user: response})
   // })
