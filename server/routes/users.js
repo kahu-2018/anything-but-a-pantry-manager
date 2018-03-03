@@ -17,14 +17,15 @@ router.get('/', (req, res) => {
 })
 
 router.get('/restrictions', (req, res) => {
-  db.getRestrictions(userId)
-  .then(dietaryRestrictions = > {
-    res.json({dietaryRestrictions: dietaryRestrictions})
+  console.log('users route')
+  db.getRestrictions(user_name)
+  .then(dietary_restrictions => {
+    res.json({dietary_restrictions: dietary_restrictions})
   })
   .catch(err => {
     console.log('error', err)
   })
-
+  console.log('users route2')
 })
 // waiting on auth to test this uncomment path to decode when ready
 // router.get('/profile', decode, (req, res) => {

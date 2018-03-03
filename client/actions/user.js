@@ -1,6 +1,5 @@
 import request from 'superagent'
 
-
 function receiveDietaryRestrictions(userDietaryRestrictions) {
   return {
     type: 'SET_RESTRICTIONS',
@@ -8,9 +7,9 @@ function receiveDietaryRestrictions(userDietaryRestrictions) {
   }
 }
 
-export function getUserRestrictions(userId) {
+export function getUserRestrictions(user_name) {
   return function (dispatch) {
-    request('get', 'users/restrictions', userId)
+    return request('get', 'users/restrictions', user_name)
     .then(res => {
       dispatch(receiveDietaryRestrictions(res.body))
     })

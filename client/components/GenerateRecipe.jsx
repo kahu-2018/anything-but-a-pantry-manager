@@ -13,16 +13,14 @@ class GenerateRecipe extends React.Component{
     this.state = {
       recipeVisible: false,
       noRecipe: null,
-      selectedIngredients: null,
-      dietaryRestrictions: null
+      selectedIngredients: null
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
   }
 
-  ComponentDidMount() {
-    let dietaryRestrictions = getUserRestrictions(1)
-    this.setState({dietaryRestrictions: dietaryRestrictions})
+  componentWillMount() {
+    getUserRestrictions(this.props.auth.user.user_name)
   }
 
   handleChange(e) {
@@ -36,6 +34,12 @@ class GenerateRecipe extends React.Component{
   }
 
   render(props) {
+    console.log('props DR', this.props)
+
+    if(this.props.dietaryRestrictions.length == 0) {
+      return false
+    }
+
     return (
       <form onSubmit={this.handleClick}>
           <label>Recipe Search by Ingredients:</label>
@@ -57,7 +61,8 @@ class GenerateRecipe extends React.Component{
 const mapStateToProps = (props) => {
   return {
     auth: props.auth,
-    recipes: props.recipes
+    recipes: props.recipes,
+    dietaryRestrictions: ['vegan']
   }
 }
 

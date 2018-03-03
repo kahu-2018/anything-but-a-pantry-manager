@@ -1,20 +1,24 @@
 import request from '../utils/api'
 import { get } from '../utils/localstorage'
 
-const initialState = {
-  first_name: 'Kubo',
-  last_name: 'Mepham',
-  dietary_requirements: 'banana'
-}
-
-function getUserProfile(state=initialState, action) {
+function getUserProfile(state=[], action) {
     switch (action.type) {
       case 'RECIEVE_USER':
         return [...state, action.user]
-  
+
       default:
         return state
     }
   }
+
+function generateUserRestrictions(state=[], action) {
+  switch (action.type) {
+    case 'SET_RESTRICTIONS':
+      return [...state, action.userDietaryRestrictions]
+
+    default:
+      return state
+  }
+}
 
 export default getUserProfile
