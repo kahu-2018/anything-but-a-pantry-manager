@@ -31,16 +31,34 @@ h4 {
   color: white;
 }
 
-.btn-outline-blue{
-  color: #12D6BC;
+.inputBackground {
+  background-color: #12D6BC;
+}
+
+.btn-outline-green{
+  font-family: 'Lobster', cursive !important;
+  color: #12D6BC !important;
   border-radius: 5px;
-  outline: 2px solid #12D6BC;
+  border-color: #12D6BC !important;
+}
+.btn-outline-green:hover{
+  background-color: #12D6BC !important;
+  color: white !important;
 
 }
 
 a:hover{
   text-decoration: none !important;
-
+  color: #000000 !important;
+}
+a {
+  color: #000000 !important;
+}
+a:visited {
+  color: #000000;
+}
+a:active: {
+  color: #000000 !important;
 }
 
 .textColourNav {
