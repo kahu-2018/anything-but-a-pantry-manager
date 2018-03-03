@@ -1,31 +1,29 @@
 const express = require('express')
-const app = express()
 const router = express.Router()
-const db = require('../db/usersDb')
-const request = require('superagent')
-// const { decode } = require('../auth/token')
+// const request = require('superagent')
 
+const db = require('../db/usersDb')
+
+// router.get('/', (req, res) => {
+//   db.getUsers(req.app.get('db'))
+//   .then(users => {
+//     res.json({users: users})
+//   })
+//   .catch(err => {
+//     res.status(500).send('Database Error: ', err.message)
+//   })
+// })
 
 router.get('/', (req, res) => {
-  db.getUsers(req.app.get('db'))
-  .then(users => {
-    res.json({users: users})
-  })
-  .catch(err => {
-    res.status(500).send('Database Error: ', err.message)
-  })
-})
-
-router.get('/restrictions', (req, res) => {
-  console.log('users route')
-  db.getRestrictions(user_name)
+  console.log('getDR ', db.getRestrictions)
+  db.getRestrictions(req.body, req.app.get('db'))
   .then(dietary_restrictions => {
     res.json({dietary_restrictions: dietary_restrictions})
   })
   .catch(err => {
     console.log('error', err)
   })
-  console.log('users route2')
+  console.log('getDR 3')
 })
 // waiting on auth to test this uncomment path to decode when ready
 // router.get('/profile', decode, (req, res) => {

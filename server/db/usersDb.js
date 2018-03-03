@@ -1,6 +1,5 @@
 const liveDb = require('./connection')
 
-
 function getUsers(testDb) {
   const db = testDb || liveDb
   return db('users')
@@ -27,5 +26,6 @@ function getRestrictions(testDb, user_name) {
 
 module.exports = {
   getUsers,
-  getUserByAuthId  // editUser
+  getUserByAuthId,
+  getRestrictions
 }

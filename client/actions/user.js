@@ -1,4 +1,5 @@
-import request from 'superagent'
+import request from '../utils/api'
+import { get } from '../utils/localstorage'
 
 function receiveDietaryRestrictions(userDietaryRestrictions) {
   return {
@@ -7,9 +8,10 @@ function receiveDietaryRestrictions(userDietaryRestrictions) {
   }
 }
 
-export function getUserRestrictions(user_name) {
+export function getUserRestrictions (user_name) {
+  console.log('getDR 1')
   return function (dispatch) {
-    return request('get', 'users/restrictions', user_name)
+    return request('get', 'users', user_name)
     .then(res => {
       dispatch(receiveDietaryRestrictions(res.body))
     })

@@ -19,7 +19,7 @@ class GenerateRecipe extends React.Component{
     this.handleClick = this.handleClick.bind(this)
   }
 
-  componentWillMount() {
+  componentDidMount() {
     getUserRestrictions(this.props.auth.user.user_name)
   }
 
@@ -29,7 +29,8 @@ class GenerateRecipe extends React.Component{
 
   handleClick(e) {
     e.preventDefault()
-    this.props.dispatch(getRecipes(this.state.selectedIngredients, this.state.dietaryRestrictions))
+    this.props.dispatch(getUserRestrictions(this.props.auth.user.user_name))
+    // this.props.dispatch(getRecipes(this.state.selectedIngredients, this.state.dietaryRestrictions))
     this.setState({recipeVisible: true})
   }
 
