@@ -9,6 +9,7 @@ import Profile from './Profile'
 import GenerateRecipe from './GenerateRecipe'
 import Recipe from './Recipe'
 import Register from './Register'
+import EditProfile from './EditProfile'
 
 class Nav extends React.Component {
   constructor(props) {
@@ -57,6 +58,8 @@ render() {
     <Route exact path='/generateRecipe' component={GenerateRecipe} />
     <Route exact path='/recipe' component={Recipe} />
     <Route exact path='/register' component={Register} />
+    <Route exact path='/editProfile' component={EditProfile} />
+
 
     </div>
 
