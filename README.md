@@ -17,21 +17,22 @@ I often come home and have no energy to be creative enough to think of what to c
 ### MVP
 
 As a user:
-* I want to recieve a recipe based on 1 ingredient
-* I want to recieve a recipe that knows my dietary and personal food preference
-* I want to log in and have a profile
+* [X] I want to recieve a recipe based on 1 ingredient
+* [ ] I want to recieve a recipe that knows my dietary and personal food preference
+* [ ] I want to log in and have a profile
 
 ### Stretch 1
 
-* I want to receive a recipe based on more than one ingredient
-* I want to be able to tick thing off a recipe list to get an accurate shopping list
-* I want to be able to plan X amounts of meals for one shopping list
+* [X] I want to receive a recipe based on more than one ingredient
+* [ ] I want to be able to tick thing off a recipe list to get an accurate shopping list
+* [ ] I want to be able to plan X amounts of meals for one shopping list
+
 
 ### Stretch 2
 
-* I want to reject a recipe and get a new one
-* I want to give raitings to my recipes
-* I want to share with my friends
+* [ ] I want to reject a recipe and get a new one
+* [ ] I want to give raitings to my recipes
+* [ ] I want to share with my friends
 
  ---
 
@@ -103,7 +104,6 @@ As a user:
   | user_name | String |
   | email | string |
   | hash | string |
-  | salt | string |
 
 ### Users
   | Column Name | Data Type |

@@ -1,3 +1,131 @@
 body {
   background-color: "blue";
 }
+
+p {
+  font-family: 'Lato', sans-serif !important;
+}
+
+h1 {
+  font-family: 'Lobster', cursive !important;
+}
+h2 {
+  font-family: 'Lobster', cursive !important;
+}
+h3 {
+  font-family: 'Lobster', cursive !important;
+}
+h4 {
+  font-family: 'Lobster', cursive !important;
+}
+
+.headerImage{
+  width: 100% !important;
+  margin-bottom: 30px;
+}
+
+
+.btn-green {
+  font-family: 'Lobster', cursive !important;
+  background-color: #12D6BC;
+  color: white;
+}
+
+.inputBackground {
+  background-color: #12D6BC;
+}
+
+.btn-outline-green{
+  font-family: 'Lobster', cursive !important;
+  color: #12D6BC !important;
+  border-radius: 5px;
+  border-color: #12D6BC !important;
+}
+
+
+.btn-outline-green:hover{
+  background-color: #12D6BC !important;
+  color: white !important;
+}
+
+.font-p{
+  font-family: 'Lobster', cursive !important;
+}
+.font-pLato{
+  font-family: 'Lato', sans-serif !important;
+}
+
+.backgroundForm {
+  background-color: #12D6BC !important;
+  opacity: 0.3;
+}
+
+.faFaFont{
+  margin-left: 5px;
+  margin-right: 5px;
+  color: #12D6BC !important;
+}
+.text-green{
+  font-family: 'Lobster', cursive !important;
+  color: #12D6BC !important;
+}
+
+a:hover{
+  text-decoration: none !important;
+  color: #000000 !important;
+}
+a {
+  color: #000000 !important;
+}
+a:visited {
+  color: #000000;
+}
+a:active: {
+  color: #000000 !important;
+}
+
+.textColourNav {
+  color: #12D6BC;
+}
+
+.img {
+  margin: 20px;
+
+}
+.navBar {
+  font-family: 'Lobster', cursive;
+  font-size: 20px;
+}
+
+.hide {
+  display: none;
+}
+
+.center-column {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+#footer {
+  background-color: white;
+  position: absoloute;
+  bottom: 0;
+  width: 644px;
+  height: 20px;
+  margin: 20px;
+}
+
+.profileImage{
+  border-radius:50% !important;
+  max-width:100%;
+  margin-bottom: 30px;
+}
+
+.greenText{
+  color: #12D6BC !important;
+}
+.centered {
+  text-align: center;
+}
