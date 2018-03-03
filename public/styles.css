@@ -41,9 +41,20 @@ h4 {
   border-radius: 5px;
   border-color: #12D6BC !important;
 }
+
 .btn-outline-green:hover{
   background-color: #12D6BC !important;
   color: white !important;
+}
+
+.font-p{
+  font-family: 'Lobster', cursive !important;  
+}
+
+
+.text-green{
+  font-family: 'Lobster', cursive !important;
+  color: #12D6BC !important;
 
 }
 

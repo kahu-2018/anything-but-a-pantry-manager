@@ -35,7 +35,7 @@ class Register extends React.Component {
         const { auth } = this.props
 
         return (
-            <div className="justify-content-center px-4">
+            <div className="justify-content-center px-4 font-p">
                 <form onSubmit={this.submit}>
                     {auth.errorMessage && <span className="text-danger display-4">{auth.errorMessage}</span>}
 
@@ -43,7 +43,7 @@ class Register extends React.Component {
                         <div className="col-md-5 offset-md-1 mb-3">
                             <label htmlFor="inputFirstName">First Name</label>
                             <div>
-                                <input id="inputFirstName" className="form-control" placeholder="First Name" type="text" required name="first_name" onChange={this.updateDetails} />
+                                <input id="inputFirstName" className="font-p form-control" placeholder="First Name" type="text" required name="first_name" onChange={this.updateDetails} />
                             </div>
                         </div>
                         <div className="col-md-5 mb-3">
@@ -87,9 +87,9 @@ class Register extends React.Component {
                         </div>
                     </div>
 
-                    <input className="btn btn-lg btn-primary btn-block text-center center-column mb-3" value="Register" type="submit" />
+                    <input className="btn btn-lg btn-green btn-block text-center center-column mb-3" value="Register" type="submit" />
                     <div className="text-center mb-5" >
-                    <Link to ='./login' className="text-warning font-weight-bold" href='#'>Already have an account? Sign in here</Link>
+                    <Link to ='./login' className="text-green" href='#'>Already have an account? Sign in here</Link>
                     </div>
 
                 </form>
