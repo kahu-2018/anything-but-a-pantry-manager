@@ -9,6 +9,9 @@ p {
 h1 {
   font-family: 'Lobster', cursive !important;
 }
+h2 {
+  font-family: 'Lobster', cursive !important;
+}
 h3 {
   font-family: 'Lobster', cursive !important;
 }
@@ -27,6 +30,14 @@ h4 {
   background-color: #12D6BC;
   color: white;
 }
+
+.btn-outline-blue{
+  color: #12D6BC;
+  border-radius: 5px;
+  outline: 2px solid #12D6BC;
+
+}
+
 a:hover{
   text-decoration: none !important;
 
