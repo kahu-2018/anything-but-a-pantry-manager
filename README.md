@@ -27,6 +27,7 @@ As a user:
 * [ ] I want to be able to tick thing off a recipe list to get an accurate shopping list
 * [ ] I want to be able to plan X amounts of meals for one shopping list
 
+
 ### Stretch 2
 
 * [ ] I want to reject a recipe and get a new one
