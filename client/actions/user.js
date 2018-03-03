@@ -11,7 +11,15 @@ function receiveDietaryRestrictions(userDietaryRestrictions) {
 export function getUserProfile (userId) {
   console.log('getDR 1')
   return function (dispatch) {
-    return request('get', 'users', userId)
+    const endpoint = 'users/' + userId
+    request('get', endpoint)
+      .then(res => {
+        console.log("res.body: ", res.body)
+        return {
+          type: 'RECIEVE_USER',
+          user: {...res.body.user}
+        }
+      })
     // .then(res => {
     //   dispatch(receiveDietaryRestrictions(res.body))
     // })

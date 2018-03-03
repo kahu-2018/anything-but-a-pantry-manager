@@ -1,11 +1,11 @@
-function setUserRestrictions(state=[], action) {
+function userDietaryRestrictions(state=[], action) {
   switch (action.type) {
     case 'SET_RESTRICTIONS':
-      return [...state, action.userDietaryRestrictions]
+      return [...action.userDietaryRestrictions]
 
     default:
       return state
   }
 }
 
-export default setUserRestrictions
+export default userDietaryRestrictions
