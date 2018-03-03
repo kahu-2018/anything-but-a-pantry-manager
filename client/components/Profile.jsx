@@ -52,13 +52,13 @@ class Profile extends React.Component {
     const buttonText = this.state.editVisible ? 'Close' : 'Edit'
     return (
       <div>
-<!--         <img className='headerImage' src="images/pantry-to-plate-sml.jpg" alt='header'/>
+        <img className='headerImage' src="images/pantry-to-plate-sml.jpg" alt='header'/>
           <div className="container-fluid full-width">
             <div className="row">
               <div className='col-sm-3'>
             </div>
               <div className='col-sm-6'>
-            <h1 className='greenText'>Welcome Kubo Mepham{this.props.user.first_name} {this.props.user.last_name}</h1>
+            <h1 className='greenText'>Welcome {this.state.first_name} {this.state.last_name}</h1>
             </div>
             <div className='col-sm-3'>
               <Link to='/editProfile'><input className="btn btn-md btn-green float-right" value="Edit" type="submit" /></Link>
@@ -73,18 +73,7 @@ class Profile extends React.Component {
                 <h3 className='greenText'>Friends</h3>
                 <input className="btn btn-lg btn-green btn-block mb-3" value="Go to Shopping List" type="submit" />
                 <input className="btn btn-lg btn-green btn-block mb-3" value="History" type="submit" />
-              </div> -->
-
-        <h1>Profile</h1>
-        <button type="edit" className="btn btn-primary" onClick={this.toggleButton}>{buttonText}</button>
-
-        {this.state.editVisible && <EditProfile />}
-        <h3>Welcome {this.state.first_name} {this.state.last_name}</h3>
-
-        <h3>Dietary Requirements:</h3>
-        {this.state.dietary_restrictions}
-
-
+              </div> 
               <div className="col-sm-3">
                 <input className="btn btn-lg btn-green btn-block mb-3" value="Favorite Recipes" type="submit" />
                 <input className="btn btn-sm btn-outline-green btn-block mb-3" type='submit' value='Apple Salad'/>
@@ -94,7 +83,7 @@ class Profile extends React.Component {
 
               <div className="col-sm-3 centered">
                 <input className="btn btn-lg btn-green btn-block mb-3" value="Dietary Requirements" />
-                <p>Gluten Free <br /> Nut Allergy</p>
+                <p>{this.state.dietary_restrictions}</p>
                   <h4 className ='greenText'>I Love</h4>
                   <p>Apples</p>
                   <h4 className ='greenText'>I don't Like</h4>
@@ -110,8 +99,8 @@ class Profile extends React.Component {
                 <p>Food</p>
               </div>
           </div>
-        </div>
-    </div>
+         </div>
+     </div>
     )
   }
 }
