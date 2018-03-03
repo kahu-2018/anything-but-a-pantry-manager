@@ -12,15 +12,16 @@ afterEach(() => env.cleanup(testDb))
 test('get users from database', () => {
   return usersDb.getUsers(testDb)
     .then(users => {
-      expect(users.length).toBe(1)
       expect(users[0].hasOwnProperty('first_name')).toBeTruthy()
+      expect(users[0].hasOwnProperty('last_name')).toBeTruthy()
     })
 })
 
 test('get user by auth_id', () => {
-  return usersDb.getUserByAuthId(1, testDb)
-  .then(user => {
-    expect(user.id).toEqual(1)
+  const expectedValue = 1
+
+  return usersDb.getUserByAuthId(expectedValue, testDb)
+    .then(user => {
+      expect(user.auth_id).toEqual(expectedValue)
     })
 })
-

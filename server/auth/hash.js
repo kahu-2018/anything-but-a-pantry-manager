@@ -1,14 +1,15 @@
 const bcrypt = require('bcrypt')
+const saltRound = 13
 
-function generate(password, cb) {
-  bcrypt.hash(password, 12, cb)
+function generateHash(password, cb) {
+  bcrypt.hash(password, saltRound, cb)
 }
 
-function compare (password, hash, cb) {
+function compareHash(password, hash, cb) {
   bcrypt.compare(password, hash, cb)
 }
 
 module.exports = {
-  generate,
-  compare
+  generateHash,
+  compareHash
 }

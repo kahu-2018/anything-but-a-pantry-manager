@@ -12,7 +12,7 @@ afterEach(() => env.cleanup(testDb))
 test('read userFavourites db', () => {
   return userFavouritesDb.getUserFavourites(testDb)
     .then(userFavourites => {
-      expect(userFavourites.length).toBe(1)
       expect(userFavourites[0].hasOwnProperty('user_id')).toBeTruthy()
+      expect(userFavourites[0].hasOwnProperty('recipe_id')).toBeTruthy()
     })
 })

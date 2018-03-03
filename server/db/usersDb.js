@@ -24,9 +24,23 @@ function getUser(testDb, userId) {
 // function editUser(user_name, db, testDb) {
 //   const db = testDb || liveDb
 // }
+function getUserByUsername (username, testDb) {
+  if (!username) return null
+
+  const db = testDb || liveDb
+  return db('auth')
+    .where('user_name', username)
+    .join('users', 'users.auth_id', 'auth.id')
+    .select('auth.id as auth_id', '*')
+    .then(users => {
+      return users[0]
+    })
+}
+
 
 module.exports = {
   getUsers,
   getUserByAuthId,
-  getUser
+  getUser,
+  getUserByUsername
 }

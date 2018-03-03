@@ -37,59 +37,59 @@ class Register extends React.Component {
         return (
             <div className="justify-content-center px-4">
                 <form onSubmit={this.submit}>
-                    {auth.errorMessage && <span className="text-danger display-4">{auth.errorMessage}</span>}
+                    {auth.errorMessage && <span className="text-green display-4">{auth.errorMessage}</span>}
 
                     <div className="row mt-5">
                         <div className="col-md-5 offset-md-1 mb-3">
-                            <label htmlFor="inputFirstName">First Name</label>
+                            <label className="font-p" htmlFor="inputFirstName">First Name</label>
                             <div>
-                                <input id="inputFirstName" className="form-control" placeholder="First Name" type="text" required name="first_name" onChange={this.updateDetails} />
+                                <input id="inputFirstName" className="form-control font-pLato backgroundForm" placeholder="First Name" type="text" required name="first_name" onChange={this.updateDetails} />
                             </div>
                         </div>
                         <div className="col-md-5 mb-3">
-                            <label htmlFor="inputLastname">Last Name</label>
+                            <label className="font-p" htmlFor="inputLastname font-p">Last Name</label>
                             <div>
-                                <input id="inputLastname" className="form-control" placeholder="Last Name" type="text" required name="last_name" onChange={this.updateDetails} />
+                                <input id="inputLastname" className="form-control font-pLato backgroundForm" placeholder="Last Name" type="text" required name="last_name" onChange={this.updateDetails} />
                             </div>
                         </div>
                     </div>
 
                     <div className="row mb-3">
                         <div className="col-md-5 offset-md-1">
-                            <label htmlFor="inputUsername">Username</label>
+                            <label className="font-p" htmlFor="inputUsername">Username</label>
                             <div>
-                                <input id="inputUsername" className="form-control" placeholder="User Name" type="text" required name="user_name" onChange={this.updateDetails} />
+                                <input id="inputUsername" className="form-control font-pLato backgroundForm" placeholder="User Name" type="text" required name="user_name" onChange={this.updateDetails} />
                             </div>
                         </div>
                     </div>
 
                     <div className="row mb-3">
                         <div className="col-md-5 offset-md-1">
-                            <label htmlFor="inputEmail">Email</label>
+                            <label className="font-p" htmlFor="inputEmail">Email</label>
                             <div>
-                                <input id="inputEmail" className="form-control" placeholder="Email" type="email" required name="email" onChange={this.updateDetails} />
+                                <input id="inputEmail" className="form-control font-pLato backgroundForm" placeholder="Email" type="email" required name="email" onChange={this.updateDetails} />
                             </div>
                         </div>
                     </div>
 
                     <div className="row">
                         <div className="col-md-5  offset-md-1 mb-3">
-                            <label htmlFor="inputPassword">Password</label>
+                            <label className="font-p" htmlFor="inputPassword">Password</label>
                             <div>
-                                <input id="inputPassword" className="form-control" placeholder="Password" type="password" required name="password" onChange={this.updateDetails} />
+                                <input id="inputPassword" className="form-control font-pLato backgroundForm backgroundForm" placeholder="Password" type="password" required name="password" onChange={this.updateDetails} />
                             </div>
                         </div>
                         <div className="col-md-5 mb-5">
-                            <label htmlFor="inputConfirmPassword">Confirm Password</label>
+                            <label className="font-p" htmlFor="inputConfirmPassword">Confirm Password</label>
                             <div>
-                                <input id="inputConfirmPassword" className="form-control" placeholder="Confirm password" type="password" required name="confirm_password" onChange={this.updateDetails} />
+                                <input id="inputConfirmPassword" className="form-control font-pLato backgroundForm" placeholder="Confirm password" type="password" required name="confirm_password" onChange={this.updateDetails} />
                             </div>
                         </div>
                     </div>
 
-                    <input className="btn btn-lg btn-primary btn-block text-center center-column mb-3" value="Register" type="submit" />
+                    <input className="btn btn-lg btn-green btn-block text-center center-column mb-3" value="Register" type="submit" />
                     <div className="text-center mb-5" >
-                    <Link to ='./login' className="text-warning font-weight-bold" href='#'>Already have an account? Sign in here</Link>
+                    <Link to ='./login' className="text-green" href='#'>Already have an account? Sign in here</Link>
                     </div>
 
                 </form>

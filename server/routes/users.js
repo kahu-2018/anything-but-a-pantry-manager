@@ -37,4 +37,14 @@ router.get('/', (req, res) => {
 //   })
 // })
 
+router.get('/profile', (req, res) => {
+  db.getUserByAuthId(req.user.auth_id)
+  .then(user => {
+    res.json({user: user})
+  })
+  .catch(err => {
+    res.status(500).send('Database Error: ', err.message)
+  })
+})
+
 module.exports = router
