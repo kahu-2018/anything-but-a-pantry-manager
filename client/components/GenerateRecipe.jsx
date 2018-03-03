@@ -3,9 +3,8 @@ import { connect } from 'react-redux'
 
 import Recipe from './Recipe.jsx'
 
-
 import {getRecipes} from '../actions/generateRecipe'
-import {getUserRestrictions} from '../actions/user'
+import {getUserProfile} from '../actions/user'
 
 class GenerateRecipe extends React.Component{
   constructor(props) {
@@ -13,14 +12,15 @@ class GenerateRecipe extends React.Component{
     this.state = {
       recipeVisible: false,
       noRecipe: null,
-      selectedIngredients: null
+      selectedIngredients: null,
+      dietaryRestrictions: null
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
-    getUserRestrictions(this.props.auth.user.user_name)
+    getUserProfile(this.props.auth.user.id)
   }
 
   handleChange(e) {
@@ -29,18 +29,14 @@ class GenerateRecipe extends React.Component{
 
   handleClick(e) {
     e.preventDefault()
-    this.props.dispatch(getUserRestrictions(this.props.auth.user.user_name))
-    // this.props.dispatch(getRecipes(this.state.selectedIngredients, this.state.dietaryRestrictions))
+
+    this.props.dispatch(getUserProfile(this.props.auth.user.id))
+
+    this.props.dispatch(getRecipes(this.state.selectedIngredients, this.state.dietaryRestrictions))
     this.setState({recipeVisible: true})
   }
 
   render(props) {
-    console.log('props DR', this.props)
-
-    if(this.props.dietaryRestrictions.length == 0) {
-      return false
-    }
-
     return (
       <form onSubmit={this.handleClick}>
           <label>Recipe Search by Ingredients:</label>
@@ -62,8 +58,7 @@ class GenerateRecipe extends React.Component{
 const mapStateToProps = (props) => {
   return {
     auth: props.auth,
-    recipes: props.recipes,
-    dietaryRestrictions: ['vegan']
+    recipes: props.recipes
   }
 }
 

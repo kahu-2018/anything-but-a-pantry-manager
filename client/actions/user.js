@@ -8,26 +8,27 @@ function receiveDietaryRestrictions(userDietaryRestrictions) {
   }
 }
 
-export function getUserRestrictions (user_name) {
+export function getUserProfile (userId) {
   console.log('getDR 1')
   return function (dispatch) {
-    return request('get', 'users', user_name)
-    .then(res => {
-      dispatch(receiveDietaryRestrictions(res.body))
-    })
-    .catch(err => console.log('error', err))
+    return request('get', 'users', userId)
+    // .then(res => {
+    //   dispatch(receiveDietaryRestrictions(res.body))
+    // })
+    // .catch(err => console.log('error', err))
    }
 }
 
-export function getUserProfile(user) {
-  return (dispatch) => {
-    request
-      .get('/api/users/profile')
-      .then(res => {
-        console.log(res, "i am res")
-      })
-  }
-}
+// export function getUserProfile(userId) {
+//   return (dispatch) => {
+//     console.log('user id', userId)
+//     request
+//       .get('/api/users/profile')
+//       .then(res => {
+//         console.log(res, "i am res")
+//       })
+//   }
+// }
 
 
 export const editProfileRequest = (newProfile) => {

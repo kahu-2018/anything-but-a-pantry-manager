@@ -14,12 +14,13 @@ function getUserByAuthId (id, testDb) {
   .first()
 }
 
-function getRestrictions(testDb, user_name) {
+function getUser(testDb, userId) {
   const db = testDb || liveDb
   return db('users')
-  .where('user_name', user_name)
-  .select(users.dietary_restrictions)
+  .where('id', userId)
+  .select()
 }
+
 // function editUser(user_name, db, testDb) {
 //   const db = testDb || liveDb
 // }
@@ -27,5 +28,5 @@ function getRestrictions(testDb, user_name) {
 module.exports = {
   getUsers,
   getUserByAuthId,
-  getRestrictions
+  getUser
 }
