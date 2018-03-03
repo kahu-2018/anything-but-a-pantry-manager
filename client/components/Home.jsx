@@ -6,6 +6,7 @@ class Home extends React.Component {
     return (
       <div>
         <img className='headerImage' src="images/pantry-manager-header.jpg" alt='header'/>
+
         <div>
           <div className="container-fluid full-width">
             <div className="row">

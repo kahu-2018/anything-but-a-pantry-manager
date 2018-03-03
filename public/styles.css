@@ -42,6 +42,7 @@ h4 {
   border-color: #12D6BC !important;
 }
 
+
 .btn-outline-green:hover{
   background-color: #12D6BC !important;
   color: white !important;
@@ -67,6 +68,11 @@ h4 {
 .text-green{
   font-family: 'Lobster', cursive !important;
   color: #12D6BC !important;
+
+  .btn-outline-green:hover{
+  background-color: #12D6BC !important;
+  color: white !important;
+
 
 }
 
