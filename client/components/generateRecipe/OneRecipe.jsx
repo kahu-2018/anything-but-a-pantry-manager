@@ -1,0 +1,71 @@
+import React from 'react'
+import { connect } from 'react-redux'
+
+import {getRecipes} from '../../actions/generateRecipe'
+import {getUserRestrictions} from '../../actions/user'
+
+class OneRecipe extends React.Component{
+  constructor(props) {
+    super(props)
+    this.state = {
+      recipeVisible: false,
+      noRecipe: null,
+      selectedIngredients: null,
+      dietaryRestrictions: null,
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleClick = this.handleClick.bind(this)
+
+  }
+
+  ComponentDidMount() {
+    let dietaryRestrictions = getUserRestrictions(1)
+    this.setState({dietaryRestrictions: dietaryRestrictions})
+  }
+
+  handleChange(e) {
+    this.setState({selectedIngredients: e.target.value})
+  }
+
+  handleClick(e) {
+    e.preventDefault()
+    this.props.dispatch(getRecipes(this.state.selectedIngredients, this.state.dietaryRestrictions))
+    this.setState({recipeVisible: true})
+  }
+
+  render(props) {
+    let recipe = this.props.recipes
+    let randomNumber = Math.floor(Math.random()*10)
+
+    console.log(randomNumber)
+    console.log(recipe[0])
+
+    return (
+      <div>
+        <form onSubmit={this.handleClick}>
+        <label>Recipe Search by Ingredients:</label>
+        <input type="text" name="i" id="i" onKeyPress={this.handleButtonPress} onChange={this.handleChange} />
+        <input type="submit" value="Find Recipe" />
+          {this.props.recipes.map(recipe =>
+            <a href={recipe.href} target="_blank"><img className='img' src={recipe.thumbnail} alt="food" /><h4>{recipe.title}</h4></a>
+            )}
+        <div className={this.state.noRecipe ? "show" : "hide"}>
+          <p>No recipe found :( </p>
+        </div>
+      </form>
+        <div>
+
+        </div>
+      </div>
+
+    )}
+}
+
+const mapStateToProps = (props) => {
+  return {
+    auth: props.auth,
+    recipes: props.recipes
+  }
+}
+
+export default connect(mapStateToProps)(OneRecipe)
