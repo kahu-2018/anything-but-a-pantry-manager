@@ -1,5 +1,5 @@
-import request from 'superagent'
-
+import request from '../utils/api'
+import { get } from '../utils/localstorage'
 
 function receiveDietaryRestrictions(userDietaryRestrictions) {
   return {
@@ -8,25 +8,27 @@ function receiveDietaryRestrictions(userDietaryRestrictions) {
   }
 }
 
-export function getUserRestrictions(userId) {
+export function getUserProfile (userId) {
+  console.log('getDR 1')
   return function (dispatch) {
-    request('get', 'users/restrictions', userId)
-    .then(res => {
-      dispatch(receiveDietaryRestrictions(res.body))
-    })
-    .catch(err => console.log('error', err))
+    return request('get', 'users', userId)
+    // .then(res => {
+    //   dispatch(receiveDietaryRestrictions(res.body))
+    // })
+    // .catch(err => console.log('error', err))
    }
 }
 
-export function getUserProfile(user) {
-  return (dispatch) => {
-    request
-      .get('/api/users/profile')
-      .then(res => {
-        
-      })
-  }
-}
+// export function getUserProfile(userId) {
+//   return (dispatch) => {
+//     console.log('user id', userId)
+//     request
+//       .get('/api/users/profile')
+//       .then(res => {
+//         console.log(res, "i am res")
+//       })
+//   }
+// }
 
 
 export const editProfileRequest = (newProfile) => {

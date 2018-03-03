@@ -1,6 +1,5 @@
 const liveDb = require('./connection')
 
-
 function getUsers(testDb) {
   const db = testDb || liveDb
   return db('users')
@@ -15,12 +14,13 @@ function getUserByAuthId (id, testDb) {
   .first()
 }
 
-function getRestrictions(testDb, userId) {
+function getUser(testDb, userId) {
   const db = testDb || liveDb
   return db('users')
   .where('id', userId)
-  .select(users.dietaryRestrictions)
+  .select()
 }
+
 // function editUser(user_name, db, testDb) {
 //   const db = testDb || liveDb
 // }
@@ -40,6 +40,7 @@ function getUserByUsername (username, testDb) {
 
 module.exports = {
   getUsers,
-  getUserByUsername,
-  getUserByAuthId  // editUser
+  getUserByAuthId,
+  getUser,
+  getUserByUsername
 }

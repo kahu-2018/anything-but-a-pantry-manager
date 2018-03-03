@@ -14,7 +14,6 @@ export default function consume(method = 'get', endpoint, data = {}) {
   if(isAuthenticated()) {
     headers['Authorization'] = `Bearer ${token}`
   }
-
   return request[method](baseURL + endpoint)
     .set(headers)[dataMethod](data)
     .then((res) => {
