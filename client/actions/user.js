@@ -23,7 +23,7 @@ export function getUserProfile(user) {
     request
       .get('/api/users/profile')
       .then(res => {
-        console.log(res, "i am res")
+        
       })
   }
 }
