@@ -41,9 +41,38 @@ h4 {
   border-radius: 5px;
   border-color: #12D6BC !important;
 }
+
+
 .btn-outline-green:hover{
   background-color: #12D6BC !important;
   color: white !important;
+}
+
+.font-p{
+  font-family: 'Lobster', cursive !important;
+}
+.font-pLato{
+  font-family: 'Lato', sans-serif !important;
+}
+
+.backgroundForm {
+  background-color: #12D6BC !important;
+  opacity: 0.3;
+}
+
+.faFaFont{
+  margin-left: 5px;
+  margin-right: 5px;
+  color: #12D6BC !important;
+}
+.text-green{
+  font-family: 'Lobster', cursive !important;
+  color: #12D6BC !important;
+
+  .btn-outline-green:hover{
+  background-color: #12D6BC !important;
+  color: white !important;
+
 
 }
 

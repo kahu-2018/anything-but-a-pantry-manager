@@ -10,12 +10,22 @@ import GenerateRecipe from './GenerateRecipe'
 import Recipe from './Recipe'
 import Register from './Register'
 
-const Nav = (props) => {
+class Nav extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      loggedIn: false
+    }
+    this.isLoggedIn = this.isLoggedIn.bind(this)
+  }
+    isLoggedIn() {
+    }
+render() {
   return (
     <Router>
       <div>
       <nav className="navbar navbar-expand-md navbar-light bg-light navBar textColourNav">
-        <Link to='/' className="navbar-brand"><i className="fas fa-home"></i></Link>
+        <Link to='/' className="navbar-brand"><i className="fas fa-home faFaFont"></i></Link>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -31,7 +41,7 @@ const Nav = (props) => {
         </ul>
           <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <Link to='/login' className="nav-link"><i className="fas fa-user-circle">&nbsp;</i>Login/Register</Link>
+            <Link to='/login' className="nav-link"><i className="fas fa-user-circle faFaFont"></i>{this.state.loggedIn ? "Logout" : "login/Register"}</Link>
             </li>
           </ul>
         <form className="form-inline my-2 my-lg-0">
@@ -53,11 +63,12 @@ const Nav = (props) => {
   </Router>
   )
 }
+}
 
-// const mapStateToProps = (state) => {
-//   return (
-//
-//   )
-// }
-export default Nav
-// export default connect(mapStateToProps)(Nav)
+const mapStateToProps = ({ auth }) => {
+    return {
+        auth
+    }
+}
+
+export default connect(mapStateToProps)(Nav)
