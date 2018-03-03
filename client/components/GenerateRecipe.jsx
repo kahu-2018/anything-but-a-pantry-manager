@@ -6,11 +6,6 @@ import OneRecipe from './generateRecipe/OneRecipe'
 import RandomRecipe from './generateRecipe/RandomRecipe'
 import WeeklyOptions from './generateRecipe/WeeklyOptions'
 import FoodWithFriends from './generateRecipe/FoodWithFriends'
-<<<<<<< HEAD
-=======
-
->>>>>>> 5a4fc27c88db58d2e014d3fdf10ef5d490a8c320
-
 
 import {getRecipes} from '../actions/generateRecipe'
 import {getUserProfile} from '../actions/user'
