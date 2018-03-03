@@ -15,7 +15,6 @@ test('get auth by id', () => {
       expect(auth.hasOwnProperty('user_name')).toBeTruthy()
       expect(auth.hasOwnProperty('email')).toBeTruthy()
       expect(auth.hasOwnProperty('hash')).toBeTruthy()
-      expect(auth.hasOwnProperty('hash')).toBeTruthy()
     })
 })
 

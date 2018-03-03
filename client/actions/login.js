@@ -35,7 +35,7 @@ export function loginUser (creds) {
       .then((response) => {
         const userInfo = saveUserToken(response.body.token)
         dispatch(receiveLogin(userInfo))
-        document.location = "/#/dashboard"
+        document.location = "/#/generateRecipe"
       })
       .catch(err => {
         dispatch(loginError(err.response.body.message))

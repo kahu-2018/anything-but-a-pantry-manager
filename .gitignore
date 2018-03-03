@@ -3,3 +3,5 @@ bundle.js
 bundle.js.map
 .DS_Store
 dev.sqlite3
+yarn-error.log
+.env
