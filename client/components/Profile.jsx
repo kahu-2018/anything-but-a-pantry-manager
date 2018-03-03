@@ -2,20 +2,45 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import EditProfile from './EditProfile'
-
-
 import { Link } from 'react-router-dom'
 
 import { getUserProfile } from '../actions/user'
+import request from '../utils/api'
+
 
 class Profile extends React.Component {
   constructor(props){
     super(props)
-    this.state = {
-      editVisible:false
-
+    this.state={
+      editVisible:false,
+      first_name: 'visitor',
+      last_name: '',
+      dietary_restrictions: ''
     }
+    this.props = props
     this.toggleButton = this.toggleButton.bind(this)
+  }
+
+  // componentWillMount() {
+  //   console.log('profile mount ', this.props)
+  //   console.log('profile props.auth ', this.props.user_id)
+  //   console.log('profile props.user 0: ', this.props.user)
+  //   this.props.dispatch(getUserProfile(this.props.user_id))
+  // }
+
+  componentDidMount() {
+    const endpoint = 'users/' + this.props.user_id
+    request('get', endpoint)
+      .then(res => {
+        if (res.body.user) {
+          console.log("Profile res.body.user: ", res.body.user)
+          this.setState({
+            first_name: res.body.user.first_name,
+            last_name: res.body.user.last_name,
+            dietary_restrictions: res.body.user.dietary_restrictions
+          })
+        }
+      })
   }
 
   toggleButton(){
@@ -23,10 +48,11 @@ class Profile extends React.Component {
     })
   }
   render() {
+    console.log('profile props.user 2: ', this.props.user)
     const buttonText = this.state.editVisible ? 'Close' : 'Edit'
     return (
       <div>
-        <img className='headerImage' src="images/pantry-to-plate-sml.jpg" alt='header'/>
+<!--         <img className='headerImage' src="images/pantry-to-plate-sml.jpg" alt='header'/>
           <div className="container-fluid full-width">
             <div className="row">
               <div className='col-sm-3'>
@@ -47,7 +73,17 @@ class Profile extends React.Component {
                 <h3 className='greenText'>Friends</h3>
                 <input className="btn btn-lg btn-green btn-block mb-3" value="Go to Shopping List" type="submit" />
                 <input className="btn btn-lg btn-green btn-block mb-3" value="History" type="submit" />
-              </div>
+              </div> -->
+
+        <h1>Profile</h1>
+        <button type="edit" className="btn btn-primary" onClick={this.toggleButton}>{buttonText}</button>
+
+        {this.state.editVisible && <EditProfile />}
+        <h3>Welcome {this.state.first_name} {this.state.last_name}</h3>
+
+        <h3>Dietary Requirements:</h3>
+        {this.state.dietary_restrictions}
+
 
               <div className="col-sm-3">
                 <input className="btn btn-lg btn-green btn-block mb-3" value="Favorite Recipes" type="submit" />
@@ -81,9 +117,10 @@ class Profile extends React.Component {
 }
 
 const mapStateToProps = (props) => {
-  console.log('props', props)
+  console.log('profile as props: ', props)
   return {
-    user_id: props.auth.user.id
+    user_id: props.auth.user.user_id,
+    user: props.user
   }
 }
 

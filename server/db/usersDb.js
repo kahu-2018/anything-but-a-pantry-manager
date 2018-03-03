@@ -14,7 +14,7 @@ function getUserByAuthId (id, testDb) {
   .first()
 }
 
-function getUser(testDb, userId) {
+function getUser(userId, testDb) {
   const db = testDb || liveDb
   return db('users')
   .where('id', userId)
@@ -37,10 +37,22 @@ function getUserByUsername (username, testDb) {
     })
 }
 
+function getUserByUserId (id, testDb) {
+  if (!id) return null
+  const db = testDb || liveDb
+  return db('users')
+    .where('id', id)
+    .select()
+    .then(users => {
+      return users[0]
+    })
+}
+
 
 module.exports = {
   getUsers,
   getUserByAuthId,
   getUser,
-  getUserByUsername
+  getUserByUsername,
+  getUserByUserId
 }
