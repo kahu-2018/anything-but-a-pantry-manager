@@ -9,16 +9,13 @@ function receiveRecipes(recipes) {
 }
 
 export function getRecipes (pantryIngredients, dietaryRestrictions) {
-  console.log('DR in GR action ', dietaryRestrictions)
   return function (dispatch) {
     return request ('get', 'recipes', {i: pantryIngredients, q: dietaryRestrictions, onlyImages: 1})
     .then(res => {
-      console.log('res', res)
       dispatch(receiveRecipes(res.body.results))
     })
     .catch((err, res) => {
       console.log('error', err)
-      //(err, res.body)
     })
   }
 }

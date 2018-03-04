@@ -34,9 +34,6 @@ class OneRecipe extends React.Component{
     let randomNumber = Math.floor(Math.random()*10)
     const randomRecipe = recipe[randomNumber]
 
-console.log('props', recipe)
-
-
     return (
       <div>
         <form >
@@ -47,9 +44,6 @@ console.log('props', recipe)
           {this.state.recipeVisible? [<Recipe />, <Recipe />] : ''}
 
       </form>
-        <div>
-
-        </div>
       </div>
 
     )}
