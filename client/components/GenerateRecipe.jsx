@@ -17,7 +17,6 @@ class GenerateRecipe extends React.Component{
       recipeVisible: false,
       noRecipe: null,
       selectedIngredients: null,
-      dietaryRestrictions: null,
       buttonInfo: [
         {value: 'One Recipe', page: OneRecipe, isToggled: true},
         {value: 'Random Recipe', page: RandomRecipe, isToggled: false},
@@ -48,7 +47,7 @@ class GenerateRecipe extends React.Component{
 
     //this.props.dispatch(getUserProfile(this.props.auth.user.user_id))
 
-    this.props.dispatch(getRecipes(this.state.selectedIngredients, this.state.dietaryRestrictions))
+    this.props.dispatch(getRecipes(this.state.selectedIngredients, this.props.dietaryRestrictions))
     this.setState({recipeVisible: true})
   }
 
