@@ -2,17 +2,19 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 
-function Recipe (props) {
-  let recipe = props.recipes
+function Recipe ({recipes}) {
   let randomNumber = Math.floor(Math.random()*10)
-  const randomRecipe = recipe[randomNumber]
+  const randomRecipe = recipes[randomNumber]
 
-console.log('randome number: ', randomNumber)
-  console.log('random recipe', randomRecipe)
-  console.log('recipe', recipe)
-  console.log('props: ', props)
+  if (recipes.length > 0) {
+    return (<a href={randomRecipe.href} target="_blank">
+    <img className='img' src={randomRecipe.thumbnail} alt="food" />
+    <h4>{randomRecipe.title}</h4> 
+    </a>)
+  } else {
+    return ''
+  }
 
-  return <a href={randomRecipe.href} target="_blank"><img className='img' src={randomRecipe.thumbnail} alt="food" /><h4>{randomRecipe.title}</h4></a>
 }
 
 const mapStateToProps = (state) => {

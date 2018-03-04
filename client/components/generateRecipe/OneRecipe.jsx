@@ -44,7 +44,7 @@ console.log('props', recipe)
         <input className="btn btn-lg btn-green btn-block mb-3" value="Add ingredient" type="submit" />
         <input className="btn btn-lg btn-outline-green btn-block mb-3" value='Find' type="submit" onClick={this.handleClick}/>
 
-          {this.state.recipeVisible? <Recipe /> : ''}
+          {this.state.recipeVisible? [<Recipe />, <Recipe />] : ''}
 
       </form>
         <div>
