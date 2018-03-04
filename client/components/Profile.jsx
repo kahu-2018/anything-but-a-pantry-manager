@@ -13,33 +13,15 @@ class Profile extends React.Component {
     super(props)
     this.state={
       editVisible:false,
-      first_name: 'visitor please log in',
-      last_name: '',
-      dietary_restrictions: ''
     }
     this.props = props
     this.toggleButton = this.toggleButton.bind(this)
   }
 
-  // componentWillMount() {
-  //   console.log('profile mount ', this.props)
-  //   console.log('profile props.auth ', this.props.user_id)
-  //   console.log('profile props.user 0: ', this.props.user)
-  //   this.props.dispatch(getUserProfile(this.props.user_id))
-  // }
+  componentWillMount() {
+    console.log('components/Profile:willMount:props: dispatching getUserProfile on id: ', this.props.auth.user.user_id)
+    this.props.dispatch(getUserProfile(this.props.auth.user.user_id))
 
-  componentDidMount() {
-    const endpoint = 'users/' + this.props.user_id
-    request('get', endpoint)
-      .then(res => {
-        if (res.body.user) {
-          this.setState({
-            first_name: res.body.user.first_name,
-            last_name: res.body.user.last_name,
-            dietary_restrictions: res.body.user.dietary_restrictions
-          })
-        }
-      })
   }
 
   toggleButton(){
@@ -48,8 +30,13 @@ class Profile extends React.Component {
   }
   
   render() {
-    let splitDietaryReq = this.state.dietary_restrictions.split(' ')
-    console.log('profile props.user 2: ', this.props.user)
+    console.log('components/Profile/render: props: ', this.props)
+
+    let splitDietaryReq = []
+    if (this.props.dietaryRestrictions) {
+      splitDietaryReq = this.props.dietaryRestrictions.split(' ')
+    }
+
     const buttonText = this.state.editVisible ? 'Close' : 'Edit'
     return (
       <div>
@@ -59,7 +46,7 @@ class Profile extends React.Component {
               <div className='col-sm-3'>
             </div>
               <div className='col-sm-6'>
-            <h1 className='greenText'>Welcome {this.state.first_name} {this.state.last_name}</h1>
+            <h1 className='greenText'>Welcome {this.props.user.first_name} {this.props.user.last_name}</h1>
             </div>
             <div className='col-sm-3'>
               <Link to='/editProfile'><input className="btn btn-md btn-green float-right" value="Edit" type="submit" /></Link>
@@ -69,23 +56,23 @@ class Profile extends React.Component {
           <div className="row">
               <div className="col-sm-3 centered">
                 <img className='profileImage' src='./images/kubz.jpg' alt='profile image'/>
-                <h3 className='greenText'>Kubz17{this.props.user.user_name}</h3>
-                <p>kubz-is-my-fav@gmail.com {this.props.user.email}</p>
+                <h3 className='greenText'>{this.props.auth.user.user_name}</h3>
+                <p>{this.props.auth.user.email}</p>
                 <h3 className='greenText'>Friends</h3>
                 <input className="btn btn-lg btn-green btn-block mb-3" value="Go to Shopping List" type="submit" />
                 <input className="btn btn-lg btn-green btn-block mb-3" value="History" type="submit" />
               </div> 
               <div className="col-sm-3">
-                <input className="btn btn-lg btn-green btn-block mb-3" value="Favorite Recipes" type="submit" />
-                <input className="btn btn-sm btn-outline-green btn-block mb-3" type='submit' value='Apple Salad'/>
-                <input className="btn btn-sm btn-outline-green btn-block mb-3" type='submit' value='Raw Apple Pie'/>
-                <input className="btn btn-sm btn-outline-green btn-block mb-3" type='submit' value='Pizza Crusts'/>
+                <button className="btn btn-lg btn-green btn-block mb-3">Favorite Recipes</button>
+                <button className="btn btn-sm btn-outline-green btn-block mb-3">Apple Salad</button>
+                <button className="btn btn-sm btn-outline-green btn-block mb-3">Raw Apple Pie</button>
+                <button className="btn btn-sm btn-outline-green btn-block mb-3">Pizza Crusts</button>
               </div>
 
               <div className="col-sm-3 centered">
-                <input className="btn btn-lg btn-green btn-block mb-3" value="Dietary Requirements" />
-                {splitDietaryReq.map(food => 
-                  <p className="centered">{food}</p>
+                <button className="btn btn-lg btn-green btn-block mb-3">Dietary Requirements</button>
+                {splitDietaryReq.map((food, idx) => 
+                  <p className="centered" key={idx}>{food}</p>
                 )}
 
                   <h4 className ='greenText'>I Love</h4>
@@ -93,10 +80,9 @@ class Profile extends React.Component {
                   <h4 className ='greenText'>I don't Like</h4>
                   <p>Rice</p>
 
-
               </div>
               <div className="col-sm-3 centered">
-                <input className="btn btn-lg btn-green btn-block mb-3" value="My Pantry"/>
+                <button className="btn btn-lg btn-green btn-block mb-3">My Pantry</button>
                 <h4 className ='greenText'>Fresh</h4>
                 <p>Food</p>
                 <h4 className ='greenText'>Dairy</h4>
@@ -112,8 +98,9 @@ class Profile extends React.Component {
 const mapStateToProps = (props) => {
   console.log('profile as props: ', props)
   return {
-    user_id: props.auth.user.user_id,
-    user: props.user
+    auth: props.auth,
+    user: props.user,
+    dietaryRestrictions: props.dietaryRestrictions
   }
 }
 
