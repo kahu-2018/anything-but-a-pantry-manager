@@ -36,9 +36,12 @@ class OneRecipe extends React.Component{
   render(props) {
     let recipe = this.props.recipes
     let randomNumber = Math.floor(Math.random()*10)
+    const randomRecipe = recipe[randomNumber]
 
-    console.log(randomNumber)
-    console.log(recipe[0])
+    console.log('random', randomRecipe)
+    console.log(recipe[randomNumber])
+    console.log('recipe', recipe)
+
 
     return (
       <div>
@@ -48,9 +51,8 @@ class OneRecipe extends React.Component{
         <input className="btn btn-lg btn-outline-green btn-block mb-3" value='Find' type="submit" />
 
 
-          {this.props.recipes.map(recipe =>
-            <a href={recipe.href} target="_blank"><img className='img' src={recipe.thumbnail} alt="food" /><h4>{recipe.title}</h4></a>
-            )}
+          {randomRecipe && <a href={randomRecipe.href} target="_blank"><img className='img' src={randomRecipe.thumbnail} alt="food" /><h4>{randomRecipe.title}</h4></a>}
+
       </form>
         <div>
 

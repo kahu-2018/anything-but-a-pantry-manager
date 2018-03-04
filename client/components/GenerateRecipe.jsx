@@ -18,7 +18,12 @@ class GenerateRecipe extends React.Component{
       noRecipe: null,
       selectedIngredients: null,
       dietaryRestrictions: null,
-      isToggled: true
+      buttonInfo: [
+        {value: 'One Recipe', page: OneRecipe, isToggled: true},
+        {value: 'Random Recipe', page: RandomRecipe, isToggled: false},
+        {value: 'Weekly List', page: WeeklyOptions, isToggled: false},
+        {value: 'Food with Friends', page: FoodWithFriends, isToggled: false}
+      ]
     }
     this.props = props
     this.handleChange = this.handleChange.bind(this)
@@ -30,7 +35,7 @@ class GenerateRecipe extends React.Component{
     console.log('generaterecipe mount ', this.props)
     console.log('props.auth ', this.props.auth.user.user_id)
     this.props.dispatch(getUserProfile(this.props.auth.user.user_id))
-    
+
   }
 
   handleChange(e) {
@@ -45,38 +50,34 @@ class GenerateRecipe extends React.Component{
     this.props.dispatch(getRecipes(this.state.selectedIngredients, this.state.dietaryRestrictions))
     this.setState({recipeVisible: true})
   }
-  toggleButton(){
-    this.setState({isToggled: !this.state.isToggled})
+
+  toggleButton(pageName){
+    const {buttonInfo} = this.state
+    console.log('buttonInfo', buttonInfo)
+    const index = buttonInfo.findIndex(item => item.page === pageName)
+    buttonInfo[index].isToggled = !buttonInfo[index].isToggled
+    this.setState({buttonInfo})
   }
 
 
- 
-    
+
+
 
   render() {
     const {isToggled} = this.state
+    const {buttonInfo} = this.state
     return (
       <div>
         <img className='headerImage' src="images/pantry-to-plate-sml.jpg" alt='header'/>
         <div className="container-fluid full-width">
           <div className="row">
-            <div className="col-sm-3">
-              <input className="btn btn-lg btn-green btn-block mb-3" onClick={this.toggleButton} value="One Recipe" type="submit" />
-              {this.state.isToggled && <OneRecipe />}
-            </div>
-            <div className="col-sm-3">
-              <input className="btn btn-lg btn-green btn-block mb-3" onClick={this.toggleButton} value="Generate Weekly" type="submit" />
-              {this.state.isToggled && <WeeklyOptions />}
-            </div>
-            <div className="col-sm-3">
-              <input className="btn btn-lg btn-green btn-block mb-3" onClick={this.toggleButton}value="Random Recipe" type="submit" />
-              {this.state.isToggled && <FoodWithFriends />}
-
-          </div>
-            <div className="col-sm-3">
-              <input className="btn btn-lg btn-green btn-block mb-3" onClick={this.toggleButton} value="Food with Friends" type="submit" />
-              {this.state.isToggled && <RandomRecipe />}
-            </div>
+                {buttonInfo.map((info, i) => {
+                return <div key={i} className="col-sm-3">
+                <input className="btn btn-lg btn-green btn-block mb-3" onClick={() => this.toggleButton(info.page)} value={info.value} type="submit" />
+                {info.isToggled && <info.page />}
+              </div>
+              })
+            }
           </div>
         </div>
 
