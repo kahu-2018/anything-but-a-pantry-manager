@@ -95,8 +95,7 @@ const mapStateToProps = (props) => {
   return {
     auth: props.auth,
     recipes: props.recipes,
-    dietaryRestrictions: props.userDietaryRestrictions,
-    cat: props
+    user: props.user.user,
   }
 }
 
