@@ -26,7 +26,7 @@ class FoodWithFriends extends React.Component{
     return (
       <div>
         <div className="form-group">
-          <label for="exampleSelect1">Select Friend</label>
+          <label htmlFor="exampleSelect1">Select Friend</label>
           <select className="form-control" id="exampleSelect1">
             <option>Jess</option>
             <option>Maia</option>
