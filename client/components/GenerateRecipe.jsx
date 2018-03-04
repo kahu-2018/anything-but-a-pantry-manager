@@ -64,6 +64,8 @@ class GenerateRecipe extends React.Component{
     const {isToggled} = this.state
     const {buttonInfo} = this.state
     console.log('components/GenerateRecipe:render:props:  ', this.props)
+    console.log('state ', this.state)
+    console.log('home: dietaryRestrictions ', this.props.dietaryRestrictions)
 
     return (
       <div>
@@ -95,7 +97,8 @@ const mapStateToProps = (props) => {
   return {
     auth: props.auth,
     recipes: props.recipes,
-    user: props.user.user,
+    user: props.user,
+    dietaryRestrictions: props.dietaryRestrictions
   }
 }
 
