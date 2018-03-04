@@ -26,18 +26,40 @@ class EditProfile extends React.Component {
   }
   render() {
     return (
-      <div>
-        <form>
-          <div className="form-group">
-            <label className="first_name">First name:</label>
-            <input type="first_name" className="form-control" id="first_name" />
+      <div className="justify-content-center px-4">
+        <form onSubmit={this.submitEdit}>
+
+        <div className="row">
+          <div className="col-sm-3 left">
+              <label className="font-p"
+               htmlFor="InputFirstName">First Name</label>
+              <div>
+                  <input id="inputFirstName"
+                  className="form-control font-pLato backgroundForm" placeholder="First Name" type="text" required name="first_name" onChange={this.updateProfileDetails} />
+              </div>
           </div>
-          <div className="form-group">
-            <label className="last_name">Last name:</label>
-            <input type="last_name" className="form-control" id="last_name" />
+
+        <div className="row">
+          <div className="col-sm-3 left">
+              <label className="font-p" htmlFor="InputLastName">Last Name</label>
+            <div>
+                <input id="inputLastName"
+                className="form-control font-pLato backgroundForm" placeholder="Last Name" type="text" required name="last_name" onChange={this.updateProfileDetails} />
+            </div>
           </div>
-          <div className="form-group">
-            <label className="dietary_restrictions">Dietary requirements:</label>
+
+          <div className="row mt-5">
+            <div className="col-md-5 offset-md-1 mb-3">
+            <label className="font-p" htmlFor="InputLastName font-p">Email</label>
+            <div>
+                <input id="inputLastName"
+                className="form-control font-pLato backgroundForm" placeholder="Last Name" type="text" required name="last_name" onChange={this.updateProfileDetails} />
+            </div>
+          </div>
+
+          <div className="row justify-content-around">
+       <div className="col-4">
+            <label className="font-p dietary_restrictions">Dietary requirements:</label>
             <input type="dietary_restrictions" className="form-control" id="dietary_restrictions" />
           </div>
             <button type="submit" className="btn btn-primary">Submit</button><br />
@@ -45,9 +67,15 @@ class EditProfile extends React.Component {
             <button type="edit" className="btn btn-primary" onClick={this.submitEdit}>Edit</button>
           <br />
           <br />
+       </div>
+       <div className="row justify-content-around">
 
-        </form>
-      </div>
+  </div>
+</div>
+</div>
+</div>
+</form>
+</div>
     )
   }
 }
