@@ -30,8 +30,8 @@ As a user:
 
 ### Stretch 2
 
-* [ ] I want to reject a recipe and get a new one
-* [ ] I want to give raitings to my recipes
+* [X] I want to reject a recipe and get a new one
+* [ ] I want to give ratings to my recipes
 * [ ] I want to share with my friends
 
  ---
