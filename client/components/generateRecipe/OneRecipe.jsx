@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import {getRecipes} from '../../actions/generateRecipe'
-import {getUserRestrictions} from '../../actions/user'
+import { getRecipes } from '../../actions/generateRecipe'
+import { getUserRestrictions } from '../../actions/user'
+import Recipe from '../Recipe'
 
 class OneRecipe extends React.Component{
   constructor(props) {
@@ -12,6 +13,7 @@ class OneRecipe extends React.Component{
       noRecipe: null,
       selectedIngredients: null,
       dietaryRestrictions: null,
+      randomRecipe: {}
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
@@ -33,7 +35,7 @@ class OneRecipe extends React.Component{
     this.setState({recipeVisible: true})
   }
 
-  render(props) {
+  render() {
     let recipe = this.props.recipes
     let randomNumber = Math.floor(Math.random()*10)
     const randomRecipe = recipe[randomNumber]
@@ -45,13 +47,12 @@ class OneRecipe extends React.Component{
 
     return (
       <div>
-        <form onSubmit={this.handleClick}>
+        <form >
         <input id="inputfood" className="form-control mb-1 font-pLato" placeholder="Ingredients you have" name="user_name" type="text" required autoFocus="" onKeyPress={this.handleButtonPress} onChange={this.handleChange}/>
         <input className="btn btn-lg btn-green btn-block mb-3" value="Add ingredient" type="submit" />
-        <input className="btn btn-lg btn-outline-green btn-block mb-3" value='Find' type="submit" />
+        <input className="btn btn-lg btn-outline-green btn-block mb-3" value='Find' type="submit" onClick={this.handleClick}/>
 
-
-          {randomRecipe && <a href={randomRecipe.href} target="_blank"><img className='img' src={randomRecipe.thumbnail} alt="food" /><h4>{randomRecipe.title}</h4></a>}
+          {randomRecipe && <Recipe />}
 
       </form>
         <div>
