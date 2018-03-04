@@ -1,44 +1,32 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import {getRecipes} from '../actions/generateRecipe'
+function ShoppingList(props) {
+  console.log('props', props)
 
-class ShoppingList extends React.Component{
-  constructor(props) {
-    super(props)
-    this.state = {
-      selectedIngredients: 'tomato',
-      dietaryRestrictions: 'vegan'
+  function ingredientList(recipes) {
+    return props.recipes.reduce((arr, {ingredients}) =>
+    {
+      let ingrArr= ingredients.split(', ')
+      ingrArr.forEach(entry => arr.push(entry))
+      console.log('arr', arr)
+      return arr
     }
-    //bind
+    , [])
   }
 
-ComponentDidMount() {
-  this.props.dispatch(getRecipes(this.state.selectedIngredients, this.state.dietaryRestrictions))
-}
+  let ingredients = ingredientList(props.recipes)
 
+  return (
+    <div>
 
-  render(props) {
-    return (
-      <div>
+      <h1>My Shopping List</h1>
+        {ingredients.map(ingredient =>
+          <li>{ingredient}</li>
+          )}
+    </div>
+  )
 
-        <h1>My Shopping List</h1>
-        <ul>
-          {this.props.recipes.map(ingredient => <li>{ingredient}</li>)}
-        </ul>
-
-      </div>
-    )
-  }
-}
-
-
-
-ingredientList(recipes) {
-  return this.props.recipes.reduce((arr, {ingredients}) => {
-    ingredients.forEach(ingredient => arr.push)
-    return arr
-  }, [])
 }
 
 const mapStateToProps = (props) => {
