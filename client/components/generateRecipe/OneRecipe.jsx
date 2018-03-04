@@ -26,17 +26,13 @@ class OneRecipe extends React.Component{
     e.preventDefault()
     this.props.dispatch(getRecipes(this.state.selectedIngredients, this.props.dietaryRestrictions))
     this.setState({recipeVisible: true})
+
   }
 
   render() {
     let recipe = this.props.recipes
     let randomNumber = Math.floor(Math.random()*10)
     const randomRecipe = recipe[randomNumber]
-
-    console.log('random', randomRecipe)
-    console.log(recipe[randomNumber])
-    console.log('recipe', recipe)
-
 
     return (
       <div>
@@ -45,12 +41,9 @@ class OneRecipe extends React.Component{
         <input className="btn btn-lg btn-green btn-block mb-3" value="Add ingredient" type="submit" />
         <input className="btn btn-lg btn-outline-green btn-block mb-3" value='Find' type="submit" onClick={this.handleClick}/>
 
-          {randomRecipe && <Recipe />}
+          {this.state.recipeVisible? [<Recipe />, <Recipe />] : ''}
 
       </form>
-        <div>
-
-        </div>
       </div>
 
     )}
