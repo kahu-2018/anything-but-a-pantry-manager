@@ -13,7 +13,7 @@ class Profile extends React.Component {
     super(props)
     this.state={
       editVisible:false,
-      first_name: 'visitor',
+      first_name: 'visitor please log in',
       last_name: '',
       dietary_restrictions: ''
     }
@@ -33,7 +33,6 @@ class Profile extends React.Component {
     request('get', endpoint)
       .then(res => {
         if (res.body.user) {
-          console.log("Profile res.body.user: ", res.body.user)
           this.setState({
             first_name: res.body.user.first_name,
             last_name: res.body.user.last_name,
@@ -47,7 +46,9 @@ class Profile extends React.Component {
     this.setState({editVisible: !this.state.editVisible
     })
   }
+  
   render() {
+    let splitDietaryReq = this.state.dietary_restrictions.split(' ')
     console.log('profile props.user 2: ', this.props.user)
     const buttonText = this.state.editVisible ? 'Close' : 'Edit'
     return (
@@ -83,7 +84,10 @@ class Profile extends React.Component {
 
               <div className="col-sm-3 centered">
                 <input className="btn btn-lg btn-green btn-block mb-3" value="Dietary Requirements" />
-                <p>{this.state.dietary_restrictions}</p>
+                {splitDietaryReq.map(food => 
+                  <p className="centered">{food}</p>
+                )}
+
                   <h4 className ='greenText'>I Love</h4>
                   <p>Apples</p>
                   <h4 className ='greenText'>I don't Like</h4>
