@@ -1,27 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-class Recipe extends React.Component {
-  constructor(props) {
-    super(props)
-      this.state = {
-      }
-  }
 
-  render() {
-    console.log(this.props);
-    return (
-      <div>
-        <h1>Here's your Recipe</h1>
-          <div>
-          {this.props.recipes.map(recipe =>
-            <a href={recipe.href} target="_blank"><img className='img' src={recipe.thumbnail} alt="food" /><h4>{recipe.title}</h4></a>
-            )
-          }
-        </div>
-      </div>
-    )
-  }
+function Recipe (props) {
+  let recipe = props.recipes
+  let randomNumber = Math.floor(Math.random()*10)
+  const randomRecipe = recipe[randomNumber]
+  return <a href={randomRecipe.href} target="_blank"><img className='img' src={randomRecipe.thumbnail} alt="food" /><h4>{randomRecipe.title}</h4></a>
 }
 
 const mapStateToProps = (state) => {
