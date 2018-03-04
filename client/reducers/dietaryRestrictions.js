@@ -1,5 +1,4 @@
 function dietaryRestrictions(state="", action) {
-  console.log('reducers/dietaryRestrictions: action.type: ', action.type)
 
   switch (action.type) {
     case 'RECEIVED_DR':
