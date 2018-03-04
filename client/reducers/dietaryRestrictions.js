@@ -1,4 +1,4 @@
-function dietaryRestrictions(state=[], action) {
+function dietaryRestrictions(state="", action) {
   console.log('reducers/dietaryRestrictions: action.type: ', action.type)
 
   switch (action.type) {
