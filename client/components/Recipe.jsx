@@ -6,12 +6,15 @@ function Recipe ({recipes}) {
   let randomNumber = Math.floor(Math.random()*10)
   const randomRecipe = recipes[randomNumber]
 
-  return recipes.length > 0 
-    ? <a href={randomRecipe.href} target="_blank">
-      <img className='img' src={randomRecipe.thumbnail} alt="food" />
-      <h4>{randomRecipe.title}</h4> 
-    </a>
+  return recipes.length > 0
+    ? <div className='centered'>
+    <img className='img' src={randomRecipe.thumbnail} alt="food" />
+    <h4 className='greenText'>{randomRecipe.title} <i class="pink fas fa-heart"></i></h4>
+    <button className="btn btn-sm btn-outline-green btn-block mb-3">Add to Shopping List</button>
+    <button className="btn btn-sm btn-outline-green btn-block mb-3" href={randomRecipe.href}>Go to Recipe</button>
+    </div>
     : <h4>No results returned</h4>
+
 }
 
 const mapStateToProps = (state) => {
