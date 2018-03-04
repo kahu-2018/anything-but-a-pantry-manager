@@ -3,7 +3,7 @@ import { isAuthenticated, getUserTokenInfo } from '../utils/auth'
 const initialState = {
   isFetching: false,
   isAuthenticated: isAuthenticated(),
-  user: {},
+  user: getUserTokenInfo(),
   errorMessage: ''
 }
 
