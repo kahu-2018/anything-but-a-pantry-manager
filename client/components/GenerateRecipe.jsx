@@ -17,7 +17,6 @@ class GenerateRecipe extends React.Component{
       recipeVisible: false,
       noRecipe: null,
       selectedIngredients: null,
-      dietaryRestrictions: null,
       buttonInfo: [
         {value: 'One Recipe', page: OneRecipe, isToggled: true},
         {value: 'Random Recipe', page: RandomRecipe, isToggled: false},
@@ -32,8 +31,9 @@ class GenerateRecipe extends React.Component{
   }
 
   componentWillMount() {
-    console.log('generaterecipe mount ', this.props)
-    console.log('props.auth ', this.props.auth.user.user_id)
+    console.log('components/GenerateRecipe:willMount:props:  ', this.props)
+    console.log('components/GenerateRecipe:willMount:props.auth: ', this.props.auth.user.user_id)
+    console.log('components/GenerateRecipe:willMount:props: dispatching getUserProfile')
     this.props.dispatch(getUserProfile(this.props.auth.user.user_id))
 
   }
@@ -47,25 +47,25 @@ class GenerateRecipe extends React.Component{
 
     //this.props.dispatch(getUserProfile(this.props.auth.user.user_id))
 
-    this.props.dispatch(getRecipes(this.state.selectedIngredients, this.state.dietaryRestrictions))
+    this.props.dispatch(getRecipes(this.state.selectedIngredients, this.props.dietaryRestrictions))
     this.setState({recipeVisible: true})
   }
 
   toggleButton(pageName){
     const {buttonInfo} = this.state
-    console.log('buttonInfo', buttonInfo)
+    console.log('components/GenerateRecipe:buttonInfo: ', buttonInfo)
     const index = buttonInfo.findIndex(item => item.page === pageName)
     buttonInfo[index].isToggled = !buttonInfo[index].isToggled
     this.setState({buttonInfo})
   }
 
-
-
-
-
   render() {
     const {isToggled} = this.state
     const {buttonInfo} = this.state
+    console.log('components/GenerateRecipe:render:props:  ', this.props)
+    console.log('state ', this.state)
+    console.log('home: dietaryRestrictions ', this.props.dietaryRestrictions)
+
     return (
       <div>
         <img className='headerImage' src="images/pantry-to-plate-sml.jpg" alt='header'/>
@@ -96,8 +96,8 @@ const mapStateToProps = (props) => {
   return {
     auth: props.auth,
     recipes: props.recipes,
-    dietaryRestrictions: props.userDietaryRestrictions,
-    cat: props
+    user: props.user,
+    dietaryRestrictions: props.dietaryRestrictions
   }
 }
 

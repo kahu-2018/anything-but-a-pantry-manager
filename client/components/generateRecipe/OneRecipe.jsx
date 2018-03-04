@@ -11,18 +11,11 @@ class OneRecipe extends React.Component{
     this.state = {
       recipeVisible: false,
       noRecipe: null,
-      selectedIngredients: null,
-      dietaryRestrictions: null,
-      randomRecipe: {}
+      selectedIngredients: null
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
 
-  }
-
-  ComponentDidMount() {
-    let dietaryRestrictions = getUserRestrictions(1)
-    this.setState({dietaryRestrictions: dietaryRestrictions})
   }
 
   handleChange(e) {
@@ -31,7 +24,7 @@ class OneRecipe extends React.Component{
 
   handleClick(e) {
     e.preventDefault()
-    this.props.dispatch(getRecipes(this.state.selectedIngredients, this.state.dietaryRestrictions))
+    this.props.dispatch(getRecipes(this.state.selectedIngredients, this.props.dietaryRestrictions))
     this.setState({recipeVisible: true})
   }
 
@@ -66,7 +59,9 @@ class OneRecipe extends React.Component{
 const mapStateToProps = (props) => {
   return {
     auth: props.auth,
-    recipes: props.recipes
+    recipes: props.recipes,
+    user: props.user,
+    dietaryRestrictions: props.dietaryRestrictions
   }
 }
 
