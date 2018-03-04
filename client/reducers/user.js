@@ -1,9 +1,10 @@
-import request from '../utils/api'
-import { get } from '../utils/localstorage'
 
 function user(state={}, action) {
+    console.log('reducers/user: action.type: ', action.type)
+
     switch (action.type) {
-      case 'RECIEVE_USER':
+      case 'RECEIVED_USER':
+        console.log('reducers/user: action.user: ', action.user)
         return {...action.user}
 
       default:

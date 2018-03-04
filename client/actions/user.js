@@ -1,30 +1,35 @@
 import request from '../utils/api'
-import { get } from '../utils/localstorage'
+import {
+  get
+} from '../utils/localstorage'
 
-function receiveDietaryRestrictions(userDietaryRestrictions) {
+// function receiveDietaryRestrictions(userDietaryRestrictions) {
+//   return {
+//     type: 'SET_RESTRICTIONS',
+//     userDietaryRestrictions
+//   }
+// }
+
+function receivedUser(user) {
+  console.log("actions/user/receivedUser: user: ", user)
   return {
-    type: 'SET_RESTRICTIONS',
-    userDietaryRestrictions
+    type: 'RECEIVED_USER',
+    user: { ...user}
   }
 }
 
-export function getUserProfile (userId) {
-  console.log('getDR 1')
+export function getUserProfile(userId) {
+  console.log('actions/user/getUserProfile: userId = ', userId)
   return function (dispatch) {
     const endpoint = 'users/' + userId
     request('get', endpoint)
       .then(res => {
-        console.log("res.body: ", res.body)
-        return {
-          type: 'RECIEVE_USER',
-          user: {...res.body.user}
-        }
+        dispatch(receivedUser(res.body))
       })
-    // .then(res => {
-    //   dispatch(receiveDietaryRestrictions(res.body))
-    // })
-    // .catch(err => console.log('error', err))
-   }
+      .catch((err) => {
+        console.log('actions/user/getUserProfile: error: ', err)
+      })
+  }
 }
 
 // export function getUserProfile(userId) {
