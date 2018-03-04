@@ -5,7 +5,7 @@ const request = require('superagent')
 const baseUrl = "http://www.recipepuppy.com/api/"
 
 router.get('/', (req, res) => {
-  console.log('test2')
+  console.log('server/routes/generateRecipe:\n\tquery-i: ', req.query.i, '\n\tquery-q: ', req.query.q)
   request
   .get(baseUrl)
   .query({
