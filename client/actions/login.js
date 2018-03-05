@@ -4,26 +4,20 @@ import { saveUserToken } from '../utils/auth'
 
 function requestLogin () {
   return {
-    type: 'LOGIN_REQUEST',
-    isFetching: true,
-    isAuthenticated: false
+    type: 'LOGIN_REQUEST'
   }
 }
 
 export function receiveLogin (user) {
   return {
     type: 'LOGIN_SUCCESS',
-    isFetching: false,
-    isAuthenticated: true,
     user
   }
 }
 
-export function loginError (message) {
+export function loginFailure (message) {
   return {
     type: 'LOGIN_FAILURE',
-    isFetching: false,
-    isAuthenticated: false,
     message
   }
 }
@@ -45,7 +39,7 @@ export function loginUser (creds) {
         document.location = "/#/generateRecipe"
       })
       .catch(err => {
-        dispatch(loginError(err.response.body.message))
+        dispatch(loginFailure(err.response.body.message))
       })
   }
 }

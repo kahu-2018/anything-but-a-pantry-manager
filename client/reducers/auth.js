@@ -4,7 +4,8 @@ const initialState = {
   isFetching: false,
   isAuthenticated: isAuthenticated(),
   user: getUserTokenInfo(),
-  message: ''
+  message: '',
+  newAccountDone: false
 }
 
 export default function auth (state = initialState, action) {
@@ -12,28 +13,28 @@ export default function auth (state = initialState, action) {
     case 'LOGIN_REQUEST':
       return {
         ...state,
-        isFetching: action.isFetching,
-        isAuthenticated: action.isAuthenticated,
-        message: action.message
+        isFetching: true,
+        isAuthenticated: false
       }
     case 'LOGIN_SUCCESS':
       return {
         ...state,
-        isFetching: action.isFetching,
-        isAuthenticated: action.isAuthenticated,
+        isFetching: false,
+        isAuthenticated: true,
         user: {...action.user},
-        message: action.message
       }
     case 'LOGIN_FAILURE':
       return {
         ...state,
-        isFetching: action.isFetching,
-        isAuthenticated: action.isAuthenticated,
+        isFetching: false,
+        isAuthenticated: false,
         message: action.message
       }
       case 'LOGIN_RETYPE':
       return {
         ...state,
+        isFetching: false,
+        isAuthenticated: false,
         message: action.message
       }
     case 'LOGOUT_SUCCESS':
@@ -47,15 +48,22 @@ export default function auth (state = initialState, action) {
     case 'REGISTER_REQUEST':
       return {
         ...state,
-        isFetching: action.isFetching,
-        isAuthenticated: action.isAuthenticated,
-        message: action.message
+        isFetching: true,
+        isAuthenticated: false,
+        message: ''
       }
+      case 'REGISTER_RETYPE':
+        return {
+          ...state,
+          isFetching: false,
+          isAuthenticated: false,
+          message: ''
+        }
     case 'REGISTER_FAILURE':
       return {
         ...state,
-        isFetching: action.isFetching,
-        isAuthenticated: action.isAuthenticated,
+        isFetching: false,
+        isAuthenticated: false,
         message: action.message
       }
     default:

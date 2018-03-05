@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { registerUserRequest } from '../actions/register'
-import { loginError, loginRetype } from '../actions/login'
+import { registerUser, registerRetype, registerFailure } from '../actions/register'
 import { Link } from 'react-router-dom'
 
 class Register extends React.Component {
@@ -22,7 +21,7 @@ class Register extends React.Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(loginError(''))
+        this.props.dispatch(registerRetype())
     }
 
     updateDetails(e) {
@@ -30,8 +29,8 @@ class Register extends React.Component {
     }
 
     onFocusing(e) {
-        $('#regModal').modal() // note: jQuery code
-        this.props.dispatch(loginRetype()) // clear error message
+        //$('#regModal').modal() // note: jQuery code
+        this.props.dispatch(registerRetype()) // clear error message
     }
 
     showModal() { // note: bootstrap modal
@@ -75,7 +74,7 @@ class Register extends React.Component {
             '\n\confirm_password:', confirm_password)
 
         if (confirm_password != password) {
-            this.props.dispatch(loginError("Passwords do not match"))
+            this.props.dispatch(registerFailure("Passwords do not match"))
             this.setState({
                 password: '',
                 confirm_password: ''
@@ -85,7 +84,7 @@ class Register extends React.Component {
             return
         }
 
-        this.props.dispatch(registerUserRequest(this.state))
+        this.props.dispatch(registerUser(this.state))
 
     }
 
