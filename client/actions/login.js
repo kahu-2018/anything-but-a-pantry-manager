@@ -31,7 +31,7 @@ export function loginRetype () {
 
 export function loginUser (creds) {
   return dispatch => {
-    dispatch(requestLogin(creds))
+    dispatch(requestLogin())
     return request('post', 'auth/login', creds)
       .then((response) => {
         const userInfo = saveUserToken(response.body.token)
