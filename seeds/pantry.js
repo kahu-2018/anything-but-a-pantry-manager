@@ -18,7 +18,7 @@ exports.seed = function(knex, Promise) {
         {id: 11, name_of_food: 'cauliflower'},
         {id: 12, name_of_food: 'almond milk'},
         {id: 13, name_of_food: 'potato'},
-        {id: 14, name_of_food: 'leek'},
+        {id: 14, name_of_food: 'leek'}
       ]);
     });
 };
