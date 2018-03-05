@@ -24,6 +24,9 @@ h4 {
   margin-bottom: 30px;
 }
 
+.pink{
+  color: pink;
+}
 
 .btn-green {
   font-family: 'Lobster', cursive !important;
@@ -67,7 +70,7 @@ h4 {
 .faFaFont{
   margin-left: 5px;
   margin-right: 5px;
-  color: #12D6BC !important;
+  color: #FF22FF !important;
 }
 .text-green{
   font-family: 'Lobster', cursive !important;
@@ -94,6 +97,8 @@ a:active: {
 
 .img {
   margin: 20px;
+  border-radius: 50%
+
 
 }
 .navBar {
@@ -130,6 +135,11 @@ a:active: {
 .greenText{
   color: #12D6BC !important;
 }
+
+.pink{
+  color: #FF22FF !important;
+}
+
 .centered {
   text-align: center;
 }
