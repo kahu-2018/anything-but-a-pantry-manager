@@ -4,7 +4,7 @@ import { get } from '../utils/localstorage'
 function receiveRecipes(recipes) {
   return {
     type: 'RECEIVE_RECIPES',
-    recipes
+    recipes: recipes
   }
 }
 

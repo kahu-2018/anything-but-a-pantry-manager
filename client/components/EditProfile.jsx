@@ -28,21 +28,21 @@ class EditProfile extends React.Component {
     return (
       <div>
         <form>
-          <div className="form-group">
-            <label className="first_name">First name:</label>
-            <input type="first_name" className="form-control" id="first_name" />
+          <img className='headerImage' src="images/pantry-to-plate-sml.jpg" alt='header'/>
+          <div className="col-sm-3">
+            <label className="first_name font-p">First name:</label>
+            <input type="first_name" className="form-control font-pLato backgroundForm" id="first_name" />
           </div>
-          <div className="form-group">
-            <label className="last_name">Last name:</label>
-            <input type="last_name" className="form-control" id="last_name" />
+          <div className="col-sm-3">
+            <label className="last_name font-p">Last name:</label>
+            <input type="last_name " className="form-control font-pLato backgroundForm" id="last_name" />
           </div>
-          <div className="form-group">
-            <label className="dietary_restrictions">Dietary requirements:</label>
-            <input type="dietary_restrictions" className="form-control" id="dietary_restrictions" />
+
+          <div className="col-sm-3">
+            <label className="dietary_restrictions font-p">Dietary requirements:</label>
+            <input type="dietary_restrictions" className="form-control font-pLato backgroundForm" id="dietary_restrictions" />
           </div>
-            <button type="submit" className="btn btn-primary">Submit</button><br />
-          <br />
-            <button type="edit" className="btn btn-primary" onClick={this.submitEdit}>Edit</button>
+            <button type="edit" className="btn btn-lg btn-green btn-block text-center center-column mb-3" onClick={this.submitEdit}>Submit</button>
           <br />
           <br />
 

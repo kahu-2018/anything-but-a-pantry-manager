@@ -30,15 +30,13 @@ class WeeklyOptions extends React.Component{
     let recipe = this.props.recipes
     let randomNumber = Math.floor(Math.random()*10)
 
-    console.log(randomNumber)
-    console.log(recipe[0])
 
     return (
       <div>
         <form>
-        <div class="form-group">
-    <label for="exampleSelect1">How many meals do you need?</label>
-    <select class="form-control" id="exampleSelect1">
+        <div className="form-group">
+    <label form="exampleSelect1">How many meals do you need?</label>
+    <select className="form-control" id="exampleSelect1">
       <option>1</option>
       <option>2</option>
       <option>3</option>

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import {getRecipes} from '../../actions/generateRecipe'
 import {getUserRestrictions} from '../../actions/user'
+import Recipe from '../Recipe'
 
 class RandomRecipe extends React.Component{
   constructor(props) {
@@ -11,48 +12,41 @@ class RandomRecipe extends React.Component{
       recipeVisible: false,
       selectedIngredients: null,
       dietaryRestrictions: null,
+      randomIngredients: [
+        'onion', 'garlic', 'ginger', 'salt', 'pepper', 'tomatoes' ]
     }
-
+    this.showRecipe = this.showRecipe.bind(this)
   }
 
-  ComponentDidMount() {
-    let dietaryRestrictions = getUserRestrictions(1)
-    this.setState({dietaryRestrictions: dietaryRestrictions})
+  componentDidMount() {
+    let randomNumber = Math.floor(Math.random()*6)
+    this.setState({selectedIngredients: this.state.randomIngredients[randomNumber]})
   }
 
-  handleClick(e) {
-    e.preventDefault()
-    this.props.dispatch(getRecipes(this.state.selectedIngredients, this.state.dietaryRestrictions))
+
+  showRecipe() {
+    this.props.dispatch(getRecipes(this.state.selectedIngredients, this.props.dietaryRestrictions))
     this.setState({recipeVisible: true})
   }
 
-  render(props) {
-    let recipe = this.props.recipes
-    let randomNumber = Math.floor(Math.random()*10)
-
-    console.log(randomNumber)
-    console.log(recipe[0])
-
+  render() {
+    console.log(this.state.selectedIngredients)
     return (
       <div>
-        <form onSubmit={this.handleClick}>
-          <input className="btn btn-lg btn-outline-green btn-block mb-3" value='Find' type="submit" />
-          {this.props.recipes.map(recipe =>
-            <a href={recipe.href} target="_blank"><img className='img' src={recipe.thumbnail} alt="food" /><h4>{recipe.title}</h4></a>
-            )}
-      </form>
-        <div>
-
-        </div>
+        <button onClick={this.showRecipe} className="btn btn-lg btn-outline-green btn-block mb-3">Find</button>
+          {this.state.recipeVisible? [<Recipe key="1"/>] : ''}
       </div>
-
-    )}
+    )
+  }
 }
 
 const mapStateToProps = (props) => {
   return {
     auth: props.auth,
-    recipes: props.recipes
+    recipes: props.recipes,
+    user: props.user,
+    dietaryRestrictions: props.dietaryRestrictions
+
   }
 }
 

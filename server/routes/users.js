@@ -2,13 +2,12 @@ const express = require('express')
 const router = express.Router()
 
 const db = require('../db/usersDb')
+const { decode } = require('../auth/token')
 
 
-router.get('/:id', (req, res) => {
-  console.log('params ', req.params.id)
+router.get('/:id', decode, (req, res) => {
   db.getUserByUserId(req.params.id)
     .then(user => {
-      console.log('route userID: ', user)
       res.json({user: user})
     })
   // db.getUser(req.body)
@@ -42,7 +41,7 @@ router.get('/:id', (req, res) => {
 //   })
 // })
 
-router.get('/profile', (req, res) => {
+router.get('/profile', decode, (req, res) => {
   db.getUserByAuthId(req.user.auth_id)
   .then(user => {
     res.json({user: user})
