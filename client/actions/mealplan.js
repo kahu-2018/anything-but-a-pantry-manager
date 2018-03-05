@@ -1,4 +1,5 @@
 function updateMealplan(recipe) {
+  console.log('mealplan', recipe)
   return {
     type: 'UPDATE_MEALPLAN',
     mealplan: recipe
@@ -6,7 +7,9 @@ function updateMealplan(recipe) {
 }
 
 export function addToMealplan(recipe) {
-  return function (dispatch) {
-    return dispatch(updateMealplan(recipe))
+  console.log('recipe', recipe)
+  return (dispatch) => {
+    console.log('I am being called', dispatch);
+   dispatch(updateMealplan(recipe))
   }
 }
