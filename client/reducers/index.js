@@ -12,6 +12,6 @@ export default combineReducers({
   recipes,
   user,
   dietaryRestrictions,
-  mealplan
+  mealplan,
   pantry
 })
