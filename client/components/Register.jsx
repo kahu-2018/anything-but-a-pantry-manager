@@ -40,7 +40,8 @@ class Register extends React.Component {
 
     submit(e) {
         e.preventDefault()
-        e.target.reset()
+        console.log('e.target.password: ', e.target.password)
+        //e.target.reset()
         
         //this.saveToLocal()
         let { first_name, last_name, user_name, email, password, confirm_password } = this.state
@@ -53,8 +54,20 @@ class Register extends React.Component {
             '\n\temail: ', email, 
             '\n\tpassword:', password,
             '\n\confirm_password:', confirm_password)
-        if (confirm_password != password) return this.props.dispatch(loginError("Passwords do not match"))
-        //this.props.dispatch(registerUserRequest(this.state))
+
+        if (confirm_password != password) {
+            this.props.dispatch(loginError("Passwords do not match"))
+            this.setState({
+                password: '',
+                confirm_password: ''
+            })
+            e.target.password.value = ''
+            e.target.confirm_password.value = ''
+            return
+        }
+        
+        this.props.dispatch(registerUserRequest(this.state))
+
     }
 
     render() {
