@@ -28,6 +28,13 @@ export function loginError (message) {
   }
 }
 
+export function loginRetype () {
+  return {
+    type: 'LOGIN_RETYPE',
+    message: ''
+  }
+}
+
 export function loginUser (creds) {
   return dispatch => {
     dispatch(requestLogin(creds))

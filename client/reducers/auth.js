@@ -31,6 +31,11 @@ export default function auth (state = initialState, action) {
         isAuthenticated: action.isAuthenticated,
         message: action.message
       }
+      case 'LOGIN_RETYPE':
+      return {
+        ...state,
+        message: action.message
+      }
     case 'LOGOUT_SUCCESS':
       return {
         ...state,
