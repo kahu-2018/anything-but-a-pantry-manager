@@ -10,6 +10,6 @@ export function addToMealplan(recipe) {
   console.log('recipe', recipe)
   return (dispatch) => {
     console.log('I am being called', dispatch);
-   dispatch(updateMealplan())
+   dispatch(updateMealplan(recipe))
   }
 }
