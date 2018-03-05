@@ -41,7 +41,6 @@ class RandomRecipe extends React.Component{
 }
 
 const mapStateToProps = (props) => {
-  console.log('props on genRecipe: ', props)
   return {
     auth: props.auth,
     recipes: props.recipes.recipes,
