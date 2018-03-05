@@ -53,9 +53,13 @@ h4 {
 
 .font-p{
   font-family: 'Lobster', cursive !important;
+
 }
 .font-pLato{
-  font-family: 'Lato', sans-serif !important;
+  font-family: 'Lato';
+  color: black !important;
+
+
 }
 
 .backgroundForm {
