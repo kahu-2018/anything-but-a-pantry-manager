@@ -20,7 +20,9 @@ class RandomRecipe extends React.Component{
 
   componentDidMount() {
     let randomNumber = Math.floor(Math.random()*6)
-    this.setState({selectedIngredients: this.state.randomIngredients[randomNumber]})
+    console.log('randomIgredients:', this.state.randomIngredients[randomNumber])
+    let chicken = this.setState({selectedIngredients: this.state.randomIngredients[randomNumber]})
+    console.log('selected ingredient:', chicken)
   }
 
 
