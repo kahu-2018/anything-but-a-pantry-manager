@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 function ShoppingList(props) {
-
+console.log({props})
 //Pull ingredients out of meal plan recipes
   function mealplanIngredients(mealplan) {
     console.log('props',props)
@@ -38,12 +38,12 @@ function ShoppingList(props) {
 
 }
 
-const mapStateToProps = (props) => {
-  console.log(props)
+const mapStateToProps = (state) => {
+  console.log(state)
 
   return {
-    auth: props.auth,
-    mealplan: props.mealplan
+    auth: state.auth,
+    mealplan: state.mealplan
     // recipes: [
     //   {"title":"Onion and Fresh Herb Omelet with Mixed Greens","href":"http://find.myrecipes.com/recipes/recipefinder.dyn?action=displayRecipe&recipe_id=1622444","ingredients":"egg substitute, milk, parsley, thyme, salt, black pepper, eggs, flour, nonstick cooking spray, onions, garlic, salad greens, salad greens, red wine vinegar, olive oil, goat cheese, almonds","thumbnail":"http://img.recipepuppy.com/514820.jpg"},
     //   {"title":"Spanish Omelet","href":"http://www.cooks.com/rec/view/0,185,153160-249194,00.html","ingredients":"vegetable oil, green pepper, onions, water, milk, eggs, black pepper, mushroom, garlic, salt, chili powder","thumbnail":""},

@@ -37,7 +37,7 @@ class OneRecipe extends React.Component{
     return (
       <div>
         <form onSubmit={this.handleClick}>
-          <input id="inputfood" className="form-control mb-1 font-pLato" placeholder="Ingredients you have" type="text" required autoFocus=""  />
+          <input autoComplete={"none"} id="inputfood" className="form-control mb-1 font-pLato" placeholder="Ingredients you have" type="text" required autoFocus=""  />
           <input className="btn btn-lg btn-green btn-block mb-3" value="Add Ingredient" type="submit" />
         </form>
           {this.state.selectedIngredients.map(item => {

@@ -3,11 +3,10 @@ import { connect } from 'react-redux'
 
 import {addToMealplan} from '../actions/mealplan'
 
-function handleClick(randomRecipe){
-  this.props.dispatch(addToMealplan(randomRecipe))
-}
 
-function Recipe ({recipes}) {
+
+function Recipe ({recipes, dispatch}) {
+  const handleClick = (recipe) => dispatch(addToMealplan(recipe))
   let randomNumber = Math.floor(Math.random()*10)
   const randomRecipe = recipes[randomNumber]
 
