@@ -8,7 +8,8 @@ class EditProfile extends React.Component {
     super(props)
     this.state = {
       oldProfile: props.profile,
-      newProfile: props.profile
+      newProfile: props.profile,
+      dietaryRestrictions: ['Dairy-free', 'Vegan', 'Gluten-free', 'Vegetarian', 'Paleo', 'Egg-free', 'Nut-allergy', 'Peanut-allergy', 'Soy-free']
     }
     this.updateProfileDetails = this.updateProfileDetails.bind(this)
     this.submitEdit = this.submitEdit.bind(this)
@@ -38,16 +39,18 @@ class EditProfile extends React.Component {
           </div>
 
           <div className="col-sm-3">
-            <label className="dietary_restrictions font-p">Dietary requirements:</label>
-            <input type="dietary_restrictions" className="form-control font-pLato backgroundForm" id="dietary_restrictions"/>
+            <h4>Dietary Restrictions</h4>
+            {this.state.dietaryRestrictions.map(item => {
+              return <div className="checkbox">
+                <label><input type="checkbox" value=""/>{item}</label>
+              </div>
+            })
+            }
+            </div>
+          </form>
+            <button type="edit" className="btn btn-lg btn-green btn-block text-center center-column mb-3" onClick={this.submitEdit}>Submit</button>
 
-          </div>
-          <button type="edit" className="btn btn-lg btn-green btn-block text-center center-column mb-3" onClick={this.submitEdit}>Submit</button>
-          <br/>
-          <br/>
-        <div className="row justify-content-around"></div>
-      </form>
-    </div>
+      </div>
     )
   }
 }

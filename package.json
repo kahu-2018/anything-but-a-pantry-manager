@@ -35,6 +35,7 @@
     "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0",
     "cors": "^2.8.4",
+    "css-loader": "^0.28.10",
     "dotenv": "^5.0.1",
     "enzyme": "^3.3.0",
     "express": "^4.16.2",
@@ -56,9 +57,12 @@
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "sqlite3": "^3.1.13",
+    "style-loader": "^0.20.2",
     "superagent": "^3.8.2",
     "supertest": "^3.0.0",
     "webpack": "^2.3.3",
-    "webpack-dev-server": "^2.4.2"
+    "webpack-dev-server": "^2.4.2",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.7"
   }
 }
