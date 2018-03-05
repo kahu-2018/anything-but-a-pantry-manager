@@ -10,6 +10,7 @@ import GenerateRecipe from './GenerateRecipe'
 import Recipe from './Recipe'
 import Register from './Register'
 import EditProfile from './EditProfile'
+import ShoppingList from './ShoppingList'
 
 class Nav extends React.Component {
   constructor(props) {
@@ -36,9 +37,12 @@ render() {
               <li className="nav-item">
                 <Link to='/profile' className="nav-link">Profile </Link>
               </li>
-          <li className="nav-item">
-            <Link to='/generateRecipe' className="nav-link">Generate Recipe</Link>
-          </li>
+              <li className="nav-item">
+                <Link to='/generateRecipe' className="nav-link">Generate Recipe</Link>
+              </li>
+              <li className="nav-item">
+                <Link to='/shoppinglist' className="nav-link">Shopping List</Link>
+              </li>
         </ul>
           <ul className="navbar-nav ml-auto">
           <li className="nav-item">
@@ -59,7 +63,7 @@ render() {
     <Route exact path='/recipe' component={Recipe} />
     <Route exact path='/register' component={Register} />
     <Route exact path='/editProfile' component={EditProfile} />
-
+    <Route exact path='/shoppinglist' component={ShoppingList} />
 
     </div>
 
