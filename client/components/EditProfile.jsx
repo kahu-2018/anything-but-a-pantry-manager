@@ -28,15 +28,16 @@ class EditProfile extends React.Component {
     return (
       <div>
         <form>
-          <div className="form-group">
+          <div className="col-sm-3">
             <label className="first_name">First name:</label>
             <input type="first_name" className="form-control" id="first_name" />
           </div>
-          <div className="form-group">
+          <div className="col-sm-3">
             <label className="last_name">Last name:</label>
             <input type="last_name" className="form-control" id="last_name" />
           </div>
-          <div className="form-group">
+
+          <div className="col-sm-3">
             <label className="dietary_restrictions">Dietary requirements:</label>
             <input type="dietary_restrictions" className="form-control" id="dietary_restrictions" />
           </div>
