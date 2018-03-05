@@ -18,8 +18,8 @@ class GenerateRecipe extends React.Component{
       noRecipe: null,
       selectedIngredients: null,
       buttonInfo: [
-        {value: 'One Recipe', page: OneRecipe, isToggled: true},
-        {value: 'Random Recipe', page: RandomRecipe, isToggled: false},
+        {value: 'One Recipe', page: OneRecipe, isToggled: false},
+        {value: 'Random Recipe', page: RandomRecipe, isToggled: true},
         {value: 'Weekly List', page: WeeklyOptions, isToggled: false},
         {value: 'Food with Friends', page: FoodWithFriends, isToggled: false}
       ]

@@ -10,7 +10,7 @@ function Recipe ({recipes}) {
   return recipes.length > 0
     ? <div className='centered'>
     <img className='img' src={randomRecipe.thumbnail} alt="food" />
-    <h4 className='greenText'>{randomRecipe.title} <i class="pink fas fa-heart"></i></h4>
+    <h4 className='greenText'>{randomRecipe.title} <i className="pink fas fa-heart"></i></h4>
     <button className="btn btn-sm btn-outline-green btn-block mb-3" onClick={addToMealplan}>Add to Shopping List</button>
     <a target="_blank" href={randomRecipe.href}><button className="btn btn-sm btn-outline-green btn-block mb-3">Go to Recipe</button></a>
     </div>
