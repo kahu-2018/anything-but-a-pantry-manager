@@ -28,6 +28,7 @@ class EditProfile extends React.Component {
     return (
       <div>
         <form>
+          <img className='headerImage' src="images/pantry-to-plate-sml.jpg" alt='header'/>
           <div className="col-sm-3">
             <label className="first_name font-p">First name:</label>
             <input type="first_name" className="form-control font-pLato backgroundForm" id="first_name" />
