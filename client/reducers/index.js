@@ -12,6 +12,10 @@ export default combineReducers({
   recipes,
   user,
   dietaryRestrictions,
+<<<<<<< HEAD
   mealplan,
+=======
+  mealplan
+>>>>>>> Pantry global state updated woop
   pantry
 })
