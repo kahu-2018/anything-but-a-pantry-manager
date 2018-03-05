@@ -8,14 +8,14 @@ function requestLogin () {
   }
 }
 
-export function loginSuccess (user) {
+function loginSuccess (user) {
   return {
     type: 'LOGIN_SUCCESS',
     user
   }
 }
 
-export function loginFailure (message) {
+function loginFailure (message) {
   return {
     type: 'LOGIN_FAILURE',
     message
@@ -24,8 +24,7 @@ export function loginFailure (message) {
 
 export function loginRetype () {
   return {
-    type: 'LOGIN_RETYPE',
-    message: ''
+    type: 'LOGIN_RETYPE'
   }
 }
 
