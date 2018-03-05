@@ -1,3 +1,4 @@
+var hash = require('../auth/hash')
 const liveDb = require('./connection')
 
 function getUsers(testDb) {
@@ -62,6 +63,42 @@ function userExists (username, email, testDb) {
     .select('user_name', 'email')
 }
 
+function createUser (first_name, last_name, user_name, email, password, testDb) {
+  const db = testDb || liveDb
+
+  return createAuth(user_name, email, password, testDb)
+    .then((auth_id) => {
+      const image = 'insert cute photo link here'
+      const dietary_restrictions = ''
+      console.log('createUser: auth_id = ', auth_id)
+      return db('users')
+        .insert({first_name, last_name, image, dietary_restrictions, auth_id})
+    })
+}
+
+function createAuth(user_name, email, password, testDb) {
+  const db = testDb || liveDb
+
+  return new Promise ((resolve, reject) => {
+    hash.generateHash(password, (err, hash) => {
+      if (err) {
+        console.log('server/db/createAuth: hash error: ', err)
+        reject(err)
+      }
+      db('auth')
+        .insert({user_name, email, hash})
+        .then(id_arr => {
+          console.log('db_auth: id_arr[0] = ', id_arr[0])
+          resolve(id_arr[0])
+        })
+        .catch(err => {
+          console.log('server/db/createAuth: db error: ', err)
+          reject(err)
+        })
+    })
+  })
+}
+
 
 module.exports = {
   getUsers,
@@ -69,5 +106,6 @@ module.exports = {
   getUser,
   getUserByUsername,
   getUserByUserId,
-  userExists
+  userExists,
+  createUser
 }

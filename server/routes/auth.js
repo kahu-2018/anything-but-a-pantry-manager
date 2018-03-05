@@ -46,9 +46,16 @@ function register (req, res) {
                 }
             }
 
-            res.status(200).json({
-                message: 'Account successfully created'
-            })
+            console.log('server/routes/auth/userExists: password: ', password)
+
+            createUser(first_name, last_name, user_name, email, password)
+                .then(() => {
+                    res.status(200).json({message: 'Account successfully created'})
+                })
+                .catch(err => {
+                    console.log('server/routes/auth/register: createUser Error: ', err)
+                    res.status(500).send({message: "Server Error"})
+                })
         })
         .catch(err => res.status(500).send({message: "Server Error"}))
 
