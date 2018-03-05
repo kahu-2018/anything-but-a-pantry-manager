@@ -21,7 +21,6 @@ class Home extends React.Component {
 
           <div className="container-fluid full-width">
             <h2>Welcome to Pantry to Plate</h2>
-            <h4>Chuck a tag line here!</h4>
             <div className="row">
               <div className="col-sm-3">
                 <p>Have you ever wondered what to do with those pesky ingredients in your pantry that stay at the back? well wonder no more!</p>
