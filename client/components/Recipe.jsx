@@ -12,9 +12,9 @@ function Recipe ({recipes}) {
     <img className='img' src={randomRecipe.thumbnail} alt="food" />
     <h4 className='greenText'>{randomRecipe.title} <i class="pink fas fa-heart"></i></h4>
     <button className="btn btn-sm btn-outline-green btn-block mb-3" onClick={addToMealplan}>Add to Shopping List</button>
-    <button className="btn btn-sm btn-outline-green btn-block mb-3" onClick={randomRecipe.href}>Go to Recipe</button>
+    <a target="_blank" href={randomRecipe.href}><button className="btn btn-sm btn-outline-green btn-block mb-3">Go to Recipe</button></a>
     </div>
-    : <h4>No results returned</h4>
+    : <h4></h4>
 
 }
 

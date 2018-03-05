@@ -17,7 +17,6 @@ export default function auth (state = initialState, action) {
         errorMessage: ''
       }
     case 'LOGIN_SUCCESS':
-    console.log('login success ', action)
       return {
         ...state,
         isFetching: action.isFetching,

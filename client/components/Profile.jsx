@@ -19,7 +19,6 @@ class Profile extends React.Component {
   }
 
   componentWillMount() {
-    console.log('components/Profile:willMount:props: dispatching getUserProfile on id: ', this.props.auth.user.user_id)
     this.props.dispatch(getUserProfile(this.props.auth.user.user_id))
 
   }
@@ -28,9 +27,8 @@ class Profile extends React.Component {
     this.setState({editVisible: !this.state.editVisible
     })
   }
-  
+
   render() {
-    console.log('components/Profile/render: props: ', this.props)
 
     let splitDietaryReq = []
     if (this.props.dietaryRestrictions) {
@@ -61,7 +59,7 @@ class Profile extends React.Component {
                 <h3 className='greenText'>Friends</h3>
                 <input className="btn btn-lg btn-green btn-block mb-3" value="Go to Shopping List" type="submit" />
                 <input className="btn btn-lg btn-green btn-block mb-3" value="History" type="submit" />
-              </div> 
+              </div>
               <div className="col-sm-3">
                 <button className="btn btn-lg btn-green btn-block mb-3">Favorite Recipes</button>
                 <button className="btn btn-sm btn-outline-green btn-block mb-3">Apple Salad</button>
@@ -71,7 +69,7 @@ class Profile extends React.Component {
 
               <div className="col-sm-3 centered">
                 <button className="btn btn-lg btn-green btn-block mb-3">Dietary Requirements</button>
-                {splitDietaryReq.map((food, idx) => 
+                {splitDietaryReq.map((food, idx) =>
                   <p className="centered" key={idx}>{food}</p>
                 )}
 
@@ -96,7 +94,6 @@ class Profile extends React.Component {
 }
 
 const mapStateToProps = (props) => {
-  console.log('profile as props: ', props)
   return {
     auth: props.auth,
     user: props.user,

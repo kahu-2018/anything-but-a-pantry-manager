@@ -26,7 +26,6 @@ class OneRecipe extends React.Component{
     const newState = {...this.state}
     newState.selectedIngredients.push(selectedIngredient)
     this.setState(newState)
-    console.log("newState", newState.selectedIngredients)
   }
 
   showRecipe() {
@@ -38,11 +37,15 @@ class OneRecipe extends React.Component{
     return (
       <div>
         <form onSubmit={this.handleClick}>
-        <input id="inputfood" className="form-control mb-1 font-pLato" placeholder="Ingredients you have" type="text" required autoFocus=""  />
-        <input className="btn btn-lg btn-green btn-block mb-3" value="Add Ingredient" type="submit" />
+          <input id="inputfood" className="form-control mb-1 font-pLato" placeholder="Ingredients you have" type="text" required autoFocus=""  />
+          <input className="btn btn-lg btn-green btn-block mb-3" value="Add Ingredient" type="submit" />
         </form>
+          {this.state.selectedIngredients.map(item => {
+            return <p className='centered font-p'>{item}</p>
+          })
+        }
         <button onClick={this.showRecipe} className="btn btn-lg btn-outline-green btn-block mb-3">Find</button>
-        {this.state.recipeVisible? [<Recipe key="1"/>] : ''}
+          {this.state.recipeVisible? [<Recipe key="1"/>] : ''}
       </div>
 
     )}

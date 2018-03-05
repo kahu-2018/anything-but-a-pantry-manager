@@ -30,8 +30,6 @@ class WeeklyOptions extends React.Component{
     let recipe = this.props.recipes
     let randomNumber = Math.floor(Math.random()*10)
 
-    console.log(randomNumber)
-    console.log(recipe[0])
 
     return (
       <div>
