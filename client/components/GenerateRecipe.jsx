@@ -31,7 +31,6 @@ class GenerateRecipe extends React.Component{
   }
 
   componentWillMount() {
-    console.log('components/GenerateRecipe:willMount:props: dispatching getUserProfile on id: ', this.props.auth.user.user_id)
     this.props.dispatch(getUserProfile(this.props.auth.user.user_id))
 
   }
@@ -49,7 +48,6 @@ class GenerateRecipe extends React.Component{
 
   toggleButton(pageName){
     const {buttonInfo} = this.state
-    console.log('components/GenerateRecipe:buttonInfo: ', buttonInfo)
     const index = buttonInfo.findIndex(item => item.page === pageName)
     buttonInfo[index].isToggled = !buttonInfo[index].isToggled
     this.setState({buttonInfo})
@@ -58,7 +56,6 @@ class GenerateRecipe extends React.Component{
   render() {
     const {isToggled} = this.state
     const {buttonInfo} = this.state
-    console.log('components/GenerateRecipe:render:props:  ', this.props)
 
     return (
       <div>

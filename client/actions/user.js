@@ -3,8 +3,6 @@ import {get} from '../utils/localstorage'
 
 
 function receivedUser(user) {
-  console.log("actions/user/receivedUser: user: ", user)
-  console.log("actions/user/receivedUser: if user: ", user)
   return {
     type: 'RECEIVED_USER',
     user: {...user},
@@ -13,10 +11,7 @@ function receivedUser(user) {
 }
 
 function receivedDietaryRestriction(user) {
-  console.log("actions/user/receivedDietaryRestriction: user: ", user)
-  console.log("actions/user/receivedDietaryRestriction: user.dietary_restrictions: ", user.dietary_restrictions)
   const dietary_restrictions = user.dietary_restrictions
-  console.log("actions/user/receivedDietaryRestriction: dietary_restrictions: ", dietary_restrictions)
   return {
     type: 'RECEIVED_DR',
     dietaryRestrictions: dietary_restrictions
@@ -25,7 +20,6 @@ function receivedDietaryRestriction(user) {
 }
 
 export function getUserProfile(userId) {
-  console.log('actions/user/getUserProfile: userId = ', userId)
   return function (dispatch) {
     const endpoint = 'users/' + userId
     request('get', endpoint)

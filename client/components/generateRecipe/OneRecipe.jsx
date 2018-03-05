@@ -11,39 +11,38 @@ class OneRecipe extends React.Component{
     this.state = {
       recipeVisible: false,
       noRecipe: null,
-      selectedIngredients: null
+      selectedIngredients: []
     }
-    this.handleChange = this.handleChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
+    this.showRecipe = this.showRecipe.bind(this)
 
-  }
-
-  handleChange(e) {
-    this.setState({selectedIngredients: e.target.value})
   }
 
   handleClick(e) {
     e.preventDefault()
+    let target = document.getElementById('inputfood')
+    let selectedIngredient = target.value
+    target.value = ''
+    const newState = {...this.state}
+    newState.selectedIngredients.push(selectedIngredient)
+    this.setState(newState)
+    console.log("newState", newState.selectedIngredients)
+  }
+
+  showRecipe() {
     this.props.dispatch(getRecipes(this.state.selectedIngredients, this.props.dietaryRestrictions))
     this.setState({recipeVisible: true})
-
   }
 
   render() {
-    let recipe = this.props.recipes
-    let randomNumber = Math.floor(Math.random()*10)
-    const randomRecipe = recipe[randomNumber]
-
     return (
       <div>
         <form onSubmit={this.handleClick}>
-        <input id="inputfood" className="form-control mb-1 font-pLato" placeholder="Ingredients you have" name="user_name" type="text" required autoFocus="" onKeyPress={this.handleButtonPress} onChange={this.handleChange}/>
-        <input className="btn btn-lg btn-green btn-block mb-3" value="Add ingredient" type="submit" />
-        <input className="btn btn-lg btn-outline-green btn-block mb-3" value='Find' type="submit" />
-
-          {this.state.recipeVisible? [<Recipe />, <Recipe />] : ''}
-
-      </form>
+        <input id="inputfood" className="form-control mb-1 font-pLato" placeholder="Ingredients you have" type="text" required autoFocus=""  />
+        <input className="btn btn-lg btn-green btn-block mb-3" value="Add Ingredient" type="submit" />
+        </form>
+        <button onClick={this.showRecipe} className="btn btn-lg btn-outline-green btn-block mb-3">Find</button>
+        {this.state.recipeVisible? [<Recipe key="1"/>] : ''}
       </div>
 
     )}
