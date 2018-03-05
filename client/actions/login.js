@@ -8,7 +8,7 @@ function requestLogin () {
   }
 }
 
-export function receiveLogin (user) {
+export function loginSuccess (user) {
   return {
     type: 'LOGIN_SUCCESS',
     user
@@ -35,7 +35,7 @@ export function loginUser (creds) {
     return request('post', 'auth/login', creds)
       .then((response) => {
         const userInfo = saveUserToken(response.body.token)
-        dispatch(receiveLogin(userInfo))
+        dispatch(loginSuccess(userInfo))
         document.location = "/#/generateRecipe"
       })
       .catch(err => {
