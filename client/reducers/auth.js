@@ -4,7 +4,7 @@ const initialState = {
   isFetching: false,
   isAuthenticated: isAuthenticated(),
   user: getUserTokenInfo(),
-  errorMessage: ''
+  message: ''
 }
 
 export default function auth (state = initialState, action) {
@@ -14,43 +14,45 @@ export default function auth (state = initialState, action) {
         ...state,
         isFetching: action.isFetching,
         isAuthenticated: action.isAuthenticated,
-        errorMessage: ''
+        message: action.message
       }
     case 'LOGIN_SUCCESS':
       return {
         ...state,
         isFetching: action.isFetching,
         isAuthenticated: action.isAuthenticated,
-        user: {...action.user}
+        user: {...action.user},
+        message: action.message
       }
     case 'LOGIN_FAILURE':
       return {
         ...state,
         isFetching: action.isFetching,
         isAuthenticated: action.isAuthenticated,
-        errorMessage: action.message
+        message: action.message
       }
     case 'LOGOUT_SUCCESS':
       return {
         ...state,
         isFetching: action.isFetching,
         isAuthenticated: action.isAuthenticated,
-        user: action.user
+        user: action.user,
+        message: action.message
       }
-    // case 'REGISTER_REQUEST':
-    //   return {
-    //     ...state,
-    //     isFetching: true,
-    //     isAuthenticated: false,
-    //     errorMessage: ''
-    //   }
-    // case 'REGISTER_FAILURE':
-    //   return {
-    //     ...state,
-    //     isFetching: false,
-    //     isAuthenticated: false,
-    //     errorMessage: action.message
-    //   }
+    case 'REGISTER_REQUEST':
+      return {
+        ...state,
+        isFetching: action.isFetching,
+        isAuthenticated: action.isAuthenticated,
+        message: action.message
+      }
+    case 'REGISTER_FAILURE':
+      return {
+        ...state,
+        isFetching: action.isFetching,
+        isAuthenticated: action.isAuthenticated,
+        message: action.message
+      }
     default:
       return state
   }

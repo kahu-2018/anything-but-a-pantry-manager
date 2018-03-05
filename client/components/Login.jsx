@@ -38,7 +38,7 @@ class Login extends React.Component {
             <div className="center-column text-center">
                 <form onSubmit={this.submit}>
                     <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-                    {auth.errorMessage && <span className="text-green display-5">{auth.errorMessage}</span>}
+                    {auth.message && <div className="text-danger display-5 mb-1">{auth.message}</div>}
                     <label htmlFor="inputUsername" className="sr-only inputBackground font-p">Email address</label>
                     <input id="inputUsername" className="form-control mb-1 font-pLato" placeholder="User name" name="user_name" type="text" required autoFocus="" onChange={this.updateDetails} />
                     <label htmlFor="inputPassword" className="sr-only font-p">Password</label>
