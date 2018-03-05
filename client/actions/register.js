@@ -39,7 +39,6 @@ export function registerUser (creds) {
         }
       })
       .catch(err => {
-        console.log('registerFailure: err= ', err)
         dispatch(registerFailure(err.response.body.message))
       })
 

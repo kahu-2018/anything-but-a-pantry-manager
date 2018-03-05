@@ -68,14 +68,6 @@ class Register extends React.Component {
 
         let { first_name, last_name, user_name, email, password, confirm_password } = this.state
 
-        console.log('Register submit:',
-            '\n\tfist_name: ', first_name,
-            '\n\tlast_name: ', last_name,
-            '\n\tuser_name: ', user_name,
-            '\n\temail: ', email,
-            '\n\tpassword:', password,
-            '\n\confirm_password:', confirm_password)
-
         if (confirm_password != password) {
             this.props.dispatch(registerFailure("Passwords do not match"))
             this.setState({
