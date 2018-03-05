@@ -34,12 +34,12 @@ class Register extends React.Component {
     }
 
     showModal() {
-        $('#regModal').modal() // note: jQuery code to launch bootstrap modal
+        $('#regModal').modal('show') // note: jQuery code to launch bootstrap modal
     }
 
     modalPopup() { // note: bootstrap modal
-        let title = this.props.auth.message
-        let msg = 'Please proceed to Sign In';
+        let title = 'SUCCESS'
+        let msg = 'Account Created!!  Please proceed to Sign In';
 
         return (
         <div className="modal fade" id="regModal" tabIndex="-1" role="dialog" aria-labelledby="registrationModalTitle" aria-hidden="true">
@@ -53,6 +53,7 @@ class Register extends React.Component {
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-lg btn-green btn-center" data-dismiss="modal" onClick={()=>{
+                            $('#regModal').modal('hide')
                             this.props.history.push('/Login')
                         }}>&nbsp;Ok&nbsp;</button>
                     </div>
