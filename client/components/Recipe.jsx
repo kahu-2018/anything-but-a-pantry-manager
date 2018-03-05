@@ -24,8 +24,8 @@ function Recipe ({recipes, dispatch}) {
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,
-    recipes: state.recipes,
-    mealplan: state.mealplan
+    mealplan: state.mealplan,
+    recipes: state.recipes.recipes
   }
 }
 
