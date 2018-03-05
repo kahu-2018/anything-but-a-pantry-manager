@@ -34,11 +34,9 @@ export function registerUser (creds) {
       .post('/api/auth/register')
       .send(creds)
       .then(res => {
-        console.log('register successful: res = ', res)
-        console.log('register successful: res.body.message= ', res.body.message)
-        dispatch(registerSuccess(res.body.message))
-        // const userInfo = saveUserToken(res.body.token)
-        // document.location = "/#/"
+        if (res) {
+          dispatch(registerSuccess(res.body.message))
+        }
       })
       .catch(err => {
         console.log('registerFailure: err= ', err)
