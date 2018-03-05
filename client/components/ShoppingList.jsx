@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 function ShoppingList(props) {
   console.log('props', props)
 
-  function ingredientList(recipes) {
+//Pull ingredients out of meal plan recipes
+  function mealplanIngredients(recipes) {
     return props.recipes.reduce((arr, {ingredients}) =>
     {
       let ingrArr= ingredients.split(', ')
@@ -14,15 +15,24 @@ function ShoppingList(props) {
     , [])
   }
 
-  let duplicatesList = ingredientList(props.recipes)
+//Remove duplicate ingredients and create count for each
+  let noDuplicates = mealplanIngredients(props.recipes)
+  let count = {}
+  noDuplicates.forEach((ingredient) => count[ingredient] = (count[ingredient] || 0)+1)
 
-  let ingredients = Array.from(new Set(duplicatesList))
+//Transform count object into array
+  let ingredientList= Object.keys(count).map((ingredient) => ({ingredient: ingredient, count: count[ingredient]}))
+
+
+  console.log('count', count)
+  console.log('noDuplicates', noDuplicates)
+
 
   return (
     <div>
       <h1>My Shopping List</h1>
       <div className={(props.recipes == 0) ? 'hide' : 'show' }>
-        {ingredients.map(ingredient =><li>{ingredient}</li>)}
+        {ingredientList.map(ingredient =><li>{ingredient.ingredient}: {ingredient.count}</li>)}
       </div>
 
       <div className={(props.recipes == 0) ? 'show' : 'hide' }>
