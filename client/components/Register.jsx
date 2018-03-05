@@ -18,6 +18,7 @@ class Register extends React.Component {
         this.submit = this.submit.bind(this)
         this.onFocusing = this.onFocusing.bind(this)
         this.showModal = this.showModal.bind(this)
+        this.modalPopup = this.modalPopup.bind(this)
     }
 
     componentDidMount() {
@@ -29,12 +30,15 @@ class Register extends React.Component {
     }
 
     onFocusing(e) {
-        //$('#regModal').modal() // note: jQuery code
         this.props.dispatch(registerRetype()) // clear error message
     }
 
-    showModal() { // note: bootstrap modal
-        let title = 'Account successfully created'
+    showModal() {
+        $('#regModal').modal() // note: jQuery code to launch bootstrap modal
+    }
+
+    modalPopup() { // note: bootstrap modal
+        let title = this.props.auth.message
         let msg = 'Please proceed to Sign In';
 
         return (
@@ -60,8 +64,6 @@ class Register extends React.Component {
 
     submit(e) {
         e.preventDefault()
-        console.log('e.target.password: ', e.target.password)
-        //e.target.reset()
 
         let { first_name, last_name, user_name, email, password, confirm_password } = this.state
 
@@ -147,8 +149,8 @@ class Register extends React.Component {
                 <div className="text-center mb-5">
                     <Link to='./login' className="text-green" href='#'>Already have an account? Sign in here</Link>
                 </div>
-
-                {this.showModal()}
+                {auth.newAccountDone && this.showModal()}
+                {this.modalPopup()}
 
             </div>
         )

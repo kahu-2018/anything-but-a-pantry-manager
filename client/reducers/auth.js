@@ -30,12 +30,12 @@ export default function auth (state = initialState, action) {
         isAuthenticated: false,
         message: action.message
       }
-      case 'LOGIN_RETYPE':
+    case 'LOGIN_RETYPE':
       return {
         ...state,
         isFetching: false,
         isAuthenticated: false,
-        message: action.message
+        message: ''
       }
     case 'LOGOUT_SUCCESS':
       return {
@@ -50,21 +50,32 @@ export default function auth (state = initialState, action) {
         ...state,
         isFetching: true,
         isAuthenticated: false,
-        message: ''
+        message: '',
+        newAccountDone: false
       }
-      case 'REGISTER_RETYPE':
-        return {
-          ...state,
-          isFetching: false,
-          isAuthenticated: false,
-          message: ''
-        }
+    case 'REGISTER_SUCCESS':
+      return {
+        ...state,
+        isFetching: false,
+        isAuthenticated: false,
+        message: action.message,
+        newAccountDone: true
+      }
+    case 'REGISTER_RETYPE':
+      return {
+        ...state,
+        isFetching: false,
+        isAuthenticated: false,
+        message: '',
+        newAccountDone: false
+      }
     case 'REGISTER_FAILURE':
       return {
         ...state,
         isFetching: false,
         isAuthenticated: false,
-        message: action.message
+        message: action.message,
+        newAccountDone: false
       }
     default:
       return state
