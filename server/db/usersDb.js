@@ -48,11 +48,26 @@ function getUserByUserId (id, testDb) {
     })
 }
 
+// Check if username or email has been used
+// to create an account
+function userExists (username, email, testDb) {
+  const db = testDb || liveDb
+
+  username = (username == undefined)? '' : username
+  email = (email == undefined)? '' : email
+
+  return db('auth')
+    .where('user_name', username)
+    .orWhere('email', email)
+    .select('user_name', 'email')
+}
+
 
 module.exports = {
   getUsers,
   getUserByAuthId,
   getUser,
   getUserByUsername,
-  getUserByUserId
+  getUserByUserId,
+  userExists
 }
