@@ -26,7 +26,6 @@ class Login extends React.Component {
     submit(e) {
         e.preventDefault()
         let { user_name, password } = this.state
-        console.log('submit: ', user_name, ' ', password)
         this.props.dispatch(loginUser({user_name, password}))
     }
 

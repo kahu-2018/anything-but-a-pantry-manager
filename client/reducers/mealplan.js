@@ -3,7 +3,6 @@ let initialState = {
 }
 
 function updateMealplan(state=initialState, action) {
-  console.log('state', state)
   let newState={...state}
   switch (action.type) {
     case 'UPDATE_MEALPLAN':
