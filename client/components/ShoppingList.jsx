@@ -49,10 +49,14 @@ const mapStateToProps = (state) => {
     //   {"title":"Spanish Omelet","href":"http://www.cooks.com/rec/view/0,185,153160-249194,00.html","ingredients":"vegetable oil, green pepper, onions, water, milk, eggs, black pepper, mushroom, garlic, salt, chili powder","thumbnail":""},
     //   {"title":"Picnic Omelet Squares Recipe","href":"http://www.cdkitchen.com/recipes/recs/2184/Picnic-Omelet-Squares99498.shtml","ingredients":"eggs, garlic, parmesan cheese, olive oil, onions, peas, potato, red pepper, salt, tomato, zucchini","thumbnail":""}
 <<<<<<< HEAD
+<<<<<<< HEAD
     //]
 =======
     // ]
 >>>>>>> trying to get recipe to work
+=======
+    // ]
+>>>>>>> 6879b74b3c9830bb534da4331a7968c1e13dd498
   }
 }
 
