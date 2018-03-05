@@ -13,7 +13,7 @@ class RandomRecipe extends React.Component{
       selectedIngredients: null,
       dietaryRestrictions: null,
       randomIngredients: [
-        'onion', 'garlic', 'ginger', 'salt', 'pepper', 'tomatoes' ]
+        'onion', 'garlic', 'salt', 'pepper', 'tomatoes' ]
     }
     this.showRecipe = this.showRecipe.bind(this)
   }
@@ -22,19 +22,19 @@ class RandomRecipe extends React.Component{
     let randomNumber = Math.floor(Math.random()*6)
     this.setState({selectedIngredients: this.state.randomIngredients[randomNumber]})
   }
-
-
+  
+  
   showRecipe() {
     this.props.dispatch(getRecipes(this.state.selectedIngredients, this.props.dietaryRestrictions))
     this.setState({recipeVisible: true})
   }
-
+  
   render() {
-    console.log(this.state.selectedIngredients)
     return (
       <div>
-        <button onClick={this.showRecipe} className="btn btn-lg btn-outline-green btn-block mb-3">Find</button>
-          {this.state.recipeVisible? [<Recipe key="1"/>] : ''}
+        <button onClick={this.showRecipe} className="btn btn-lg btn-outline-green btn-block mb-3">Find New</button>
+          <div>{this.state.recipeVisible? <Recipe key="1"/> : ''}</div>
+          <div className={this.props.isSearching ? 'show' : 'hide'}>Searching</div>
       </div>
     )
   }
@@ -43,9 +43,10 @@ class RandomRecipe extends React.Component{
 const mapStateToProps = (props) => {
   return {
     auth: props.auth,
-    recipes: props.recipes,
+    recipes: props.recipes.recipes,
     user: props.user,
-    dietaryRestrictions: props.dietaryRestrictions
+    dietaryRestrictions: props.dietaryRestrictions,
+    isSearching: props.recipes.isSearching
 
   }
 }

@@ -1,3 +1,4 @@
+var hash = require('../auth/hash')
 const liveDb = require('./connection')
 
 function getUsers(testDb) {
@@ -48,11 +49,59 @@ function getUserByUserId (id, testDb) {
     })
 }
 
+// Check if username or email has been used
+// to create an account
+function userExists (username, email, testDb) {
+  const db = testDb || liveDb
+
+  username = (username == undefined)? '' : username
+  email = (email == undefined)? '' : email
+
+  return db('auth')
+    .where('user_name', username)
+    .orWhere('email', email)
+    .select('user_name', 'email')
+}
+
+function createUser (first_name, last_name, user_name, email, password, testDb) {
+  const db = testDb || liveDb
+
+  return createAuth(user_name, email, password, testDb)
+    .then((auth_id) => {
+      const image = 'insert cute photo link here'
+      const dietary_restrictions = ''
+      return db('users')
+        .insert({first_name, last_name, image, dietary_restrictions, auth_id})
+    })
+}
+
+function createAuth(user_name, email, password, testDb) {
+  const db = testDb || liveDb
+
+  return new Promise ((resolve, reject) => {
+    hash.generateHash(password, (err, hash) => {
+      if (err) {
+        reject(err)
+      }
+      db('auth')
+        .insert({user_name, email, hash})
+        .then(id_arr => {
+          resolve(id_arr[0])
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
+  })
+}
+
 
 module.exports = {
   getUsers,
   getUserByAuthId,
   getUser,
   getUserByUsername,
-  getUserByUserId
+  getUserByUserId,
+  userExists,
+  createUser
 }

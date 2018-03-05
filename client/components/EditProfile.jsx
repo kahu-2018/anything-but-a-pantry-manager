@@ -3,18 +3,18 @@ import {connect} from 'react-redux'
 
 import {editProfileRequest} from '../actions/user'
 
-
 class EditProfile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       oldProfile: props.profile,
-      newProfile: props.profile
+      newProfile: props.profile,
+      dietaryRestrictions: ['Dairy-free', 'Vegan', 'Gluten-free', 'Vegetarian', 'Paleo', 'Egg-free', 'Nut-allergy', 'Peanut-allergy', 'Soy-free']
     }
     this.updateProfileDetails = this.updateProfileDetails.bind(this)
     this.submitEdit = this.submitEdit.bind(this)
   }
-  updateProfileDetails (event) {
+  updateProfileDetails(event) {
     let {newProfile} = this.state
     newProfile[event.target.name] = event.target.value
     this.setState({newProfile})
@@ -31,30 +31,26 @@ class EditProfile extends React.Component {
           <img className='headerImage' src="images/pantry-to-plate-sml.jpg" alt='header'/>
           <div className="col-sm-3">
             <label className="first_name font-p">First name:</label>
-            <input type="first_name" className="form-control font-pLato backgroundForm" id="first_name" />
+            <input type="first_name" className="form-control font-pLato backgroundForm" id="first_name"/>
           </div>
           <div className="col-sm-3">
             <label className="last_name font-p">Last name:</label>
-            <input type="last_name " className="form-control font-pLato backgroundForm" id="last_name" />
+            <input type="last_name " className="form-control font-pLato backgroundForm" id="last_name"/>
           </div>
 
           <div className="col-sm-3">
-            <label className="dietary_restrictions font-p">Dietary requirements:</label>
-            <input type="dietary_restrictions" className="form-control font-pLato backgroundForm" id="dietary_restrictions" />
-
-          </div>
+            <h4>Dietary Restrictions</h4>
+            {this.state.dietaryRestrictions.map(item => {
+              return <div className="checkbox">
+                <label><input type="checkbox" value=""/>{item}</label>
+              </div>
+            })
+            }
+            </div>
+          </form>
             <button type="edit" className="btn btn-lg btn-green btn-block text-center center-column mb-3" onClick={this.submitEdit}>Submit</button>
-          <br />
-          <br />
-       </div>
-       <div className="row justify-content-around">
 
-  </div>
-</div>
-</div>
-</div>
-</form>
-</div>
+      </div>
     )
   }
 }

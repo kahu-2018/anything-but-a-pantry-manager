@@ -4,41 +4,41 @@ import { saveUserToken } from '../utils/auth'
 
 function requestLogin () {
   return {
-    type: 'LOGIN_REQUEST',
-    isFetching: true,
-    isAuthenticated: false
+    type: 'LOGIN_REQUEST'
   }
 }
 
-export function receiveLogin (user) {
+function loginSuccess (user) {
   return {
     type: 'LOGIN_SUCCESS',
-    isFetching: false,
-    isAuthenticated: true,
     user
   }
 }
 
-export function loginError (message) {
+function loginFailure (message) {
   return {
     type: 'LOGIN_FAILURE',
-    isFetching: false,
-    isAuthenticated: false,
     message
+  }
+}
+
+export function loginRetype () {
+  return {
+    type: 'LOGIN_RETYPE'
   }
 }
 
 export function loginUser (creds) {
   return dispatch => {
-    dispatch(requestLogin(creds))
+    dispatch(requestLogin())
     return request('post', 'auth/login', creds)
       .then((response) => {
         const userInfo = saveUserToken(response.body.token)
-        dispatch(receiveLogin(userInfo))
+        dispatch(loginSuccess(userInfo))
         document.location = "/#/generateRecipe"
       })
       .catch(err => {
-        dispatch(loginError(err.response.body.message))
+        dispatch(loginFailure(err.response.body.message))
       })
   }
 }

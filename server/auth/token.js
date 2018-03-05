@@ -30,7 +30,7 @@ function verifyLogin(req, res) {
         } else {
           var token = createToken(user, process.env.JWT_SECRET)
           console.log('verifyLogin: token issued')
-          res.json({
+          res.status(200).json({
             message: 'Authentication successful',
             token
           })

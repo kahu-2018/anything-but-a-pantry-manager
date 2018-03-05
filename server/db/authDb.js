@@ -1,5 +1,14 @@
 const liveDb = require('./connection')
 
+
+/*
+// Brian's Note: 
+// This file need to be removed. Both User and Auth Table should be in
+// usersDb.test.js // and usersDb.js. The query should be done using 
+// join table if need both data from Users and Auth table
+*/
+
+
 function getAuthById(id, testDb) {
   const db = testDb || liveDb
 

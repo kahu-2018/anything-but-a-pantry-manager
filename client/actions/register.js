@@ -1,17 +1,46 @@
 import request from 'superagent'
 import {saveUserToken} from '../utils/auth'
-import {receiveLogin, loginError} from './login'
 
-export function registerUserRequest (creds) {
+function requestRegister () {
+  return {
+    type: 'REGISTER_REQUEST'
+  }
+}
+
+export function registerSuccess (message) {
+  return {
+    type: 'REGISTER_SUCCESS',
+    message
+  }
+}
+
+export function registerFailure (message) {
+  return {
+    type: 'REGISTER_FAILURE',
+    message
+  }
+}
+
+export function registerRetype () {
+  return {
+    type: 'REGISTER_RETYPE'
+  }
+}
+
+export function registerUser (creds) {
   return (dispatch) => {
+    dispatch(requestRegister())
     request
       .post('/api/auth/register')
       .send(creds)
       .then(res => {
-        const userInfo = saveUserToken(res.body.token)
-        dispatch(receiveLogin(userInfo))
-        document.location = "/#/"
+        if (res) {
+          dispatch(registerSuccess(res.body.message))
+        }
       })
-      .catch(err => dispatch(loginError(err.response.body.message)))
+      .catch(err => {
+        dispatch(registerFailure(err.response.body.message))
+      })
+
   }
 }
