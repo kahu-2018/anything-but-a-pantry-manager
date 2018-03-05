@@ -44,7 +44,7 @@ class OneRecipe extends React.Component{
             return <p className='centered font-p'>{item}</p>
           })
         }
-        <button onClick={this.showRecipe} className="btn btn-lg btn-outline-green btn-block mb-3">Find</button>
+        <button onClick={this.showRecipe} className="btn btn-lg btn-outline-green btn-block mb-3">Find New</button>
           {this.state.recipeVisible? [<Recipe key="1"/>] : ''}
       </div>
 

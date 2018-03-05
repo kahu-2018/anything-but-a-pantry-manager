@@ -37,7 +37,7 @@ class FoodWithFriends extends React.Component{
         </div>
         <input id="inputfood" className="form-control mb-1 font-pLato" placeholder="Ingredients you have" name="user_name" type="text" required autoFocus="" onKeyPress={this.handleButtonPress} onChange={this.handleChange}/>
         <input className="btn btn-lg btn-green btn-block mb-3" value="Add ingredient" type="submit" />
-        <input className="btn btn-lg btn-outline-green btn-block mb-3" value='Find' type="submit" />
+        <input className="btn btn-lg btn-outline-green btn-block mb-3" value='Find New' type="submit" />
       </div>
     )}
 }
