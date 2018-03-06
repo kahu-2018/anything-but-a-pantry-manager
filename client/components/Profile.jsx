@@ -61,15 +61,15 @@ class Profile extends React.Component {
 
           <div className="row">
               <div className="col-sm-3 centered">
-                <img className='profileImage' src='./images/kubz.jpg' alt='profile image'/>
-                <h3 className='greenText'>{username}</h3>
-                <p>{email}</p>
+                <img className='profileImage' src={this.props.user.image} alt='profile image'/>
+                <h3 className='greenText'>{this.props.auth.user.user_name}</h3>
+                <p>{this.props.auth.user.email}</p>
                 <h3 className='greenText'>Friends</h3>
                 <input className="btn btn-lg btn-green btn-block mb-3" value="Go to Shopping List" type="submit" />
                 <input className="btn btn-lg btn-green btn-block mb-3" value="History" type="submit" />
               </div>
               <div className="col-sm-3">
-                <button className="btn btn-lg btn-green btn-block mb-3">Favorite Recipes</button>
+                <button className="btn btn-lg btn-green btn-block mb-3">Favourite Recipes</button>
                 <button className="btn btn-sm btn-outline-green btn-block mb-3">Apple Salad</button>
                 <button className="btn btn-sm btn-outline-green btn-block mb-3">Raw Apple Pie</button>
                 <button className="btn btn-sm btn-outline-green btn-block mb-3">Pizza Crusts</button>
@@ -81,8 +81,8 @@ class Profile extends React.Component {
                   <p className="centered" key={idx}>{food}</p>
                 )}
 
-                  <h4 className ='greenText'>I Love</h4>
-                  <p>Apples</p>
+                  <h4 className ='greenText'>Food I Love</h4>
+                  <p>{this.props.user.favourite_food}</p>
 
               </div>
               <div className="col-sm-3 centered">
@@ -90,12 +90,6 @@ class Profile extends React.Component {
                 {this.props.pantry ? this.props.pantry.map((ingredient, idx) => {
                     <li key="idx">{ingredient.name_of_food[0].toUpperCase()+ ingredient.name_of_food.substring(1)
                     }</li>}) : <p>Pantry loading</p>}
-
-
-                <h4 className ='greenText'>Fresh</h4>
-                <p>Food</p>
-                <h4 className ='greenText'>Dairy</h4>
-                <p>Food</p>
               </div>
           </div>
          </div>
