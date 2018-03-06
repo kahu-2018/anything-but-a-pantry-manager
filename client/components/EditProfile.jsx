@@ -31,9 +31,9 @@ class EditProfile extends React.Component {
     this.props.dispatch(getPantry())
     if (this.props.auth.user) {
       this.props.dispatch(getUserProfile(this.props.auth.user.user_id))
-    }   
+    }
   }
-  
+
   updateProfileDetails(e) {
     this.user[e.target.name] = e.target.value
   }
@@ -153,9 +153,9 @@ class EditProfile extends React.Component {
             <div className="col-sm-3">
               <h4 className="greenText centered">Pantry</h4>
               <form onSubmit={this.handlePantryFoods}>
-                {this.props.pantry.length > 0 ? this.props.pantry.map((ingredient, index) =><li>{ingredient.name_of_food[0].toUpperCase()+ingredient.name_of_food.substring(1)}
-                  <button onClick={() => this.removePantryItem(ingredient)}>Remove</button></li>) : <p>Pantry is empty</p>}
-                <input autoComplete="off" id="pantry" className="form-control mb-1 font-pLato" placeholder="Add Pantry Item" type="text" autoFocus="" />
+                {this.props.pantry.length > 0 ? this.props.pantry.map((ingredient, index) =><li>{ingredient.name_of_food[0].toUpperCase()+ingredient.name_of_food.substring(1)} &nbsp;
+                  <button onClick={() => this.removePantryItem(ingredient)}>x</button></li>) : <p>Pantry is empty</p>}
+                <input autoComplete="off" id="pantry" className="btn form-control mb-1 font-pLato" placeholder="Add Pantry Item" type="text" autoFocus="" />
                 <input className="btn btn-lg btn-green btn-block mb-3" value="Add Ingredient" type="submit" />
               </form>
             </div>
