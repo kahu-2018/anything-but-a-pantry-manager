@@ -30,7 +30,6 @@ class GenerateRecipe extends React.Component{
     this.handleClick = this.handleClick.bind(this)
     this.toggleButton = this.toggleButton.bind(this)
     this.toggleButtons = this.toggleButtons.bind(this)
-
   }
 
   componentWillMount() {

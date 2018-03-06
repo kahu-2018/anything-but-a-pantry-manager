@@ -9,13 +9,6 @@ function receiveRecipes(recipes) {
   }
 }
 
-// function receiveRecipe(recipe) {
-//   return {
-//     type: 'RECEIVE_RECIPE',
-//     recipe,
-//   }
-// }
-
 function requestRecipes() {
   return {
     type: 'REQUEST_RECIPES',
@@ -33,7 +26,6 @@ export function getRecipes (pantryIngredients, dietaryRestrictions) {
     })
     .catch((err, res) => {
       console.log('error', err)
-      //(err, res.body)
     })
   }
 }
