@@ -15,9 +15,8 @@ class EditProfile extends React.Component {
       pantry: []
     }
 
-    console.log('EditProfile:props: ', props)
-    this.props = props
     this.user = {}
+    this.props = props
     this.updateProfileDetails = this.updateProfileDetails.bind(this)
     this.submitEdit = this.submitEdit.bind(this)
     this.handleFavoriteFoods = this.handleFavoriteFoods.bind(this)
@@ -32,16 +31,15 @@ class EditProfile extends React.Component {
   }
 
   updateProfileDetails(e) {
-    if (!this.user) {
-      this.user = {...this.props.user}
-    }
     this.user[e.target.name] = e.target.value
-    console.log('updateProfileDetails: e.target.name=', e.target.name, ' value=', this.user[e.target.name])
   }
 
-  submitEdit(event) {
-    event.preventDefault()
-    this.props.dispatch(editProfileRequest(this.state.profile))
+  submitEdit(e) {
+    e.preventDefault()
+    if (this.props.user) {
+      this.props.dispatch(editProfileRequest(this.props.user.id, this.user))
+    }
+    this.props.history.push('/Profile')
   }
 
   handleFavoriteFoods(e) {
@@ -94,7 +92,7 @@ class EditProfile extends React.Component {
               <h1 className='greenText'>Edit Profile </h1>
             </div>
             <div className='col-sm-3'>
-              <Link to='/profile'><input className="btn btn-md btn-green float-right" value="save" type="submit" /></Link>
+              <Link to='/profile'><input className="btn btn-md btn-green float-right" value="save" type="submit" onClick={this.submitEdit}/></Link>
             </div>
           </div>
           <div className="row">
@@ -118,16 +116,16 @@ class EditProfile extends React.Component {
             <br/>
               <form>
                 <label className="first_name font-p">First name:</label>
-                <input type="first_name" className="form-control font-pLato backgroundForm" id="first_name" defaultValue={firstName} onChange={this.updateProfileDetails} />
+                <input id="editFirstName" type="first_name" className="form-control font-pLato backgroundForm" name="first_name" defaultValue={firstName} onChange={this.updateProfileDetails} />
                 <label className="last_name font-p">Last name:</label>
-                <input type="last_name " className="form-control font-pLato backgroundForm" id="last_name" defaultValue={lastName} onChange={this.updateProfileDetails}/>
+                <input id="editLastName" type="last_name " className="form-control font-pLato backgroundForm" name="last_name" defaultValue={lastName} onChange={this.updateProfileDetails}/>
               </form>
               <form>
                 <br />
                 <h4 className="greenText">Dietary Restrictions</h4>
                 {dietaryRestrictions.map((item, idx) => {
                   return <div className="checkbox" key={idx}>
-                    <label><input type="checkbox" value="" />{item}</label>
+                    <label><input type="checkbox" value={item} />{item}</label>
                   </div>
                 })
                 }

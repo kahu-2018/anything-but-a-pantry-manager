@@ -72,6 +72,10 @@ function createUser (first_name, last_name, user_name, email, password, testDb) 
       const dietary_restrictions = ''
       return db('users')
         .insert({first_name, last_name, image, dietary_restrictions, auth_id})
+        .catch(err => {
+          console.log('usersDb: createUser error: ', err.message)
+          reject(err)
+        })
     })
 }
 
@@ -89,10 +93,27 @@ function createAuth(user_name, email, password, testDb) {
           resolve(id_arr[0])
         })
         .catch(err => {
+          console.log('usersDb:createAuth error: ', err.message)
           reject(err)
         })
     })
   })
+}
+
+
+function updateUserByUserId (id, data, testDb) {
+  if (!id) return null
+  const db = testDb || liveDb
+
+  return db('users').where('id', id)
+    .update(
+      data
+    )
+    .catch(err => {
+      console.log('userDb: updateUserByUserId error: ', err.message)
+      reject(err)
+    })
+
 }
 
 
@@ -103,5 +124,6 @@ module.exports = {
   getUserByUsername,
   getUserByUserId,
   userExists,
-  createUser
+  createUser,
+  updateUserByUserId
 }
