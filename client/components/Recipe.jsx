@@ -9,7 +9,6 @@ function Recipe ({recipes, dispatch, recipe}) {
   const handleClick = (recipe) => dispatch(addToMealplan(recipe))
   let randomNumber = Math.floor(Math.random()*recipes.length)
   const randomRecipe = Object.keys(recipe).length < 1 ? recipes[randomNumber] : recipe
-  console.log({randomRecipe, recipe, keys: Object.keys(recipe)})
   const saveRandomRecipe = (recipe) => dispatch(getChosenRecipe(recipe))
 
   return recipes.length > 0
