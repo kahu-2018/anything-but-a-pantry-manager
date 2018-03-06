@@ -30,7 +30,6 @@ class Profile extends React.Component {
 
   render() {
 
-    console.log('pantry outside Map', this.props.pantry)
     let pantryList = this.props.pantry
 
     let splitDietaryReq = []
