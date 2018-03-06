@@ -43,7 +43,6 @@ class OneRecipe extends React.Component{
   }
 
   removeItem(item) {
-    console.log('item', item)
     let newList = this.state.selectedIngredients.filter(ingredient => ingredient !== item)
     this.setState({selectedIngredients: newList})
   }
