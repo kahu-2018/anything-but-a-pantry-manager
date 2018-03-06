@@ -4,7 +4,7 @@ function receivePantry(state=[], action) {
     case 'RECEIVE_PANTRY':
       return [...action.pantry]
 
-      case 'DELETE_ITEM':
+      case 'DELETE_PANTRY_ITEM':
         return [...newState].filter(ingredient => ingredient.id !== action.ingredient.id)
 
     default:

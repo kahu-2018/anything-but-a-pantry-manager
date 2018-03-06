@@ -9,7 +9,7 @@ function receivePantry(pantry) {
 
 function deleteItem(ingredient) {
   return {
-    type: 'DELETE_ITEM',
+    type: 'DELETE_PANTRY_ITEM',
     ingredient
   }
 }
