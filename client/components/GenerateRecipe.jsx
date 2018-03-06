@@ -61,7 +61,6 @@ class GenerateRecipe extends React.Component{
   toggleButtons(pageName){
     const {buttonInfo} = this.state
     const index = buttonInfo.findIndex(item => item.value === pageName)
-    console.log("index", buttonInfo[index])
     buttonInfo.map(info => {
       info.value === pageName? info.isToggled = true : info.isToggled = false
     })
