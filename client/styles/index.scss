@@ -150,3 +150,8 @@ a:active {
 .strikethrough:checked + span{
   text-decoration: line-through;
 }
+
+.marginZero {
+  margin: 0 !important;
+  padding: 0 !important;
+}
