@@ -18,18 +18,34 @@ class Nav extends React.Component {
     super(props)
     this.state = {
     }
-    this.LoginLink = this.LoginLink.bind(this)
-    this.LogoutLink = this.LogoutLink.bind(this)
+    this.mainMenu = this.mainMenu.bind(this)
+    this.loginLink = this.loginLink.bind(this)
+    this.logoutLink = this.logoutLink.bind(this)
   }
 
-  LoginLink() {
+  mainMenu() {
+    return (
+      <ul className="navbar-nav mr-auto">
+        <li className="nav-item">
+          <Link to='/profile' className="nav-link">Profile </Link>
+        </li>
+        <li className="nav-item">
+          <Link to='/generateRecipe' className="nav-link">Generate Recipe</Link>
+        </li>
+        <li className="nav-item">
+          <Link to='/shoppinglist' className="nav-link">Shopping List</Link>
+        </li>
+      </ul>
+    )
+  }
+
+  loginLink() {
     return (<Link to='/login' className="nav-link"><i className="fas fa-user-circle faFaFont"></i>Login/Register</Link>)
   }
 
-  LogoutLink() {
+  logoutLink() {
     return (<Link to='/login' className="nav-link" onClick={
       () => {
-        console.log('client/components/Nav/LogoutButton: clicked')
         this.props.dispatch(logoutUser())
       }
     }><i className="fas fa-user-circle faFaFont"></i>Logout</Link>)
@@ -48,22 +64,11 @@ class Nav extends React.Component {
             </button>
 
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul className="navbar-nav mr-auto">
-                <li className="nav-item">
-                  <Link to='/profile' className="nav-link">Profile </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to='/generateRecipe' className="nav-link">Generate Recipe</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to='/shoppinglist' className="nav-link">Shopping List</Link>
-                </li>
-              </ul>
+              {auth.isAuthenticated && this.mainMenu()}
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  {/* <Link to='/login' className="nav-link"><i className="fas fa-user-circle faFaFont"></i>{auth.isAuthenticated ? "Logout" : "login/Register"}</Link> */}
-                  {auth.isAuthenticated && this.LogoutLink()}
-                  {!auth.isAuthenticated && this.LoginLink()}
+                  {auth.isAuthenticated && this.logoutLink()}
+                  {!auth.isAuthenticated && this.loginLink()}
                 </li>
               </ul>
               <form className="form-inline my-2 my-lg-0">

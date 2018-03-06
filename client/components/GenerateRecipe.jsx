@@ -32,7 +32,9 @@ class GenerateRecipe extends React.Component{
   }
 
   componentWillMount() {
-    this.props.dispatch(getUserProfile(this.props.auth.user.user_id))
+    if (this.props.auth.user) {
+      this.props.dispatch(getUserProfile(this.props.auth.user.user_id))
+    }
     this.props.dispatch(getPantry())
   }
 
@@ -71,10 +73,6 @@ class GenerateRecipe extends React.Component{
             }
           </div>
         </div>
-
-
-
-
 
       <div id='footer' target="_blank" className='text-green'>Powered by
         <a href="http://www.recipepuppy.com"> Recipe Puppy</a>
