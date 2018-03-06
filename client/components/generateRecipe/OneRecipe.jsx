@@ -62,21 +62,14 @@ class OneRecipe extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-  console.log("state", state)
   return {
-<<<<<<< HEAD
-    auth: props.auth,
-    recipes: props.recipes,
-    user: props.user,
-    dietaryRestrictions: props.dietaryRestrictions,
-    pantry: props.pantry.pantry
-=======
     auth: state.auth,
     recipes: state.recipes,
     user: state.user,
     dietaryRestrictions: state.dietaryRestrictions,
+    pantry: state.pantry.pantry
     recipe: state.recipe
->>>>>>> fixed recipe refresh
+
   }
 }
 
