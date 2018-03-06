@@ -6,7 +6,6 @@ const { decode } = require('../auth/token')
 const baseUrl = "http://www.recipepuppy.com/api/"
 
 router.get('/', decode, (req, res) => {
-  console.log('server/routes/generateRecipe:\n\tquery-i: ', req.query.i, '\n\tquery-q: ', req.query.q)
   request
   .get(baseUrl)
   .query({
