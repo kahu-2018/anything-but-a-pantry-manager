@@ -30,8 +30,6 @@ class Profile extends React.Component {
 
   render() {
 
-    let pantryList = this.props.pantry
-
     let splitDietaryReq = []
     if (this.props.dietaryRestrictions) {
       splitDietaryReq = this.props.dietaryRestrictions.split(' ')
@@ -81,7 +79,7 @@ class Profile extends React.Component {
               </div>
               <div className="col-sm-3 centered">
                 <button className="btn btn-lg btn-green btn-block mb-3">My Pantry</button>
-                {pantryList ? pantryList.map(entry => <li>{entry.name_of_food}</li>) : <p>Pantry loading</p>}
+                {this.props.pantry ? this.props.pantry.map(ingredient => <li>{ingredient.name_of_food[0].toUpperCase()+ ingredient.name_of_food.substring(1)}</li>) : <p>Pantry loading</p>}
 
 
                 <h4 className ='greenText'>Fresh</h4>
