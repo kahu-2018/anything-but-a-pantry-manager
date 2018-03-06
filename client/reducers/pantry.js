@@ -2,10 +2,12 @@ function receivePantry(state=[], action) {
   let newState = [...state]
   switch(action.type) {
     case 'RECEIVE_PANTRY':
-      return {...action.pantry}
+      console.log(action)
+      return [...action.pantry]
 
       case 'DELETE_ITEM':
-        return [...newState].filter(ingredient => ingredient = !action.ingredient)
+      console.log(action, newState)
+        return [...newState].filter(ingredient => ingredient.id !== action.ingredient.id)
 
     default:
         return state

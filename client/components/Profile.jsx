@@ -101,7 +101,8 @@ const mapStateToProps = (state) => {
     auth: state.auth,
     user: state.user,
     dietaryRestrictions: state.dietaryRestrictions,
-    pantry: state.pantry.pantry
+    pantry: state.pantry
+
   }
 }
 

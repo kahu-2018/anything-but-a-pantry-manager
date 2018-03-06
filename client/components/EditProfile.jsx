@@ -136,7 +136,7 @@ class EditProfile extends React.Component {
             <div className="col-sm-3">
               <h4 className="greenText centered">Pantry</h4>
               <form onSubmit={this.handlePantryFoods}>
-                {this.props.pantry ? this.props.pantry.map((ingredient, index) =><li>{ingredient.name_of_food[0].toUpperCase()+ingredient.name_of_food.substring(1)}
+                {this.props.pantry.length > 0 ? this.props.pantry.map((ingredient, index) =><li>{ingredient.name_of_food[0].toUpperCase()+ingredient.name_of_food.substring(1)}
                   <button onClick={() => this.removePantryItem(ingredient)}>Remove</button></li>) : <p>Pantry is empty</p>}
                 <input autoComplete="off" id="pantry" className="form-control mb-1 font-pLato" placeholder="Add Pantry Item" type="text" autoFocus="" />
                 <input className="btn btn-lg btn-green btn-block mb-3" value="Add Ingredient" type="submit" />
@@ -154,7 +154,9 @@ const mapStateToProps = (state) => {
     auth: state.auth,
     user: state.user,
     dietaryRestrictions: state.dietaryRestrictions,
-    pantry: state.pantry.pantry
+    pantry: state.pantry
+
   }
 }
+
 export default connect(mapStateToProps)(EditProfile)
