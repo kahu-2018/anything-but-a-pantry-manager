@@ -15,7 +15,7 @@ class OneRecipe extends React.Component{
     }
     this.handleClick = this.handleClick.bind(this)
     this.showRecipe = this.showRecipe.bind(this)
-
+    this.handleCheckbox = this.handleCheckbox.bind(this)
   }
 
   handleClick(e) {
@@ -33,15 +33,19 @@ class OneRecipe extends React.Component{
     this.setState({recipeVisible: true})
   }
 
+  handleCheckbox(e) {
+    let selectedIngredient = e.target.value
+    const newState = {...this.state}
+    newState.selectedIngredients.push(selectedIngredient)
+    this.setState(newState)
+  }
+
   render() {
     return (
       <div>
         <form onSubmit={this.handleClick}>
 
-
-
-          {this.props.pantry ? this.props.pantry.map((ingredient, index) =>
-            <div><input type="checkbox" checked={ingredient.checked} />{' '+ingredient.name_of_food[0].toUpperCase()+ ingredient.name_of_food.substring(1)}</div>) : <p>Pantry loading</p>}
+          {this.props.pantry ? this.props.pantry.map((ingredient, index) => <div><input type="checkbox" value={ingredient.name_of_food} onChange={this.handleCheckbox} checked={ingredient.checked} />{' '+ingredient.name_of_food[0].toUpperCase()+ ingredient.name_of_food.substring(1)}</div>) : <p>Pantry loading</p>}
 
           <input autoComplete="off" id="inputfood" className="form-control mb-1 font-pLato" placeholder="Add Another Ingredient" type="text" required autoFocus=""  />
           <input className="btn btn-lg btn-green btn-block mb-3" value="Add Ingredient" type="submit" />
