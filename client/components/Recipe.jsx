@@ -11,7 +11,6 @@ function Recipe ({recipes, dispatch, recipe}) {
   let randomNumber = Math.floor(Math.random()*recipes.length)
   const randomRecipe = Object.keys(recipe).length < 1 ? recipes[randomNumber] : recipe
   const saveRandomRecipe = (recipe) => dispatch(getChosenRecipe(recipe))
-  
 
   return recipes.length > 0
     ? <div className='centered'>
