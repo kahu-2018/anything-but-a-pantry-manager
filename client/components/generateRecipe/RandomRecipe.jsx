@@ -19,6 +19,7 @@ class RandomRecipe extends React.Component{
   }
 
   randomizeNumber() {
+    console.log(this.props.pantry.length)
     let length = this.props.pantry.length
     let randomNumber = Math.floor(Math.random()*length)
     this.setState({selectedIngredient: this.props.pantry[randomNumber]})
@@ -47,14 +48,14 @@ class RandomRecipe extends React.Component{
   }
 }
 
-const mapStateToProps = (props) => {
+const mapStateToProps = (state) => {
   return {
-    auth: props.auth,
-    recipes: props.recipes.recipes,
-    user: props.user,
-    dietaryRestrictions: props.dietaryRestrictions,
-    isSearching: props.recipes.isSearching,
-    pantry: props.pantry.pantry
+    auth: state.auth,
+    recipes: state.recipes.recipes,
+    user: state.user,
+    dietaryRestrictions: state.dietaryRestrictions,
+    isSearching: state.recipes.isSearching,
+    pantry: state.pantry
   }
 }
 
