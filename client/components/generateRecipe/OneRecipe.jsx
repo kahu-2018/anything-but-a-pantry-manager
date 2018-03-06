@@ -17,6 +17,7 @@ class OneRecipe extends React.Component{
     this.showRecipe = this.showRecipe.bind(this)
     this.handleCheckbox = this.handleCheckbox.bind(this)
     this.removeItem = this.removeItem.bind(this)
+    this.onClick = this.onClick.bind(this)
   }
 
   handleClick(e) {
@@ -47,10 +48,14 @@ class OneRecipe extends React.Component{
     this.setState({selectedIngredients: newList})
   }
 
-  render() {
-    console.log('selectedIngredients', this.state.selectedIngredients)
-    return (
+   onClick(e){
+    const recipeName = this.props.buttonInfo[0].value
+    this.props.toggleButtons(recipeName)
+    this.showRecipe()
+  }
 
+  render() {
+    return (
       <div>
         <form onSubmit={this.handleClick}>
 
@@ -65,7 +70,7 @@ class OneRecipe extends React.Component{
               </p>
           })
         }
-        <button onClick={this.showRecipe} className="btn btn-lg btn-outline-green btn-block mb-3">Find New</button>
+        <button onClick={this.onClick} className="btn btn-lg btn-outline-green btn-block mb-3">Find New</button>
           {this.state.recipeVisible? [<Recipe key="1"/>] : ''}
       </div>
 
