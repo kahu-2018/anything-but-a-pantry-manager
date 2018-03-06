@@ -5,14 +5,16 @@ import ReactTooltip from 'react-tooltip'
 import { addToMealplan } from '../actions/mealplan'
 import { getChosenRecipe } from '../actions/recipe'
 
-function Recipe ({recipes, dispatch, recipe}) {
 
   const handleClick = (recipe) => dispatch(addToMealplan(recipe))
   let randomNumber = Math.floor(Math.random()*recipes.length)
   const randomRecipe = Object.keys(recipe).length < 1 ? recipes[randomNumber] : recipe
   const saveRandomRecipe = (recipe) => dispatch(getChosenRecipe(recipe))
 
-  return recipes.length > 0
+
+  render() {
+    return (
+      this.props.recipes.length > 0
     ? <div className='centered'>
       <img className='img' src={randomRecipe.thumbnail} alt="food" />
       <h4 className='greenText'>{randomRecipe.title} <i className="pink fas fa-heart"></i></h4>
@@ -22,6 +24,7 @@ function Recipe ({recipes, dispatch, recipe}) {
     </div>
     : <h4></h4>
 
+  )}
 }
 
 const mapStateToProps = (state) => {
