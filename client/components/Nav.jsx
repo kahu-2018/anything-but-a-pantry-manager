@@ -16,13 +16,11 @@ class Nav extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      loggedIn: false
     }
-    this.isLoggedIn = this.isLoggedIn.bind(this)
   }
-    isLoggedIn() {
-    }
+
 render() {
+  console.log(this.props)
   return (
     <Router>
       <div>
@@ -46,7 +44,7 @@ render() {
         </ul>
           <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <Link to='/login' className="nav-link"><i className="fas fa-user-circle faFaFont"></i>{this.state.loggedIn ? "Logout" : "login/Register"}</Link>
+            <Link to='/login' className="nav-link"><i className="fas fa-user-circle faFaFont"></i>{this.props.auth.isAuthenticated ? "Logout" : "login/Register"}</Link>
             </li>
           </ul>
         <form className="form-inline my-2 my-lg-0">
