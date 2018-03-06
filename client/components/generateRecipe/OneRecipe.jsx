@@ -43,11 +43,13 @@ class OneRecipe extends React.Component{
   }
 
   onClick(e){
-    this.props.toggleButtons()
+    const recipeName = this.props.buttonInfo[0].value
+    this.props.toggleButtons(recipeName)
     this.showRecipe()
   }
 
   render() {
+    const pageName = "OneRecipe"
     return (
       <div>
         <form onSubmit={this.handleClick}>

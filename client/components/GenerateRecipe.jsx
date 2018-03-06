@@ -53,18 +53,20 @@ class GenerateRecipe extends React.Component{
   toggleButton(pageName){
     const {buttonInfo} = this.state
     const index = buttonInfo.findIndex(item => item.page === pageName)
-    buttonInfo[index].isToggled = !buttonInfo[index].isToggled
+    buttonInfo[index].isToggled = true
+    buttonInfo.isToggled = false
     this.setState({buttonInfo})
   }
 
-  toggleButtons(){
+  toggleButtons(pageName){
     const {buttonInfo} = this.state
-    this.state.buttonInfo.map(info => {
-      if(info.value === this.state.buttonInfo.value){
-      } else {
-        this.setState({buttonInfo})
-      })
-  }
+    const index = buttonInfo.findIndex(item => item.value === pageName)
+    console.log("index", buttonInfo[index])
+    buttonInfo.map(info => {
+      info.value === pageName? info.isToggled = true : info.isToggled = false
+    })
+    this.setState({buttonInfo})
+}
 
   render() {
     const {isToggled} = this.state
@@ -77,8 +79,8 @@ class GenerateRecipe extends React.Component{
           <div className="row">
                 {buttonInfo.map((info, i) => {
                 return <div key={i} className="col-sm-3">
-                <input className="btn btn-lg btn-green btn-block mb-3" onClick={() => this.toggleButton(info.page)} value={info.value} type="submit" />
-                {info.isToggled && <info.page buttonInfo = {this.state.buttonInfo} toggleButtons = {this.toggleButtons}/>}
+                  <input className="btn btn-lg btn-green btn-block mb-3" onClick={() => this.toggleButton(info.page)} value={info.value} type="submit" />
+                  {info.isToggled && <info.page buttonInfo = {this.state.buttonInfo} toggleButtons = {this.toggleButtons}/>}
               </div>
               })
             }
@@ -90,7 +92,8 @@ class GenerateRecipe extends React.Component{
       </div>
     </div>
     )}
-}
+  }
+
 
 const mapStateToProps = (props) => {
   return {
