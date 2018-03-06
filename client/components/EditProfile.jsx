@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { getUserProfile } from '../actions/user'
 import { editProfileRequest } from '../actions/user'
 
-import profile from './Profile'
 import { Link } from 'react-router-dom'
 
 class EditProfile extends React.Component {
@@ -13,10 +12,12 @@ class EditProfile extends React.Component {
     this.state = {
       dietaryRestrictions: ['Dairy-free', 'Vegan', 'Gluten-free', 'Vegetarian', 'Paleo', 'Egg-free', 'Nut-allergy', 'Peanut-allergy', 'Soy-free'],
       favoriteFoods: [],
-      pantry: [],
-      profile: props.profile,
+      pantry: []
     }
 
+    console.log('EditProfile:props: ', props)
+    this.props = props
+    this.user = {}
     this.updateProfileDetails = this.updateProfileDetails.bind(this)
     this.submitEdit = this.submitEdit.bind(this)
     this.handleFavoriteFoods = this.handleFavoriteFoods.bind(this)
@@ -25,15 +26,19 @@ class EditProfile extends React.Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(getUserProfile(this.props.auth.user.user_id))
+    if (this.props.auth.user) {
+      this.props.dispatch(getUserProfile(this.props.auth.user.user_id))
+    }   
   }
 
-  updateProfileDetails(event) {
-    let { profile } = this.state
-    profile[event.target.name] = event.target.value
-    target.value = ''
-    this.setState({ profile })
+  updateProfileDetails(e) {
+    if (!this.user) {
+      this.user = {...this.props.user}
+    }
+    this.user[e.target.name] = e.target.value
+    console.log('updateProfileDetails: e.target.name=', e.target.name, ' value=', this.user[e.target.name])
   }
+
   submitEdit(event) {
     event.preventDefault()
     this.props.dispatch(editProfileRequest(this.state.profile))
@@ -60,10 +65,24 @@ class EditProfile extends React.Component {
   }
 
   render() {
-    let profile = this.props.user
+    let username = ''
+    let email = ''
+    if (this.props.auth.user) {
+      username = this.props.auth.user.user_name
+      email = this.props.auth.user.email
+    }
+
+    let firstName = ''
+    let lastName = ''
+    if (this.props.user) {
+      firstName = this.props.user.first_name
+      lastName = this.props.user.last_name
+    }
+
+    const {user} = this.props
     let dietaryRestrictions = ['Dairy-free', 'Vegan', 'Gluten-free', 'Vegetarian', 'Paleo', 'Egg-free', 'Nut-allergy', 'Peanut-allergy', 'Soy-free']
     return (
-      profile !== undefined &&
+      user !== undefined &&
       <div>
         <img className='headerImage' src="images/pantry-to-plate-xsml.jpg" alt='header' />
 
@@ -87,8 +106,8 @@ class EditProfile extends React.Component {
                 <input type="file" className="form-control-file centered" id="imageUpload" aria-describedby="fileHelp"></input>
                 <small id="fileHelp" className="form-text text-muted">Please upload your profile image here</small>
               </div>
-              <h3 className='greenText centered'>{this.props.auth.user.user_name}</h3>
-              <p className='centered'>{this.props.auth.user.email}</p>
+              <h3 className='greenText centered'>{username}</h3>
+              <p className='centered'>{email}</p>
               <h4 className="greenText centered">Favorite Recipes</h4>
               <button className="btn btn-sm btn-outline-green btn-block mb-3">Apple Salad</button>
               <button className="btn btn-sm btn-outline-green btn-block mb-3">Raw Apple Pie</button>
@@ -99,9 +118,9 @@ class EditProfile extends React.Component {
             <br/>
               <form>
                 <label className="first_name font-p">First name:</label>
-                <input type="first_name" className="form-control font-pLato backgroundForm" id="first_name" defaultValue={profile.first_name} onChange={this.updateProfileDetails} />
+                <input type="first_name" className="form-control font-pLato backgroundForm" id="first_name" defaultValue={firstName} onChange={this.updateProfileDetails} />
                 <label className="last_name font-p">Last name:</label>
-                <input type="last_name " className="form-control font-pLato backgroundForm" id="last_name" defaultValue={profile.last_name} onChange={this.updateProfileDetails}/>
+                <input type="last_name " className="form-control font-pLato backgroundForm" id="last_name" defaultValue={lastName} onChange={this.updateProfileDetails}/>
               </form>
               <form>
                 <br />
@@ -144,7 +163,6 @@ class EditProfile extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    profile: state.profile,
     auth: state.auth,
     user: state.user,
     dietaryRestrictions: state.dietaryRestrictions
