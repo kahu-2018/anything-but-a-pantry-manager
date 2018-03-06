@@ -19,7 +19,9 @@ class Profile extends React.Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(getUserProfile(this.props.auth.user.user_id))
+    if (this.props.auth.user) {
+      this.props.dispatch(getUserProfile(this.props.auth.user.user_id))
+    }
     this.props.dispatch(getPantry())
   }
 
@@ -29,6 +31,12 @@ class Profile extends React.Component {
   }
 
   render() {
+    let username = ''
+    let email = ''
+    if (this.props.auth.user) {
+      username = this.props.auth.user.user_name
+      email = this.props.auth.user.email
+    }
 
     let splitDietaryReq = []
     if (this.props.dietaryRestrictions) {
@@ -54,8 +62,8 @@ class Profile extends React.Component {
           <div className="row">
               <div className="col-sm-3 centered">
                 <img className='profileImage' src='./images/kubz.jpg' alt='profile image'/>
-                <h3 className='greenText'>{this.props.auth.user.user_name}</h3>
-                <p>{this.props.auth.user.email}</p>
+                <h3 className='greenText'>{username}</h3>
+                <p>{email}</p>
                 <h3 className='greenText'>Friends</h3>
                 <input className="btn btn-lg btn-green btn-block mb-3" value="Go to Shopping List" type="submit" />
                 <input className="btn btn-lg btn-green btn-block mb-3" value="History" type="submit" />
@@ -79,7 +87,9 @@ class Profile extends React.Component {
               </div>
               <div className="col-sm-3 centered">
                 <button className="btn btn-lg btn-green btn-block mb-3">My Pantry</button>
-                {this.props.pantry ? this.props.pantry.map(ingredient => <li>{ingredient.name_of_food[0].toUpperCase()+ ingredient.name_of_food.substring(1)}</li>) : <p>Pantry loading</p>}
+                {this.props.pantry ? this.props.pantry.map((ingredient, idx) => {
+                    <li key="idx">{ingredient.name_of_food[0].toUpperCase()+ ingredient.name_of_food.substring(1)
+                    }</li>}) : <p>Pantry loading</p>}
 
 
                 <h4 className ='greenText'>Fresh</h4>
