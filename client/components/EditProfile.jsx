@@ -133,7 +133,7 @@ class EditProfile extends React.Component {
                 <h4 className="greenText">Dietary Restrictions</h4>
                 {dietaryRestrictions.map((item, idx) => {
                   return <div className="checkbox" key={idx}>
-                    <label><input type="checkbox" value={item} />{item}</label>
+                    <label><input type="checkbox" value={item} />&nbsp;{item}</label>
                   </div>
                 })
                 }
@@ -163,8 +163,8 @@ class EditProfile extends React.Component {
             <div className="col-sm-3">
               <h4 className="greenText centered">Pantry</h4>
               <form onSubmit={this.handlePantryFoods}>
-                {this.props.pantry.length > 0 ? this.props.pantry.map((ingredient, index) =><p>{ingredient.name_of_food[0].toUpperCase()+ingredient.name_of_food.substring(1)} &nbsp;
-                  <button onClick={() => this.removePantryItem(ingredient)}>x</button></p>) : <p>Pantry is empty</p>}
+                {this.props.pantry.length > 0 ? this.props.pantry.map((ingredient, index) =><p className='centered'>{ingredient.name_of_food[0].toUpperCase()+ingredient.name_of_food.substring(1)} &nbsp;
+                  <button className='btn btn-sm mb-1 font-pLato btn-green-x' onClick={() => this.removePantryItem(ingredient)}>X</button></p>) : <p className='centered'>Pantry is empty</p>}
 
                     <div className="container-fluid">
                       <div className="row">
