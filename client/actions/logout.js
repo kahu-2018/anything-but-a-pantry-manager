@@ -1,19 +1,14 @@
 import { removeUser } from '../utils/auth'
 
-// function requestLogout () {
-//   return {
-//     type: 'LOGOUT_REQUEST',
-//     isFetching: true,
-//     isAuthenticated: true
-//   }
-// }
+function requestLogout () {
+  return {
+    type: 'LOGOUT_REQUEST'
+  }
+}
 
 function receiveLogout () {
   return {
-    type: 'LOGOUT_SUCCESS',
-    isFetching: false,
-    isAuthenticated: false,
-    user: null
+    type: 'LOGOUT_SUCCESS'
   }
 }
 
