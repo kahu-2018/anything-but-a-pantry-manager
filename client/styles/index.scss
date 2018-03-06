@@ -147,3 +147,7 @@ a:active {
 .centered {
   text-align: center;
 }
+
+.strikethrough:checked + span{
+  text-decoration: line-through;
+}
