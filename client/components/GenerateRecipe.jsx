@@ -9,6 +9,7 @@ import FoodWithFriends from './generateRecipe/FoodWithFriends'
 
 import {getRecipes} from '../actions/generateRecipe'
 import {getUserProfile} from '../actions/user'
+import {getPantry} from '../actions/pantry'
 
 class GenerateRecipe extends React.Component{
   constructor(props) {
@@ -19,7 +20,7 @@ class GenerateRecipe extends React.Component{
       selectedIngredients: null,
       buttonInfo: [
         {value: 'One Recipe', page: OneRecipe, isToggled: false},
-        {value: 'Random Recipe', page: RandomRecipe, isToggled: true},
+        {value: 'Random Recipe', page: RandomRecipe, isToggled: false},
         {value: 'Weekly List', page: WeeklyOptions, isToggled: false},
         {value: 'Food with Friends', page: FoodWithFriends, isToggled: false}
       ]
@@ -32,7 +33,7 @@ class GenerateRecipe extends React.Component{
 
   componentWillMount() {
     this.props.dispatch(getUserProfile(this.props.auth.user.user_id))
-
+    this.props.dispatch(getPantry())
   }
 
   handleChange(e) {
@@ -41,7 +42,6 @@ class GenerateRecipe extends React.Component{
 
   handleClick(e) {
     e.preventDefault()
-
     this.props.dispatch(getRecipes(this.state.selectedIngredients, this.props.dietaryRestrictions))
     this.setState({recipeVisible: true})
   }
@@ -59,7 +59,7 @@ class GenerateRecipe extends React.Component{
 
     return (
       <div>
-        <img className='headerImage' src="images/pantry-to-plate-sml.jpg" alt='header'/>
+        <img className='headerImage' src="images/pantry-to-plate-xsml.jpg" alt='header'/>
         <div className="container-fluid full-width">
           <div className="row">
                 {buttonInfo.map((info, i) => {
@@ -88,7 +88,8 @@ const mapStateToProps = (props) => {
     auth: props.auth,
     recipes: props.recipes,
     user: props.user,
-    dietaryRestrictions: props.dietaryRestrictions
+    dietaryRestrictions: props.dietaryRestrictions,
+    pantry: props.pantry
   }
 }
 

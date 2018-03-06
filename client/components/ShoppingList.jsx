@@ -2,10 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 function ShoppingList(props) {
-console.log({props})
 //Pull ingredients out of meal plan recipes
   function mealplanIngredients(mealplan) {
-    console.log('props',props)
     return mealplan.reduce((arr, {ingredients}) =>
     {
       let ingrArr= ingredients.split(', ')
@@ -24,8 +22,9 @@ console.log({props})
   let ingredientList= Object.keys(count).map((ingredient) => ({ingredient: ingredient, count: count[ingredient]}))
 
   return (
-    <div>
-      <h1>My Shopping List</h1>
+    <div className="centered">
+      <img className='headerImage' src="images/pantry-to-plate-xsml.jpg" alt='header'/>
+      <h1 className='centered greenText'>My Shopping List</h1>
       <div className={(props.mealplan.length == 0) ? 'hide' : 'show' }>
         {ingredientList.map(ingredient =><li>{ingredient.ingredient}: {ingredient.count}</li>)}
       </div>
@@ -39,8 +38,6 @@ console.log({props})
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
-
   return {
     auth: state.auth,
     mealplan: state.mealplan

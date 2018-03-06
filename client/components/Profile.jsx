@@ -4,8 +4,8 @@ import {connect} from 'react-redux'
 import EditProfile from './EditProfile'
 import { Link } from 'react-router-dom'
 
+import {getPantry} from '../actions/pantry'
 import { getUserProfile } from '../actions/user'
-import request from '../utils/api'
 
 
 class Profile extends React.Component {
@@ -20,7 +20,7 @@ class Profile extends React.Component {
 
   componentWillMount() {
     this.props.dispatch(getUserProfile(this.props.auth.user.user_id))
-
+    this.props.dispatch(getPantry())
   }
 
   toggleButton(){
@@ -38,7 +38,7 @@ class Profile extends React.Component {
     const buttonText = this.state.editVisible ? 'Close' : 'Edit'
     return (
       <div>
-        <img className='headerImage' src="images/pantry-to-plate-sml.jpg" alt='header'/>
+        <img className='headerImage' src="images/pantry-to-plate-xsml.jpg" alt='header'/>
           <div className="container-fluid full-width">
             <div className="row">
               <div className='col-sm-3'>
@@ -75,12 +75,13 @@ class Profile extends React.Component {
 
                   <h4 className ='greenText'>I Love</h4>
                   <p>Apples</p>
-                  <h4 className ='greenText'>I don't Like</h4>
-                  <p>Rice</p>
 
               </div>
               <div className="col-sm-3 centered">
                 <button className="btn btn-lg btn-green btn-block mb-3">My Pantry</button>
+                {this.props.pantry ? this.props.pantry.map(ingredient => <li>{ingredient.name_of_food[0].toUpperCase()+ ingredient.name_of_food.substring(1)}</li>) : <p>Pantry loading</p>}
+
+
                 <h4 className ='greenText'>Fresh</h4>
                 <p>Food</p>
                 <h4 className ='greenText'>Dairy</h4>
@@ -93,11 +94,12 @@ class Profile extends React.Component {
   }
 }
 
-const mapStateToProps = (props) => {
+const mapStateToProps = (state) => {
   return {
-    auth: props.auth,
-    user: props.user,
-    dietaryRestrictions: props.dietaryRestrictions
+    auth: state.auth,
+    user: state.user,
+    dietaryRestrictions: state.dietaryRestrictions,
+    pantry: state.pantry.pantry
   }
 }
 

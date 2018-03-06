@@ -37,13 +37,20 @@ export default function auth (state = initialState, action) {
         isAuthenticated: false,
         message: ''
       }
+      case 'LOGOUT_REQUEST':
+      return {
+        ...state,
+        isFetching: true,
+        isAuthenticated: true,
+        message: ''
+      }
     case 'LOGOUT_SUCCESS':
       return {
         ...state,
-        isFetching: action.isFetching,
-        isAuthenticated: action.isAuthenticated,
-        user: action.user,
-        message: action.message
+        isFetching: false,
+        isAuthenticated: false,
+        user: null,
+        message: 'You just logged out!'
       }
     case 'REGISTER_REQUEST':
       return {

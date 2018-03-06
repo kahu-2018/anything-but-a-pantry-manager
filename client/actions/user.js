@@ -35,18 +35,23 @@ export function getUserProfile(userId) {
   }
 }
 
+export const editProfile = (profile) => {
+  return {
+    type: 'EDIT_USER',
+    profile
+  }
+}
 
-export const editProfileRequest = (newProfile) => {
+
+export const editProfileRequest = (profile) => {
   return (dispatch) => {
-    request
-      .put('/api/profile/')
-      .send(newProfile)
-      .end((err, res) => {
-        if (err) {
-          console.log(err)
-          return
-        }
-        dispatch(getProfilesRequest())
+    request('put', 'profile/', profile)
+      .then((res) => {
+      
+        dispatch(getUserProfile(profile.userId))
+      })
+      .catch((err) => {
+        console.log('actions/user/getUserProfile: error: ', err)
       })
   }
 }
