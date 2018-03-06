@@ -30,16 +30,6 @@ router.get('/:id', decode, (req, res) => {
 //   })
 // })
 
-// waiting on auth to test this uncomment path to decode when ready
-// router.get('/profile', decode, (req, res) => {
-//   db.getUserByAuthId(req.user.auth_id)
-//   .then(user => {
-//     res.json({user: user})
-//   })
-//   .catch(err => {
-//     res.status(500).send('Database Error: ', err.message)
-//   })
-// })
 
 router.get('/profile', decode, (req, res) => {
   db.getUserByAuthId(req.user.auth_id)
@@ -49,6 +39,10 @@ router.get('/profile', decode, (req, res) => {
   .catch(err => {
     res.status(500).send('Database Error: ', err.message)
   })
+})
+
+router.put('/profile', (req, res) => {
+  console.log('req.params', req.params)
 })
 
 module.exports = router

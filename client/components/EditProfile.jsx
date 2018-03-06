@@ -11,8 +11,6 @@ class EditProfile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      oldProfile: props.profile,
-      newProfile: props.profile,
       dietaryRestrictions: ['Dairy-free', 'Vegan', 'Gluten-free', 'Vegetarian', 'Paleo', 'Egg-free', 'Nut-allergy', 'Peanut-allergy', 'Soy-free'],
       favoriteFoods: [],
       pantry: [],
@@ -33,6 +31,7 @@ class EditProfile extends React.Component {
   updateProfileDetails(event) {
     let { profile } = this.state
     profile[event.target.name] = event.target.value
+    target.value = ''
     this.setState({ profile })
   }
   submitEdit(event) {
@@ -73,7 +72,7 @@ class EditProfile extends React.Component {
             <div className='col-sm-3'>
             </div>
             <div className='col-sm-6'>
-              <h1 className='greenText'>Welcome {this.props.user.first_name} {this.props.user.last_name}</h1>
+              <h1 className='greenText'>Edit Profile </h1>
             </div>
             <div className='col-sm-3'>
               <Link to='/profile'><input className="btn btn-md btn-green float-right" value="save" type="submit" /></Link>
@@ -84,7 +83,7 @@ class EditProfile extends React.Component {
             <div className="col-sm-3">
               <img className='profileImage' src='./images/kubz.jpg' alt='profile image' />
               <div className="form-group">
-                <label for="exampleInputFile"></label>
+                <label htmlFor="exampleInputFile"></label>
                 <input type="file" className="form-control-file centered" id="imageUpload" aria-describedby="fileHelp"></input>
                 <small id="fileHelp" className="form-text text-muted">Please upload your profile image here</small>
               </div>
@@ -97,18 +96,19 @@ class EditProfile extends React.Component {
 
             </div>
             <div className="col-sm-3">
+            <br/>
               <form>
                 <label className="first_name font-p">First name:</label>
-                <input type="first_name" className="form-control font-pLato backgroundForm" id="first_name" value={profile.first_name} onChange={this.updateProfileDetails} />
+                <input type="first_name" className="form-control font-pLato backgroundForm" id="first_name" defaultValue={profile.first_name} onChange={this.updateProfileDetails} />
                 <label className="last_name font-p">Last name:</label>
-                <input type="last_name " className="form-control font-pLato backgroundForm" id="last_name" />
+                <input type="last_name " className="form-control font-pLato backgroundForm" id="last_name" defaultValue={profile.last_name} onChange={this.updateProfileDetails}/>
               </form>
               <form>
                 <br />
                 <h4 className="greenText">Dietary Restrictions</h4>
                 {dietaryRestrictions.map(item => {
-                  return <div key="i" className="checkbox">
-                    <label><input type="checkbox" value="" />{item}</label>
+                  return <div className="checkbox">
+                    <label key="a"><input key="b" type="checkbox" value="" />{item}</label>
                   </div>
                 })
                 }
@@ -120,7 +120,7 @@ class EditProfile extends React.Component {
                 <input autoComplete="off" id="favoriteFood" className="form-control mb-1 font-pLato" placeholder="Stuff you love" type="text" required autoFocus="" />
                 <input className="btn btn-lg btn-green btn-block mb-3" value="Add Ingredient" type="submit" />
                 {this.state.favoriteFoods.map(item => {
-                  return <p key="1" className='centered font-p'>{item}</p>
+                  return <p className='centered font-p'>{item}</p>
                 })
                 }
               </form>
@@ -131,7 +131,7 @@ class EditProfile extends React.Component {
                 <input autoComplete="off" id="pantry" className="form-control mb-1 font-pLato" placeholder="Whats in your Pantry?" type="text" required autoFocus="" />
                 <input className="btn btn-lg btn-green btn-block mb-3" value="Add Ingredient" type="submit" />
                 {this.state.pantry.map(item => {
-                  return <p key="1" className='centered font-p'>{item}</p>
+                  return <p className='centered font-p'>{item}</p>
                 })
                 }
               </form>
