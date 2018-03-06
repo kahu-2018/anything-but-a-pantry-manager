@@ -21,6 +21,7 @@ class RandomRecipe extends React.Component{
     let length = this.props.pantry.length
     let randomNumber = Math.floor(Math.random()*length)
     this.setState({selectedIngredients: this.state.randomIngredients[randomNumber]})
+    console.log('randomIng', this.state.selectedIngredients)
   }
 
 
