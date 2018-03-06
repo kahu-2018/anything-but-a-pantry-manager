@@ -68,10 +68,15 @@ function createUser (first_name, last_name, user_name, email, password, testDb) 
 
   return createAuth(user_name, email, password, testDb)
     .then((auth_id) => {
-      const image = 'insert cute photo link here'
+      const image = 'images/kubz.jpg'
       const dietary_restrictions = ''
+      const favourite_food = ''
       return db('users')
-        .insert({first_name, last_name, image, dietary_restrictions, auth_id})
+        .insert({first_name, last_name, image, dietary_restrictions, auth_id, favourite_food})
+        .catch(err => {
+          console.log('usersDb: createUser error: ', err.message)
+          reject(err)
+        })
     })
 }
 
@@ -89,10 +94,27 @@ function createAuth(user_name, email, password, testDb) {
           resolve(id_arr[0])
         })
         .catch(err => {
+          console.log('usersDb:createAuth error: ', err.message)
           reject(err)
         })
     })
   })
+}
+
+
+function updateUserByUserId (id, data, testDb) {
+  if (!id) return null
+  const db = testDb || liveDb
+
+  return db('users').where('id', id)
+    .update(
+      data
+    )
+    .catch(err => {
+      console.log('userDb: updateUserByUserId error: ', err.message)
+      reject(err)
+    })
+
 }
 
 
@@ -103,5 +125,6 @@ module.exports = {
   getUserByUsername,
   getUserByUserId,
   userExists,
-  createUser
+  createUser,
+  updateUserByUserId
 }

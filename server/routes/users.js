@@ -5,50 +5,25 @@ const db = require('../db/usersDb')
 const { decode } = require('../auth/token')
 
 
-router.get('/:id', decode, (req, res) => {
+router.get('/profile/:id', decode, (req, res) => {
   db.getUserByUserId(req.params.id)
     .then(user => {
-      res.json({user: user})
+      res.status(200).json({user: user})
     })
-  // db.getUser(req.body)
-  // .then(response => {
-  //   res.json({user: response})
-  // })
-  // .catch(err => {
-  //   console.log('error', err)
-  // })
-  // console.log('getDR 3')
 })
 
-// router.get('/', (req, res) => {
-//   db.getUsers(req.app.get('db'))
-//   .then(users => {
-//     res.json({users: users})
-//   })
-//   .catch(err => {
-//     res.status(500).send('Database Error: ', err.message)
-//   })
-// })
 
-// waiting on auth to test this uncomment path to decode when ready
-// router.get('/profile', decode, (req, res) => {
-//   db.getUserByAuthId(req.user.auth_id)
-//   .then(user => {
-//     res.json({user: user})
-//   })
-//   .catch(err => {
-//     res.status(500).send('Database Error: ', err.message)
-//   })
-// })
+router.put('/profile/:id', decode, (req, res) => {
+  if (req.params.id) {
+    db.updateUserByUserId(req.params.id, req.body)
+      .then(()=>{
+        res.status(200).send('Profile id ', req.params.id, ' is updated')
+      })
+  } else {
+    res.status(400).send('Invalid data')
+  }
 
-router.get('/profile', decode, (req, res) => {
-  db.getUserByAuthId(req.user.auth_id)
-  .then(user => {
-    res.json({user: user})
-  })
-  .catch(err => {
-    res.status(500).send('Database Error: ', err.message)
-  })
+  
 })
 
 module.exports = router
