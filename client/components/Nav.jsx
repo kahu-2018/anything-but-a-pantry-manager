@@ -3,7 +3,7 @@ import {HashRouter as Router, Route, Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
 
-import Auth from './Auth'
+import Login from './Login'
 import Home from './Home'
 import Profile from './Profile'
 import GenerateRecipe from './GenerateRecipe'
@@ -20,6 +20,8 @@ class Nav extends React.Component {
   }
 
 render() {
+  const { auth } = this.props
+
   return (
     <Router>
       <div>
@@ -43,7 +45,7 @@ render() {
         </ul>
           <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <Link to='/login' className="nav-link"><i className="fas fa-user-circle faFaFont"></i>{this.props.auth.isAuthenticated ? "Logout" : "login/Register"}</Link>
+            <Link to='/login' className="nav-link"><i className="fas fa-user-circle faFaFont"></i>{auth.isAuthenticated ? "Logout" : "login/Register"}</Link>
             </li>
           </ul>
         <form className="form-inline my-2 my-lg-0">
@@ -54,7 +56,7 @@ render() {
     </nav>
 
     <Route exact path='/' component={Home} />
-    <Route exact path='/login' component={Auth} />
+    <Route exact path='/login' component={Login} />
     <Route exact path='/profile' component={Profile} />
     <Route exact path='/generateRecipe' component={GenerateRecipe} />
     <Route exact path='/recipe' component={Recipe} />
