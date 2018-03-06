@@ -18,6 +18,6 @@ describe('mealplan reducer', () => {
     }
     expect(
       updateMealplan(undefined, action)
-    ).toEqual({mealplan: [action.mealplan] })
+    ).toEqual([action.mealplan])
   })
 })
