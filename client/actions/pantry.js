@@ -1,6 +1,4 @@
 import request from '../utils/api'
-// import { get } from '../utils/localstorage'
-// import {remove} from '../utils/localstorage'
 
 function receivePantry(pantry) {
   return {
@@ -30,9 +28,7 @@ export function getPantry() {
 }
 
 export function removePantryIngredient(ingredient) {
-  console.log('action', ingredient)
   return (dispatch) => {
-    console.log('action2')
     return request ('delete', 'pantry', ingredient)
     .then(res => {
       dispatch(deleteItem(ingredient))
