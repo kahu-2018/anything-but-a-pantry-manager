@@ -38,7 +38,7 @@ class Profile extends React.Component {
     const buttonText = this.state.editVisible ? 'Close' : 'Edit'
     return (
       <div>
-        <img className='headerImage' src="images/pantry-to-plate-sml.jpg" alt='header'/>
+        <img className='headerImage' src="images/pantry-to-plate-xsml.jpg" alt='header'/>
           <div className="container-fluid full-width">
             <div className="row">
               <div className='col-sm-3'>

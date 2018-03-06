@@ -33,7 +33,7 @@ class EditProfile extends React.Component {
   render() {
     return (
       <div>
-        <img className='headerImage' src="images/pantry-to-plate-sml.jpg" alt='header'/>
+        <img className='headerImage' src="images/pantry-to-plate-xsml.jpg" alt='header'/>
 
           <div className="container-fluid full-width">
             <div className="row">

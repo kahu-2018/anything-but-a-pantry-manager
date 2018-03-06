@@ -59,7 +59,7 @@ class GenerateRecipe extends React.Component{
 
     return (
       <div>
-        <img className='headerImage' src="images/pantry-to-plate-sml.jpg" alt='header'/>
+        <img className='headerImage' src="images/pantry-to-plate-xsml.jpg" alt='header'/>
         <div className="container-fluid full-width">
           <div className="row">
                 {buttonInfo.map((info, i) => {

@@ -24,8 +24,9 @@ console.log({props})
   let ingredientList= Object.keys(count).map((ingredient) => ({ingredient: ingredient, count: count[ingredient]}))
 
   return (
-    <div>
-      <h1>My Shopping List</h1>
+    <div className="centered">
+      <img className='headerImage' src="images/pantry-to-plate-xsml.jpg" alt='header'/>
+      <h1 className='centered greenText'>My Shopping List</h1>
       <div className={(props.mealplan.length == 0) ? 'hide' : 'show' }>
         {ingredientList.map(ingredient =><li>{ingredient.ingredient}: {ingredient.count}</li>)}
       </div>

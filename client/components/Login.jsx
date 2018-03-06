@@ -39,7 +39,7 @@ class Login extends React.Component {
 
         return (
           <div>
-            <img className='headerImage' src="images/pantry-to-plate-sml.jpg" alt='header'/>
+            <img className='headerImage' src="images/pantry-to-plate-xsml.jpg" alt='header'/>
             <div className="center-column text-center">
                 <form onSubmit={this.submit}>
                     <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
