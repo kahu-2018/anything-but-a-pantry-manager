@@ -29,7 +29,6 @@ class Nav extends React.Component {
   LogoutLink() {
     return (<Link to='/login' className="nav-link" onClick={
       () => {
-        console.log('client/components/Nav/LogoutButton: clicked')
         this.props.dispatch(logoutUser())
       }
     }><i className="fas fa-user-circle faFaFont"></i>Logout</Link>)
