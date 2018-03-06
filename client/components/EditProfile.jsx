@@ -7,9 +7,6 @@ import { editProfileRequest } from '../actions/user'
 import profile from './Profile'
 import { Link } from 'react-router-dom'
 
-import { getUserProfile } from '../actions/user'
-import request from '../utils/api'
-
 class EditProfile extends React.Component {
   constructor(props) {
     super(props)
