@@ -11,25 +11,21 @@ function verifyLogin(req, res) {
   getUserByUsername(req.body.user_name, req.app.get('db'))
     .then(user => {
       if (!user) {
-        console.log('verifyLogin: User does not exist')
         return res.status(403).json({
           message: loginFailureMessage
         })
       }
       compareHash(req.body.password, user.hash, (err, match) => {
         if (err) {
-          console.log('verifyLogin err: ', err.message)
           res.status(500).json({
             message: serverFailureMessage
           })
         } else if (!match) {
-          console.log('verifyLogin: Password is incorrect')
           res.status(400).json({
             message: loginFailureMessage
           })
         } else {
           var token = createToken(user, process.env.JWT_SECRET)
-          console.log('verifyLogin: token issued')
           res.status(200).json({
             message: 'Authentication successful',
             token

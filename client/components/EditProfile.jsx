@@ -34,7 +34,6 @@ class EditProfile extends React.Component {
   }
 
   updateProfileDetails(event) {
-    console.log('this state:', this.state)
     let { profile } = this.state
     profile[event.target.name] = event.target.value
     this.setState({ profile })
@@ -67,7 +66,6 @@ class EditProfile extends React.Component {
   render() {
     let profile = this.props.user
     let dietaryRestrictions = ['Dairy-free', 'Vegan', 'Gluten-free', 'Vegetarian', 'Paleo', 'Egg-free', 'Nut-allergy', 'Peanut-allergy', 'Soy-free']
-    console.log('props', this.props)
     return (
       profile !== undefined &&
       <div>
