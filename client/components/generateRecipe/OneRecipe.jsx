@@ -40,17 +40,8 @@ class OneRecipe extends React.Component{
 
 
 
-          {this.props.pantry ? this.props.pantry.map((checkbox, index) =>
-            <div>
-                <label>
-                    <input
-                        type="checkbox"
-                        checked={checkbox.checked}
-                    
-                    />
-                    {checkbox.label}
-                </label>
-            </div>) : <p>Pantry loading</p>}
+          {this.props.pantry ? this.props.pantry.map((ingredient, index) =>
+            <div><input type="checkbox" checked={ingredient.checked} />{ingredient.name_of_food[0].toUpperCase()+ ingredient.name_of_food.substring(1)}</div>) : <p>Pantry loading</p>}
 
           <input autoComplete="off" id="inputfood" className="form-control mb-1 font-pLato" placeholder="Add Another Ingredient" type="text" required autoFocus=""  />
           <input className="btn btn-lg btn-green btn-block mb-3" value="Add Ingredient" type="submit" />
