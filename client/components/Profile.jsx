@@ -75,8 +75,6 @@ class Profile extends React.Component {
 
                   <h4 className ='greenText'>I Love</h4>
                   <p>Apples</p>
-                  <h4 className ='greenText'>I don't Like</h4>
-                  <p>Rice</p>
 
               </div>
               <div className="col-sm-3 centered">
@@ -93,11 +91,11 @@ class Profile extends React.Component {
   }
 }
 
-const mapStateToProps = (props) => {
+const mapStateToProps = (state) => {
   return {
-    auth: props.auth,
-    user: props.user,
-    dietaryRestrictions: props.dietaryRestrictions
+    auth: state.auth,
+    user: state.user,
+    dietaryRestrictions: state.dietaryRestrictions
   }
 }
 
