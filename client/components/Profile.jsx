@@ -82,7 +82,11 @@ class Profile extends React.Component {
                 )}
 
                   <h4 className ='greenText'>Food I Love</h4>
+<<<<<<< HEAD
                   <p className="centered font-p">{this.props.user.favourite_food}</p>
+=======
+                  <p className="centered font-p"  >{this.props.user.favourite_food}</p>
+>>>>>>> added styling
 
               </div>
               <div className="col-sm-3 centered">
