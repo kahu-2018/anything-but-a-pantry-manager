@@ -10,30 +10,29 @@ class RandomRecipe extends React.Component{
     super(props)
     this.state = {
       recipeVisible: false,
-      selectedIngredients: null,
-      dietaryRestrictions: null,
-      randomIngredients: this.props.pantry
+      selectedIngredient: null,
+      dietaryRestrictions: null
     }
-    this.showRecipe = this.showRecipe.bind(this)
+    this.randomizeNumber = this.randomizeNumber.bind(this)
+    this.selectRecipe = this.selectRecipe.bind(this)
   }
 
-  componentDidMount() {
+  randomizeNumber() {
     let length = this.props.pantry.length
     let randomNumber = Math.floor(Math.random()*length)
-    this.setState({selectedIngredients: this.state.randomIngredients[randomNumber]})
-    console.log('randomIng', this.state.selectedIngredients)
+    this.setState({selectedIngredient: this.props.pantry[randomNumber]})
+    this.selectRecipe()
   }
 
-
-  showRecipe() {
-    this.props.dispatch(getRecipes(this.state.selectedIngredients, this.props.dietaryRestrictions))
+  selectRecipe() {
+    this.props.dispatch(getRecipes(this.state.selectedIngredient, this.props.dietaryRestrictions))
     this.setState({recipeVisible: true})
   }
 
   render() {
     return (
       <div>
-        <button onClick={this.showRecipe} className="btn btn-lg btn-outline-green btn-block mb-3">Find New</button>
+        <button onClick={this.randomizeNumber} className="btn btn-lg btn-outline-green btn-block mb-3">Find New</button>
           <div>{this.state.recipeVisible? <Recipe key="1"/> : ''}</div>
           <div className={this.props.isSearching ? 'show' : 'hide'}>Searching</div>
       </div>
@@ -42,13 +41,14 @@ class RandomRecipe extends React.Component{
 }
 
 const mapStateToProps = (props) => {
+  console.log('props', props.pantry.pantry)
   return {
     auth: props.auth,
     recipes: props.recipes.recipes,
     user: props.user,
     dietaryRestrictions: props.dietaryRestrictions,
     isSearching: props.recipes.isSearching,
-    pantry: props.pantry
+    pantry: props.pantry.pantry
   }
 }
 
