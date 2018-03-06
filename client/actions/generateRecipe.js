@@ -21,7 +21,6 @@ export function getRecipes (pantryIngredients, dietaryRestrictions) {
     dispatch(requestRecipes())
     return request ('get', 'recipes', {i: pantryIngredients, q: dietaryRestrictions, onlyImages: 1})
     .then(res => {
-
       dispatch(receiveRecipes(res.body.results))
     })
     .catch((err, res) => {
