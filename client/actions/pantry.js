@@ -19,3 +19,10 @@ export function getPantry() {
     })
   }
 }
+
+export function removePantryIngredient(ingredient) {
+  console.log('action', ingredient)
+  return (dispatch) => {
+  return request ('remove', 'pantry')
+  }
+}

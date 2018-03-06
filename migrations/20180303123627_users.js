@@ -6,7 +6,6 @@ exports.up = function(knex, Promise) {
     table.string('image')
     table.string('dietary_restrictions')
     table.integer('auth_id')
-    table.string('favourite_food')
   })
 };
 

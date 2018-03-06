@@ -13,4 +13,8 @@ router.get('/', (req, res) => {
   })
 })
 
+router.delete('/', (req, res) => {
+  console.log('route')
+})
+
 module.exports = router
