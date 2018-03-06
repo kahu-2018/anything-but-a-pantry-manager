@@ -20,7 +20,7 @@ class GenerateRecipe extends React.Component{
       selectedIngredients: null,
       buttonInfo: [
         {value: 'One Recipe', page: OneRecipe, isToggled: false},
-        {value: 'Random Recipe', page: RandomRecipe, isToggled: true},
+        {value: 'Random Recipe', page: RandomRecipe, isToggled: false},
         {value: 'Weekly List', page: WeeklyOptions, isToggled: false},
         {value: 'Food with Friends', page: FoodWithFriends, isToggled: false}
       ]
@@ -59,7 +59,7 @@ class GenerateRecipe extends React.Component{
 
     return (
       <div>
-        <img className='headerImage' src="images/pantry-to-plate-sml.jpg" alt='header'/>
+        <img className='headerImage' src="images/pantry-to-plate-xsml.jpg" alt='header'/>
         <div className="container-fluid full-width">
           <div className="row">
                 {buttonInfo.map((info, i) => {
