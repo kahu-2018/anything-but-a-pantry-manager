@@ -12,7 +12,7 @@ class FoodWithFriends extends React.Component{
       selectedIngredients: null,
       dietaryRestrictions: null,
     }
-
+    this.onClick = this.onClick.bind(this)
   }
 
   ComponentDidMount() {
@@ -20,8 +20,11 @@ class FoodWithFriends extends React.Component{
     this.setState({dietaryRestrictions: dietaryRestrictions})
   }
 
-
-  render(props) {
+  onClick(e){
+    const recipeName = this.props.buttonInfo[3].value
+    this.props.toggleButtons(recipeName)
+  }
+  render() {
 
     return (
       <div>
@@ -37,7 +40,7 @@ class FoodWithFriends extends React.Component{
         </div>
         <input id="inputfood" className="form-control mb-1 font-pLato" placeholder="Ingredients you have" name="user_name" type="text" required autoFocus="" onKeyPress={this.handleButtonPress} onChange={this.handleChange}/>
         <input className="btn btn-lg btn-green btn-block mb-3" value="Add ingredient" type="submit" />
-        <input className="btn btn-lg btn-outline-green btn-block mb-3" value='Find New' type="submit" />
+        <input onClick={this.onClick} className="btn btn-lg btn-outline-green btn-block mb-3" value='Find New' type="submit" />
       </div>
     )}
 }

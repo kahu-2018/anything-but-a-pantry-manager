@@ -20,6 +20,7 @@ class WeeklyOptions extends React.Component{
     // this.forLoop = this.forLoop.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.showRecipe = this.showRecipe.bind(this)
+    this.onClick = this.onClick.bind(this)
 
   }
 
@@ -58,14 +59,16 @@ class WeeklyOptions extends React.Component{
 
   showRecipe() {
     this.props.dispatch(getRecipes(this.state.selectedIngredients, this.props.dietaryRestrictions))
-    console.log('show')
     this.setState({recipeVisible: true})
   }
 
-  render(props) {
-    console.log('recipeVisible', this.state.recipeVisible)
-    console.log('recipeArray', this.state.recipeArray)
+  onClick(e){
+    const recipeName = this.props.buttonInfo[2].value
+    this.props.toggleButtons(recipeName)
+    this.showRecipe
+  }
 
+  render(props) {
     let recipe = this.props.recipes
     let randomNumber = Math.floor(Math.random()*10)
 
@@ -75,36 +78,33 @@ class WeeklyOptions extends React.Component{
         <form onSubmit={this.handleClick}>
 
         <div className="form-group">
-    <label form="exampleSelect1">How many meals do you need?</label>
-    <select className="form-control" id="exampleSelect1" onChange={this.handleChange}>
-      <option className='weeklyOption'>Select Number of Meals</option>
-      <option className='weeklyOption' value='1'>1</option>
-      <option className='weeklyOption' value='2'>2</option>
-      <option className='weeklyOption' value='3'>3</option>
-      <option className='weeklyOption' value='4'>4</option>
-      <option className='weeklyOption' value='5'>5</option>
-      <option className='weeklyOption' value='6'>6</option>
-      <option className='weeklyOption' value='7'>7</option>
-    </select>
-  </div>
-  <input id="inputfood" className="form-control mb-1 font-pLato" placeholder="Ingredients you have" name="user_name" type="text" required autoFocus="" onKeyPress={this.handleButtonPress} onChange={this.handleChange}/>
+          <label form="exampleSelect1">How many meals do you need?</label>
+          <select className="form-control" id="exampleSelect1" onChange={this.handleChange}>
+            <option className='weeklyOption'>Select Number of Meals</option>
+            <option className='weeklyOption' value='1'>1</option>
+            <option className='weeklyOption' value='2'>2</option>
+            <option className='weeklyOption' value='3'>3</option>
+            <option className='weeklyOption' value='4'>4</option>
+            <option className='weeklyOption' value='5'>5</option>
+            <option className='weeklyOption' value='6'>6</option>
+            <option className='weeklyOption' value='7'>7</option>
+          </select>
+        </div>
+        <input id="inputfood" className="form-control mb-1 font-pLato" placeholder="Ingredients you have" name="user_name" type="text" required autoFocus="" onKeyPress={this.handleButtonPress} onChange={this.handleChange}/>
 
-  <input className="btn btn-lg btn-green btn-block mb-3" value="Add ingredient" type="submit" />
-
-
-</form>
-{this.state.selectedIngredients.map(item => {
-  return <p className='centered font-p'>{item}</p>
-})
-}
-
-<button onClick={this.showRecipe} className="btn btn-lg btn-outline-green btn-block mb-3" type="submit">Find New</button>
-
-    {this.state.recipeVisible ? this.state.recipeArray.map(x => <Recipe />) : ''}
-  </div>
+        <input className="btn btn-lg btn-green btn-block mb-3" value="Add ingredient" type="submit" />
 
 
-    )}
+      </form>
+        {this.state.selectedIngredients.map(item => {
+          return <p className='centered font-p'>{item}</p>
+          })
+        }
+
+        <button onClick={this.onClick} className="btn btn-lg btn-outline-green btn-block mb-3" type="submit">Find New</button>
+          {this.state.recipeVisible ? this.state.recipeArray.map(x => <Recipe />) : ''}
+      </div>
+        )}
 }
 
 const mapStateToProps = (props) => {
