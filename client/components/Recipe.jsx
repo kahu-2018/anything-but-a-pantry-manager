@@ -7,7 +7,7 @@ import {addToMealplan} from '../actions/mealplan'
 
 function Recipe ({recipes, dispatch}) {
   const handleClick = (recipe) => dispatch(addToMealplan(recipe))
-  let randomNumber = Math.floor(Math.random()*10)
+  let randomNumber = Math.floor(Math.random()*recipes.length)
   const randomRecipe = recipes[randomNumber]
 
   return recipes.length > 0
