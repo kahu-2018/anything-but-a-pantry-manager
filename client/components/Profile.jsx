@@ -78,16 +78,16 @@ class Profile extends React.Component {
               <div className="col-sm-3 centered">
                 <button className="btn btn-lg btn-green btn-block mb-3">Dietary Requirements</button>
                 {splitDietaryReq.map((food, idx) =>
-                  <p className="centered" key={idx}>{food}</p>
+                  <p className="centered font-p" key={idx}>{food}</p>
                 )}
 
                   <h4 className ='greenText'>Food I Love</h4>
-                  <p>{this.props.user.favourite_food}</p>
+                  <p className="centered font-p">{this.props.user.favourite_food}</p>
 
               </div>
               <div className="col-sm-3 centered">
                 <button className="btn btn-lg btn-green btn-block mb-3">My Pantry</button>
-                {this.props.pantry ? this.props.pantry.map((ingredient, index) => <li>{ingredient.name_of_food[0].toUpperCase()+ingredient.name_of_food.substring(1)}</li>) : <p>Pantry loading</p>}
+                {this.props.pantry ? this.props.pantry.map((ingredient, index) => <p className="font-p">{ingredient.name_of_food[0].toUpperCase()+ingredient.name_of_food.substring(1)}</p>) : <p>Pantry loading</p>}
               </div>
           </div>
          </div>

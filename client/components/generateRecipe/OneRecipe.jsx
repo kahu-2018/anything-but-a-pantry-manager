@@ -62,7 +62,6 @@ class OneRecipe extends React.Component{
           <div className="container-fluid">
             <div className="row">
               <div className='col-sm-9 marginZero'>
-
                 <input autoComplete="off" id="inputfood" className="form-control mb-1 font-pLato" placeholder="Add Another Ingredient" type="text" required autoFocus=""  />
               </div>
               <div className='col-md-3 marginZero'>
@@ -72,7 +71,7 @@ class OneRecipe extends React.Component{
           </div>
           {this.state.selectedIngredients.map(item => {
             return <p className='centered font-p'>{item}&nbsp;
-              <button className=' font-pLato' onClick={() => this.removeItem(item)}>x</button>
+              <button className="btn btn-sm mb-1 font-pLato btn-green-x" onClick={() => this.removeItem(item)}>X</button>
               </p>
           })
         }

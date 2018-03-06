@@ -133,7 +133,7 @@ class EditProfile extends React.Component {
                 <h4 className="greenText">Dietary Restrictions</h4>
                 {dietaryRestrictions.map((item, idx) => {
                   return <div className="checkbox" key={idx}>
-                    <label><input type="checkbox" value={item} />{item}</label>
+                    <label><input type="checkbox" value={item} />&nbsp;{item}</label>
                   </div>
                 })
                 }
@@ -141,9 +141,19 @@ class EditProfile extends React.Component {
             </div>
             <div className="col-sm-3">
               <h4 className="greenText centered">Favorite Foods</h4>
+
               <form onSubmit={this.handleFavoriteFoods}>
-                <input autoComplete="off" id="favoriteFood" className="form-control mb-1 font-pLato" placeholder="Stuff you love" type="text" required autoFocus="" />
-                <input className="btn btn-lg btn-green btn-block mb-3" value="Add Ingredient" type="submit" />
+                <div className="container-fluid">
+                  <div className="row">
+                    <div className='col-sm-9 marginZero'>
+                      <input autoComplete="off" id="inputfood" className="form-control mb-1 font-pLato" placeholder="Stuff you love" type="text" required autoFocus=""  />
+                    </div>
+                    <div className='col-md-3 marginZero'>
+                      <input className="btn btn-md btn-green btn-block mb-3" value="Add" type="submit" />
+                    </div>
+                  </div>
+                </div>
+
                 {this.state.favoriteFoods.map(item => {
                   return <p className='centered font-p'>{item}</p>
                 })
@@ -153,10 +163,20 @@ class EditProfile extends React.Component {
             <div className="col-sm-3">
               <h4 className="greenText centered">Pantry</h4>
               <form onSubmit={this.handlePantryFoods}>
-                {this.props.pantry.length > 0 ? this.props.pantry.map((ingredient, index) =><li>{ingredient.name_of_food[0].toUpperCase()+ingredient.name_of_food.substring(1)} &nbsp;
-                  <button onClick={() => this.removePantryItem(ingredient)}>x</button></li>) : <p>Pantry is empty</p>}
-                <input autoComplete="off" id="pantry" className="btn form-control mb-1 font-pLato" placeholder="Add Pantry Item" type="text" autoFocus="" />
-                <input className="btn btn-lg btn-green btn-block mb-3" value="Add Ingredient" type="submit" />
+                {this.props.pantry.length > 0 ? this.props.pantry.map((ingredient, index) =><p className='centered'>{ingredient.name_of_food[0].toUpperCase()+ingredient.name_of_food.substring(1)} &nbsp;
+                  <button className='btn btn-sm mb-1 font-pLato btn-green-x' onClick={() => this.removePantryItem(ingredient)}>X</button></p>) : <p className='centered'>Pantry is empty</p>}
+
+                    <div className="container-fluid">
+                      <div className="row">
+                        <div className='col-sm-9 marginZero'>
+                          <input autoComplete="off" id="inputfood" className="form-control mb-1 font-pLato" placeholder="Add Pantry Item" type="text" required autoFocus=""  />
+                        </div>
+                        <div className='col-md-3 marginZero'>
+                          <input className="btn btn-md btn-green btn-block mb-3" value="Add" type="submit" />
+                        </div>
+                      </div>
+                    </div>
+
               </form>
             </div>
           </div>
