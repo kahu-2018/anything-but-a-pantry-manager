@@ -46,6 +46,7 @@
     "jsx-loader": "^0.13.2",
     "jwt-decode": "^2.2.0",
     "knex": "^0.14.4",
+    "node-sass": "^4.7.2",
     "nodemon": "^1.17.1",
     "passport": "^0.4.0",
     "pg": "^7.4.1",
@@ -54,15 +55,15 @@
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-test-renderer": "^16.2.0",
+    "react-tooltip": "^3.4.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "sass-loader": "^6.0.7",
     "sqlite3": "^3.1.13",
     "style-loader": "^0.20.2",
     "superagent": "^3.8.2",
     "supertest": "^3.0.0",
     "webpack": "^2.3.3",
-    "webpack-dev-server": "^2.4.2",
-    "node-sass": "^4.7.2",
-    "sass-loader": "^6.0.7"
+    "webpack-dev-server": "^2.4.2"
   }
 }
