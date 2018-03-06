@@ -106,9 +106,9 @@ class EditProfile extends React.Component {
               <form>
                 <br />
                 <h4 className="greenText">Dietary Restrictions</h4>
-                {dietaryRestrictions.map(item => {
-                  return <div className="checkbox">
-                    <label key="a"><input key="b" type="checkbox" value="" />{item}</label>
+                {dietaryRestrictions.map((item, idx) => {
+                  return <div className="checkbox" key={idx}>
+                    <label><input type="checkbox" value="" />{item}</label>
                   </div>
                 })
                 }
