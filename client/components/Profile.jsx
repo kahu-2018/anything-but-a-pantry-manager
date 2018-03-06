@@ -4,8 +4,8 @@ import {connect} from 'react-redux'
 import EditProfile from './EditProfile'
 import { Link } from 'react-router-dom'
 
+import {getPantry} from '../actions/pantry'
 import { getUserProfile } from '../actions/user'
-import request from '../utils/api'
 
 
 class Profile extends React.Component {
@@ -20,7 +20,7 @@ class Profile extends React.Component {
 
   componentWillMount() {
     this.props.dispatch(getUserProfile(this.props.auth.user.user_id))
-
+    this.props.dispatch(getPantry())
   }
 
   toggleButton(){
@@ -29,6 +29,9 @@ class Profile extends React.Component {
   }
 
   render() {
+
+    console.log('pantry outside Map', this.props.pantry)
+    let pantryList = this.props.pantry
 
     let splitDietaryReq = []
     if (this.props.dietaryRestrictions) {
@@ -79,6 +82,9 @@ class Profile extends React.Component {
               </div>
               <div className="col-sm-3 centered">
                 <button className="btn btn-lg btn-green btn-block mb-3">My Pantry</button>
+                {pantryList ? pantryList.map(entry => <li>{entry.name_of_food}</li>) : <p>Pantry loading</p>}
+
+
                 <h4 className ='greenText'>Fresh</h4>
                 <p>Food</p>
                 <h4 className ='greenText'>Dairy</h4>
@@ -95,7 +101,8 @@ const mapStateToProps = (state) => {
   return {
     auth: state.auth,
     user: state.user,
-    dietaryRestrictions: state.dietaryRestrictions
+    dietaryRestrictions: state.dietaryRestrictions,
+    pantry: state.pantry.pantry
   }
 }
 
