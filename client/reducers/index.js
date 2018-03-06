@@ -6,6 +6,7 @@ import user from './user'
 import dietaryRestrictions from './dietaryRestrictions'
 import mealplan from './mealplan'
 import pantry from './pantry'
+import recipe from './recipe'
 
 export default combineReducers({
   auth,
@@ -13,5 +14,7 @@ export default combineReducers({
   user,
   dietaryRestrictions,
   mealplan,
-  pantry
+  pantry,
+  recipe
+
 })

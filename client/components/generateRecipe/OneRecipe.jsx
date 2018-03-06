@@ -10,7 +10,7 @@ class OneRecipe extends React.Component{
     super(props)
     this.state = {
       recipeVisible: false,
-      noRecipe: null,
+      recipe: null,
       selectedIngredients: []
     }
     this.handleClick = this.handleClick.bind(this)
@@ -61,13 +61,15 @@ class OneRecipe extends React.Component{
     )}
 }
 
-const mapStateToProps = (props) => {
+const mapStateToProps = (state) => {
   return {
-    auth: props.auth,
-    recipes: props.recipes,
-    user: props.user,
-    dietaryRestrictions: props.dietaryRestrictions,
-    pantry: props.pantry.pantry
+    auth: state.auth,
+    recipes: state.recipes,
+    user: state.user,
+    dietaryRestrictions: state.dietaryRestrictions,
+    pantry: state.pantry.pantry
+    recipe: state.recipe
+
   }
 }
 
