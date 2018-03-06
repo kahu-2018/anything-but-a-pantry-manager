@@ -12,13 +12,6 @@ export function getPantry() {
   return (dispatch) => {
     return request ('get', 'pantry')
     .then(res => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-      console.log('res', res.body)
->>>>>>> Action calls action.type
-=======
->>>>>>> Pantry global state updated woop
       dispatch(receivePantry(res.body))
     })
     .catch((err, res) => {
