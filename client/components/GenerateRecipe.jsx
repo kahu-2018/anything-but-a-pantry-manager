@@ -84,7 +84,6 @@ class GenerateRecipe extends React.Component{
 }
 
 const mapStateToProps = (props) => {
-  console.log('props', props)
   return {
     auth: props.auth,
     recipes: props.recipes,

@@ -2,10 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 function ShoppingList(props) {
-console.log({props})
 //Pull ingredients out of meal plan recipes
   function mealplanIngredients(mealplan) {
-    console.log('props',props)
     return mealplan.reduce((arr, {ingredients}) =>
     {
       let ingrArr= ingredients.split(', ')
@@ -40,8 +38,6 @@ console.log({props})
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
-
   return {
     auth: state.auth,
     mealplan: state.mealplan
