@@ -26,22 +26,20 @@ function ShoppingList({mealplan, dispatch, auth}) {
   let count = {}
   noDuplicates.forEach((ingredient) => count[ingredient] = (count[ingredient] || 0)+1)
 
-  console.log("props", props.mealplan[0].href)
-
 //Transform count object into array
   let ingredientList= Object.keys(count).map((ingredient) => ({ingredient: ingredient, count: count[ingredient]}))
-   console.log(props)
+
   return (
     <div>
       <img className='headerImage' src="images/pantry-to-plate-xsml.jpg" alt='header'/>
       <h1 className='centered greenText'>My Shopping List</h1>
-      <div className={(props.mealplan.length == 0) ? 'hide' : 'show' }>
+      <div className={(mealplan.length == 0) ? 'hide' : 'show' }>
 
         <div className="container-fluid">
           <div className="row">
             <div className='col-sm-3'></div>
             <div className='col-sm-3'>
-              {props.mealplan.map(meal =>
+              {mealplan.map(meal =>
                   <a target="_blank" href={meal.href}><button className="btn btn-sm btn-outline-green btn-block mb-3">{meal.title}</button></a>
               )}
             </div>
@@ -67,9 +65,6 @@ function ShoppingList({mealplan, dispatch, auth}) {
 
 }
 
-
-
-
 <div className="container-fluid">
   <div className="row">
     <div className='col-sm-9 marginZero'>
@@ -81,11 +76,6 @@ function ShoppingList({mealplan, dispatch, auth}) {
     </div>
   </div>
 </div>
-
-
-
-
-
 
 
 const mapStateToProps = (state) => {
