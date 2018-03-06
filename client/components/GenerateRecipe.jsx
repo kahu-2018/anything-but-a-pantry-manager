@@ -29,6 +29,8 @@ class GenerateRecipe extends React.Component{
     this.handleChange = this.handleChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.toggleButton = this.toggleButton.bind(this)
+    this.toggleButtons = this.toggleButtons.bind(this)
+
   }
 
   componentWillMount() {
@@ -55,6 +57,15 @@ class GenerateRecipe extends React.Component{
     this.setState({buttonInfo})
   }
 
+  toggleButtons(){
+    const {buttonInfo} = this.state
+    this.state.buttonInfo.map(info => {
+      if(info.value === this.state.buttonInfo.value){
+      } else {
+        this.setState({buttonInfo})
+      })
+  }
+
   render() {
     const {isToggled} = this.state
     const {buttonInfo} = this.state
@@ -67,7 +78,7 @@ class GenerateRecipe extends React.Component{
                 {buttonInfo.map((info, i) => {
                 return <div key={i} className="col-sm-3">
                 <input className="btn btn-lg btn-green btn-block mb-3" onClick={() => this.toggleButton(info.page)} value={info.value} type="submit" />
-                {info.isToggled && <info.page />}
+                {info.isToggled && <info.page buttonInfo = {this.state.buttonInfo} toggleButtons = {this.toggleButtons}/>}
               </div>
               })
             }
