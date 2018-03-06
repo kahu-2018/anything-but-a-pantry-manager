@@ -53,21 +53,29 @@ class OneRecipe extends React.Component{
     return (
       <div>
         <form onSubmit={this.handleClick}>
-
           {this.props.pantry ? this.props.pantry.map((ingredient, index) => <div><input type="checkbox" value={ingredient.name_of_food} onChange={this.handleCheckbox} checked={ingredient.checked} />{' '+ingredient.name_of_food[0].toUpperCase()+ ingredient.name_of_food.substring(1)}</div>) : <p>Pantry loading</p>}
-
-          <input autoComplete="off" id="inputfood" className="form-control mb-1 font-pLato" placeholder="Add Another Ingredient" type="text" required autoFocus=""  />
-          <input className="btn btn-lg btn-green btn-block mb-3" value="Add Ingredient" type="submit" />
+        <br/>
+          <div className="container-fluid">
+            <div className="row">
+              <div className='col-sm-9 marginZero'>
+                <input autoComplete="off" id="inputfood" className="form-control mb-1 font-pLato" placeholder="Add Another Ingredient" type="text" required autoFocus=""  />
+              </div>
+              <div className='col-md-3 marginZero'>
+                <input className="btn btn-md btn-green btn-block mb-3" value="Add" type="submit" />
+              </div>
+            </div>
+          </div>
         </form>
-          {this.state.selectedIngredients.map(item => {
-            return <p className='centered font-p'>{item}</p>
-          })
-        }
-        <button onClick={this.onClick} className="btn btn-lg btn-outline-green btn-block mb-3">Find New</button>
-          {this.state.recipeVisible? [<Recipe key="1"/>] : ''}
-      </div>
 
-    )}
+      {this.state.selectedIngredients.map(item => {
+        return <p className='centered font-p'>{item}</p>
+      })
+      }
+        <button onClick={this.onClick} className="btn btn-lg btn-outline-green btn-block mb-3">Find New</button>
+        {this.state.recipeVisible? [<Recipe key="1"/>] : ''}
+    </div>
+    )
+  }
 }
 
 const mapStateToProps = (state) => {
