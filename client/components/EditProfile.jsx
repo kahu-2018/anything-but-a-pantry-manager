@@ -65,7 +65,7 @@ class EditProfile extends React.Component {
   }
 
   removePantryItem(ingredient){
-    removePantryIngredient(ingredient)
+    this.props.dispatch(removePantryIngredient(ingredient))
   }
 
   render() {

@@ -15,6 +15,9 @@ router.get('/', (req, res) => {
 
 router.delete('/', (req, res) => {
   console.log('route')
+  db.deleteItem(req.body)
+  .then(() => res.sendStatus(202))
+  .catch(err => res.status(500).send(err.message + 'SERVER ERROR'))
 })
 
 module.exports = router
