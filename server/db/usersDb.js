@@ -68,10 +68,11 @@ function createUser (first_name, last_name, user_name, email, password, testDb) 
 
   return createAuth(user_name, email, password, testDb)
     .then((auth_id) => {
-      const image = 'insert cute photo link here'
+      const image = 'images/kubz.jpg'
       const dietary_restrictions = ''
+      const favourite_food = ''
       return db('users')
-        .insert({first_name, last_name, image, dietary_restrictions, auth_id})
+        .insert({first_name, last_name, image, dietary_restrictions, auth_id, favourite_food})
         .catch(err => {
           console.log('usersDb: createUser error: ', err.message)
           reject(err)
