@@ -90,10 +90,18 @@ class WeeklyOptions extends React.Component{
             <option className='weeklyOption' value='7'>7</option>
           </select>
         </div>
-        <input id="inputfood" className="form-control mb-1 font-pLato" placeholder="Ingredients you have" name="user_name" type="text" required autoFocus="" onKeyPress={this.handleButtonPress} onChange={this.handleChange}/>
 
-        <input className="btn btn-lg btn-green btn-block mb-3" value="Add ingredient" type="submit" />
-
+        <br/>
+          <div className="container-fluid">
+            <div className="row">
+              <div className='col-sm-9 marginZero'>
+                <input autoComplete="off" id="inputfood" className="form-control mb-1 font-pLato" placeholder="Add" type="text" required autoFocus="" onKeyPress={this.handleButtonPress} onChange={this.handleChange} />
+              </div>
+              <div className='col-md-3 marginZero'>
+                <input className="btn btn-md btn-green btn-block mb-3" value="Add" type="submit" />
+              </div>
+            </div>
+          </div>
 
       </form>
         {this.state.selectedIngredients.map(item => {

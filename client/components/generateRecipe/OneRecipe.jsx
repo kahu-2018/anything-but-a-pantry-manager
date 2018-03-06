@@ -57,12 +57,18 @@ class OneRecipe extends React.Component{
     return (
       <div>
         <form onSubmit={this.handleClick}>
-
           {this.props.pantry ? this.props.pantry.map((ingredient, index) => <div><input type="checkbox" value={ingredient.name_of_food} onChange={this.handleCheckbox} checked={ingredient.checked} />{' '+ingredient.name_of_food[0].toUpperCase()+ ingredient.name_of_food.substring(1)}</div>) : <p>Pantry loading</p>}
-
-          <input autoComplete="off" id="inputfood" className="form-control mb-1 font-pLato" placeholder="Add Another Ingredient" type="text" required autoFocus=""  />
-          <input className="btn btn-lg btn-green btn-block mb-3" value="Add Ingredient" type="submit" />
-        </form>
+        <br/>
+          <div className="container-fluid">
+            <div className="row">
+              <div className='col-sm-9 marginZero'>
+                <input autoComplete="off" id="inputfood" className="form-control mb-1 font-pLato" placeholder="Add Another Ingredient" type="text" required autoFocus=""  />
+              </div>
+              <div className='col-md-3 marginZero'>
+                <input className="btn btn-md btn-green btn-block mb-3" value="Add" type="submit" />
+              </div>
+            </div>
+          </div>
           {this.state.selectedIngredients.map(item => {
             return <p className='centered font-p'>{item}
               <button onClick={() => this.removeItem(item)}>Remove</button>
@@ -73,7 +79,9 @@ class OneRecipe extends React.Component{
           {this.state.recipeVisible? [<Recipe key="1"/>] : ''}
       </div>
 
-    )}
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = (state) => {
@@ -82,7 +90,8 @@ const mapStateToProps = (state) => {
     recipes: state.recipes,
     user: state.user,
     dietaryRestrictions: state.dietaryRestrictions,
-    pantry: state.pantry.pantry,
+    pantry: state.pantry
+,
     recipe: state.recipe
 
   }

@@ -87,9 +87,7 @@ class Profile extends React.Component {
               </div>
               <div className="col-sm-3 centered">
                 <button className="btn btn-lg btn-green btn-block mb-3">My Pantry</button>
-                {this.props.pantry ? this.props.pantry.map((ingredient, idx) => {
-                    <li key="idx">{ingredient.name_of_food[0].toUpperCase()+ ingredient.name_of_food.substring(1)
-                    }</li>}) : <p>Pantry loading</p>}
+                {this.props.pantry ? this.props.pantry.map((ingredient, index) => <li>{ingredient.name_of_food[0].toUpperCase()+ingredient.name_of_food.substring(1)}</li>) : <p>Pantry loading</p>}
               </div>
           </div>
          </div>
@@ -103,7 +101,8 @@ const mapStateToProps = (state) => {
     auth: state.auth,
     user: state.user,
     dietaryRestrictions: state.dietaryRestrictions,
-    pantry: state.pantry.pantry
+    pantry: state.pantry
+
   }
 }
 

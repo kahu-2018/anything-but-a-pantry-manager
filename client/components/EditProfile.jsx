@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import { getUserProfile } from '../actions/user'
 import { editProfileRequest } from '../actions/user'
+import {getPantry} from '../actions/pantry'
+import {removePantryIngredient} from '../actions/pantry'
 
 import { Link } from 'react-router-dom'
 
@@ -21,15 +23,17 @@ class EditProfile extends React.Component {
     this.submitEdit = this.submitEdit.bind(this)
     this.handleFavoriteFoods = this.handleFavoriteFoods.bind(this)
     this.handlePantryFoods = this.handlePantryFoods.bind(this)
+    this.removePantryItem = this.removePantryItem.bind(this)
 
   }
 
-  componentWillMount() {
+   componentWillMount() {
+    this.props.dispatch(getPantry())
     if (this.props.auth.user) {
       this.props.dispatch(getUserProfile(this.props.auth.user.user_id))
     }   
   }
-
+  
   updateProfileDetails(e) {
     this.user[e.target.name] = e.target.value
   }
@@ -60,6 +64,10 @@ class EditProfile extends React.Component {
     const newState = { ...this.state }
     newState.pantry.push(selectedPantryIngredient)
     this.setState(newState)
+  }
+
+  removePantryItem(ingredient){
+    this.props.dispatch(removePantryIngredient(ingredient))
   }
 
   render() {
@@ -145,12 +153,10 @@ class EditProfile extends React.Component {
             <div className="col-sm-3">
               <h4 className="greenText centered">Pantry</h4>
               <form onSubmit={this.handlePantryFoods}>
-                <input autoComplete="off" id="pantry" className="form-control mb-1 font-pLato" placeholder="Whats in your Pantry?" type="text" required autoFocus="" />
+                {this.props.pantry.length > 0 ? this.props.pantry.map((ingredient, index) =><li>{ingredient.name_of_food[0].toUpperCase()+ingredient.name_of_food.substring(1)}
+                  <button onClick={() => this.removePantryItem(ingredient)}>Remove</button></li>) : <p>Pantry is empty</p>}
+                <input autoComplete="off" id="pantry" className="form-control mb-1 font-pLato" placeholder="Add Pantry Item" type="text" autoFocus="" />
                 <input className="btn btn-lg btn-green btn-block mb-3" value="Add Ingredient" type="submit" />
-                {this.state.pantry.map(item => {
-                  return <p className='centered font-p'>{item}</p>
-                })
-                }
               </form>
             </div>
           </div>
@@ -163,7 +169,10 @@ const mapStateToProps = (state) => {
   return {
     auth: state.auth,
     user: state.user,
-    dietaryRestrictions: state.dietaryRestrictions
+    dietaryRestrictions: state.dietaryRestrictions,
+    pantry: state.pantry
+
   }
 }
+
 export default connect(mapStateToProps)(EditProfile)
