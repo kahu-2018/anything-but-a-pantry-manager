@@ -1,6 +1,7 @@
 import React from 'react'
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { logoutUser } from '../actions/logout'
 
 
 import Login from './Login'
@@ -17,6 +18,21 @@ class Nav extends React.Component {
     super(props)
     this.state = {
     }
+    this.LoginLink = this.LoginLink.bind(this)
+    this.LogoutLink = this.LogoutLink.bind(this)
+  }
+
+  LoginLink() {
+    return (<Link to='/login' className="nav-link"><i className="fas fa-user-circle faFaFont"></i>Login/Register</Link>)
+  }
+
+  LogoutLink() {
+    return (<Link to='/login' className="nav-link" onClick={
+      () => {
+        console.log('client/components/Nav/LogoutButton: clicked')
+        this.props.dispatch(logoutUser())
+      }
+    }><i className="fas fa-user-circle faFaFont"></i>Logout</Link>)
   }
 
   render() {
@@ -45,7 +61,9 @@ class Nav extends React.Component {
               </ul>
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <Link to='/login' className="nav-link"><i className="fas fa-user-circle faFaFont"></i>{auth.isAuthenticated ? "Logout" : "login/Register"}</Link>
+                  {/* <Link to='/login' className="nav-link"><i className="fas fa-user-circle faFaFont"></i>{auth.isAuthenticated ? "Logout" : "login/Register"}</Link> */}
+                  {auth.isAuthenticated && this.LogoutLink()}
+                  {!auth.isAuthenticated && this.LoginLink()}
                 </li>
               </ul>
               <form className="form-inline my-2 my-lg-0">
