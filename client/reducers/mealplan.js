@@ -1,10 +1,8 @@
-let initialState = []
-
-function updateMealplan(state=initialState, action) {
+function updateMealplan(state=[], action) {
   let newState=[...state]
   switch (action.type) {
     case 'UPDATE_MEALPLAN':
-      return [...state, action.mealplan]
+      return [...action.mealplan]
 
     case 'DELETE_SHOPPING_ITEM':
       return [...newState].filter(ingredient => ingredient.ingredient !== action.ingredient.ingredient)

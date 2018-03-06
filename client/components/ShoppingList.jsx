@@ -6,9 +6,6 @@ import {removeItem} from '../actions/mealplan'
 
 function ShoppingList({mealplan, dispatch, auth}) {
 
-  function removeIngredient(ingredient){
-    dispatch(removeItem(ingredient))
-  }
 
 //Pull ingredients out of meal plan recipes
   function mealplanIngredients(mealplan) {
@@ -29,10 +26,22 @@ function ShoppingList({mealplan, dispatch, auth}) {
 //Transform count object into array
   let ingredientList= Object.keys(count).map((ingredient) => ({ingredient: ingredient, count: count[ingredient]}))
 
+//Delete item from Shopping List
+
+  function removeIngredient(e){
+    let item = e.target.value
+    ingredientList = ingredientList.filter(ingredient => ingredient.ingredient !== item)
+    console.log('ingredientList', ingredientList)
+    // console.log('newList', newList)
+  }
+
   return (
     <div>
       <img className='headerImage' src="images/pantry-to-plate-xsml.jpg" alt='header'/>
       <h1 className='centered greenText'>My Shopping List</h1>
+      <div className={(shoppingList.length == 0) ? 'show' : 'hide' }>
+        <p>No recipes selected for shopping list!</p>
+      </div>
       <div className={(mealplan.length == 0) ? 'hide' : 'show' }>
 
         <div className="container-fluid">
@@ -45,16 +54,14 @@ function ShoppingList({mealplan, dispatch, auth}) {
             </div>
 
             <div className='col-sm-3'>
-              {ingredientList.map(ingredient =>
+              {shoppingList.map(ingredient =>
                 <div>
                   <input type="checkbox" value={ingredient.ingredient} checked={ingredient.checked} className="strikethrough"/>
                   <span>{'   '+ingredient.count+' '+ingredient.ingredient[0].toUpperCase()+ ingredient.ingredient.substring(1)} &nbsp;
-                   <button className="btn btn-sm mb-1 font-pLato btn-green-x" onClick={() => removeIngredient(ingredient)}>X</button></span>
-                </div>)}
-
-                <div className={(mealplan.length == 0) ? 'show' : 'hide' }>
-                  <p>No recipes selected for shopping list!</p>
+                   </span>
+                   <button value={ingredient.ingredient} onClick={(e) => removeIngredient(e)}>x</button>
                 </div>
+              )}
                 <div className='col-sm-3'></div>
             </div>
           </div>
@@ -81,13 +88,13 @@ function ShoppingList({mealplan, dispatch, auth}) {
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,
-    mealplan: state.mealplan
-    // mealplan: [
-    //   {"title":"Onion and Fresh Herb Omelet with Mixed Greens","href":"http://find.myrecipes.com/recipes/recipefinder.dyn?action=displayRecipe&recipe_id=1622444","ingredients":"vegetable oil, green pepper, onions, water, milk, eggs, flour, nonstick cooking spray, onions, garlic, salad greens, salad greens, red wine vinegar, olive oil, goat cheese, almonds","thumbnail":"http://img.recipepuppy.com/514820.jpg"},
-    //   {"title":"Spanish Omelet","href":"http://www.cooks.com/rec/view/0,185,153160-249194,00.html","ingredients":"vegetable oil, green pepper, onions, water, milk, eggs, black pepper, mushroom, garlic, salt, chili powder","thumbnail":""},
-    //   {"title":"Picnic Omelet Squares Recipe","href":"http://www.cdkitchen.com/recipes/recs/2184/Picnic-Omelet-Squares99498.shtml","ingredients":"eggs, garlic, parmesan cheese, olive oil, onions, peas, potato, red pepper, salt, tomato, zucchini","thumbnail":""}
-    //
-    // ]
+    // mealplan: state.mealplan
+    mealplan: [
+      {"title":"Onion and Fresh Herb Omelet with Mixed Greens","href":"http://find.myrecipes.com/recipes/recipefinder.dyn?action=displayRecipe&recipe_id=1622444","ingredients":"vegetable oil, green pepper, onions, water, milk, eggs, flour, nonstick cooking spray, onions, garlic, salad greens, salad greens, red wine vinegar, olive oil, goat cheese, almonds","thumbnail":"http://img.recipepuppy.com/514820.jpg"},
+      {"title":"Spanish Omelet","href":"http://www.cooks.com/rec/view/0,185,153160-249194,00.html","ingredients":"vegetable oil, green pepper, onions, water, milk, eggs, black pepper, mushroom, garlic, salt, chili powder","thumbnail":""},
+      {"title":"Picnic Omelet Squares Recipe","href":"http://www.cdkitchen.com/recipes/recs/2184/Picnic-Omelet-Squares99498.shtml","ingredients":"eggs, garlic, parmesan cheese, olive oil, onions, peas, potato, red pepper, salt, tomato, zucchini","thumbnail":""}
+
+    ]
 
 
   }
