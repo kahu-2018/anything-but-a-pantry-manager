@@ -37,7 +37,22 @@ class OneRecipe extends React.Component{
     return (
       <div>
         <form onSubmit={this.handleClick}>
-          <input autoComplete="off" id="inputfood" className="form-control mb-1 font-pLato" placeholder="Ingredients you have" type="text" required autoFocus=""  />
+
+
+
+          {this.props.pantry ? this.props.pantry.map((checkbox, index) =>
+            <div>
+                <label>
+                    <input
+                        type="checkbox"
+                        checked={checkbox.checked}
+                    
+                    />
+                    {checkbox.label}
+                </label>
+            </div>) : <p>Pantry loading</p>}
+
+          <input autoComplete="off" id="inputfood" className="form-control mb-1 font-pLato" placeholder="Add Another Ingredient" type="text" required autoFocus=""  />
           <input className="btn btn-lg btn-green btn-block mb-3" value="Add Ingredient" type="submit" />
         </form>
           {this.state.selectedIngredients.map(item => {
@@ -56,7 +71,8 @@ const mapStateToProps = (props) => {
     auth: props.auth,
     recipes: props.recipes,
     user: props.user,
-    dietaryRestrictions: props.dietaryRestrictions
+    dietaryRestrictions: props.dietaryRestrictions,
+    pantry: props.pantry.pantry
   }
 }
 
