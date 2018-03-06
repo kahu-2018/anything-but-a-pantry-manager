@@ -16,6 +16,8 @@ class OneRecipe extends React.Component{
     this.handleClick = this.handleClick.bind(this)
     this.showRecipe = this.showRecipe.bind(this)
     this.handleCheckbox = this.handleCheckbox.bind(this)
+    this.removeItem = this.removeItem.bind(this)
+    this.onClick = this.onClick.bind(this)
   }
 
   handleClick(e) {
@@ -40,25 +42,45 @@ class OneRecipe extends React.Component{
     this.setState(newState)
   }
 
+  removeItem(item) {
+    let newList = this.state.selectedIngredients.filter(ingredient => ingredient !== item)
+    this.setState({selectedIngredients: newList})
+  }
+
+   onClick(e){
+    const recipeName = this.props.buttonInfo[0].value
+    this.props.toggleButtons(recipeName)
+    this.showRecipe()
+  }
+
   render() {
     return (
       <div>
         <form onSubmit={this.handleClick}>
-
           {this.props.pantry ? this.props.pantry.map((ingredient, index) => <div><input type="checkbox" value={ingredient.name_of_food} onChange={this.handleCheckbox} checked={ingredient.checked} />{' '+ingredient.name_of_food[0].toUpperCase()+ ingredient.name_of_food.substring(1)}</div>) : <p>Pantry loading</p>}
-
-          <input autoComplete="off" id="inputfood" className="form-control mb-1 font-pLato" placeholder="Add Another Ingredient" type="text" required autoFocus=""  />
-          <input className="btn btn-lg btn-green btn-block mb-3" value="Add Ingredient" type="submit" />
-        </form>
+        <br/>
+          <div className="container-fluid">
+            <div className="row">
+              <div className='col-sm-9 marginZero'>
+                <input autoComplete="off" id="inputfood" className="form-control mb-1 font-pLato" placeholder="Add Another Ingredient" type="text" required autoFocus=""  />
+              </div>
+              <div className='col-md-3 marginZero'>
+                <input className="btn btn-md btn-green btn-block mb-3" value="Add" type="submit" />
+              </div>
+            </div>
+          </div>
           {this.state.selectedIngredients.map(item => {
-            return <p className='centered font-p'>{item}</p>
+            return <p className='centered font-p'>{item}&nbsp;
+              <button className="btn btn-sm mb-1 font-pLato btn-green-x" onClick={() => this.removeItem(item)}>X</button>
+              </p>
           })
         }
-        <button onClick={this.showRecipe} className="btn btn-lg btn-outline-green btn-block mb-3">Find New</button>
+        <button onClick={this.onClick} className="btn btn-lg btn-outline-green btn-block mb-3">Find New</button>
           {this.state.recipeVisible? [<Recipe key="1"/>] : ''}
+        </form>
       </div>
-
-    )}
+    )
+  }
 }
 
 const mapStateToProps = (state) => {
@@ -67,7 +89,8 @@ const mapStateToProps = (state) => {
     recipes: state.recipes,
     user: state.user,
     dietaryRestrictions: state.dietaryRestrictions,
-    pantry: state.pantry.pantry,
+    pantry: state.pantry
+,
     recipe: state.recipe
 
   }

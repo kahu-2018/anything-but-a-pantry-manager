@@ -37,6 +37,14 @@ h4 {
   background-color: #12D6BC;
   color: white;
 }
+.btn-green-x {
+  background-color: #12D6BC;
+  font-family: 'Lato', sans-serif !important;
+  color: white !important;
+  border-radius: 50% !important;
+  height: 30px !important;
+  width: 30px !important;
+}
 
 .inputBackground {
   background-color: #12D6BC;
@@ -67,8 +75,7 @@ h4 {
 }
 
 .backgroundForm {
-  background-color: #12D6BC !important;
-  opacity: 0.3;
+  background-color: #E2FFEE !important;
 }
 
 .faFaFont{
@@ -146,4 +153,13 @@ a:active {
 
 .centered {
   text-align: center;
+}
+
+.strikethrough:checked + span{
+  text-decoration: line-through;
+}
+
+.marginZero {
+  margin: 0 !important;
+  padding: 0 !important;
 }

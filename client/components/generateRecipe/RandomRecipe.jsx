@@ -15,6 +15,7 @@ class RandomRecipe extends React.Component{
     }
     this.randomizeNumber = this.randomizeNumber.bind(this)
     this.selectRecipe = this.selectRecipe.bind(this)
+    this.onClick = this.onClick.bind(this)
   }
 
   randomizeNumber() {
@@ -29,10 +30,16 @@ class RandomRecipe extends React.Component{
     this.setState({recipeVisible: true})
   }
 
+  onClick(e){
+    const recipeName = this.props.buttonInfo[1].value
+    this.props.toggleButtons(recipeName)
+    this.randomizeNumber()
+    }
+
   render() {
     return (
       <div>
-        <button onClick={this.randomizeNumber} className="btn btn-lg btn-outline-green btn-block mb-3">Find New</button>
+        <button onClick={this.onClick} className="btn btn-lg btn-outline-green btn-block mb-3">Find New</button>
           <div>{this.state.recipeVisible? <Recipe key="1"/> : ''}</div>
           <div className={this.props.isSearching ? 'show' : 'hide'}>Searching</div>
       </div>
@@ -41,7 +48,6 @@ class RandomRecipe extends React.Component{
 }
 
 const mapStateToProps = (props) => {
-  console.log('props', props.pantry.pantry)
   return {
     auth: props.auth,
     recipes: props.recipes.recipes,

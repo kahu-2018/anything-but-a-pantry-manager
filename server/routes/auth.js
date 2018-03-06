@@ -50,10 +50,14 @@ function register (req, res) {
                     res.status(200).json({message: 'Account successfully created'})
                 })
                 .catch(err => {
+                    console.log('api/auth/register server error: ', err.message)
                     res.status(500).send({message: "Server Error"})
                 })
         })
-        .catch(err => res.status(500).send({message: "Server Error"}))
+        .catch(err => {
+            console.log('api/auth/register server error: ', err.message)
+            res.status(500).send({message: "Server Error"})
+        })
 
 }
 
@@ -91,19 +95,6 @@ function isCommonPassword(password) {
             return false;
     }
 }
-
-
-
-    //usernameExists
-//   const {user_name, first_name, last_name, password, hourly_wage} = req.body
-//   userExists(user_name, req.app.get('db'))
-//     .then(exists => {
-//       if (exists) return res.status(400).send({message: "User Name Taken"})
-//       createUser(user_name, first_name, last_name, password, hourly_wage, req.app.get('db'))
-//         .then(() => next())
-//         .catch(err => res.status(500).send({message: "Server Error"}))
-//     })
-//     .catch(err => res.status(500).send({message: "Server Error"}))
 
 
 router.post('/login', token.verifyLogin)

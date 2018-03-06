@@ -1,5 +1,4 @@
 import request from '../utils/api'
-import { get } from '../utils/localstorage'
 
 function receivePantry(pantry) {
   return {
@@ -8,6 +7,14 @@ function receivePantry(pantry) {
   }
 }
 
+function deleteItem(ingredient) {
+  return {
+    type: 'DELETE_ITEM',
+    ingredient
+  }
+}
+
+
 export function getPantry() {
   return (dispatch) => {
     return request ('get', 'pantry')
@@ -15,6 +22,18 @@ export function getPantry() {
       dispatch(receivePantry(res.body))
     })
     .catch((err, res) => {
+      console.log('error', err)
+    })
+  }
+}
+
+export function removePantryIngredient(ingredient) {
+  return (dispatch) => {
+    return request ('delete', 'pantry', ingredient)
+    .then(res => {
+      dispatch(deleteItem(ingredient))
+    })
+    .catch((err) => {
       console.log('error', err)
     })
   }

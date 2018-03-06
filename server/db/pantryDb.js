@@ -7,6 +7,14 @@ function getPantry(testDb) {
   .select()
 }
 
+function deleteItem(ingredient, testDb) {
+  const db = testDb || liveDb
+  return db('pantry')
+  .where('name_of_food', ingredient.name_of_food)
+  .del()
+}
+
 module.exports = {
-  getPantry
+  getPantry,
+  deleteItem
 }

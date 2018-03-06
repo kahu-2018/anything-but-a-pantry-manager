@@ -21,7 +21,7 @@ function receivedDietaryRestriction(user) {
 
 export function getUserProfile(userId) {
   return function (dispatch) {
-    const endpoint = 'users/' + userId
+    const endpoint = 'users/profile/' + userId
     request('get', endpoint)
       .then(res => {
         if (res.body.user) {
@@ -43,12 +43,12 @@ export const editProfile = (profile) => {
 }
 
 
-export const editProfileRequest = (profile) => {
+export const editProfileRequest = (userId, data) => {
   return (dispatch) => {
-    request('put', 'profile/', profile)
+    const endpoint = 'users/profile/' + userId
+    request('put', endpoint, data)
       .then((res) => {
-      
-        dispatch(getUserProfile(profile.userId))
+        dispatch(getUserProfile(userId))
       })
       .catch((err) => {
         console.log('actions/user/getUserProfile: error: ', err)
