@@ -1,7 +1,10 @@
-const db = require('./connection')
+var hash = require('../auth/hash')
+const liveDb = require('./connection')
 
 function getPantry(testDb) {
-  return (testDb || db)('pantry')
+  const db = testDb || liveDb
+  return db('pantry')
+  .select()
 }
 
 module.exports = {

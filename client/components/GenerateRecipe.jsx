@@ -9,6 +9,7 @@ import FoodWithFriends from './generateRecipe/FoodWithFriends'
 
 import {getRecipes} from '../actions/generateRecipe'
 import {getUserProfile} from '../actions/user'
+import {getPantry} from '../actions/pantry'
 
 class GenerateRecipe extends React.Component{
   constructor(props) {
@@ -32,7 +33,7 @@ class GenerateRecipe extends React.Component{
 
   componentWillMount() {
     this.props.dispatch(getUserProfile(this.props.auth.user.user_id))
-
+    this.props.dispatch(getPantry())
   }
 
   handleChange(e) {
@@ -41,7 +42,6 @@ class GenerateRecipe extends React.Component{
 
   handleClick(e) {
     e.preventDefault()
-
     this.props.dispatch(getRecipes(this.state.selectedIngredients, this.props.dietaryRestrictions))
     this.setState({recipeVisible: true})
   }
@@ -84,11 +84,13 @@ class GenerateRecipe extends React.Component{
 }
 
 const mapStateToProps = (props) => {
+  console.log('props', props)
   return {
     auth: props.auth,
     recipes: props.recipes,
     user: props.user,
-    dietaryRestrictions: props.dietaryRestrictions
+    dietaryRestrictions: props.dietaryRestrictions,
+    pantry: props.pantry
   }
 }
 
