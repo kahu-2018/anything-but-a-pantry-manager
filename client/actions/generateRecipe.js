@@ -9,13 +9,6 @@ function receiveRecipes(recipes) {
   }
 }
 
-// function receiveRecipe(recipe) {
-//   return {
-//     type: 'RECEIVE_RECIPE',
-//     recipe,
-//   }
-// }
-
 function requestRecipes() {
   return {
     type: 'REQUEST_RECIPES',
@@ -28,12 +21,10 @@ export function getRecipes (pantryIngredients, dietaryRestrictions) {
     dispatch(requestRecipes())
     return request ('get', 'recipes', {i: pantryIngredients, q: dietaryRestrictions, onlyImages: 1})
     .then(res => {
-
       dispatch(receiveRecipes(res.body.results))
     })
     .catch((err, res) => {
       console.log('error', err)
-      //(err, res.body)
     })
   }
 }
