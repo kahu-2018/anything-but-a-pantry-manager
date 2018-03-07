@@ -19,6 +19,12 @@ function updateShoppingList(shoppingList) {
   }
 }
 
+function clearMealplanState() {
+  return {
+    type: 'CLEAR_MEALPLAN'
+  }
+}
+
 export function addToMealplan(recipe) {
   return (dispatch) => {
    dispatch(updateMealplan(recipe))
@@ -34,5 +40,11 @@ export function setShoppingList(shoppingList) {
 export function removeItem(item) {
   return (dispatch) => {
     dispatch(deleteItem(item))
+  }
+}
+
+export function clearMealplan() {
+  return (dispatch) => {
+    dispatch(clearMealplanState())
   }
 }

@@ -2,21 +2,24 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import {removeItem} from '../actions/mealplan'
-
+import {clearMealplan} from '../actions/mealplan'
 
 function ShoppingList({mealplan, dispatch, auth, shoppingList}) {
 
-//Delete item from Shopping List
   function removeIngredient(e){
     let item = e.target.value
     dispatch(removeItem(item))
+  }
+
+  function clearShoppingList(){
+    dispatch(clearMealplan())
   }
 
   return (
     <div>
       <img className='headerImage' src="images/pantry-to-plate-xsml.jpg" alt='header'/>
       <h1 className='centered greenText'>My Shopping List</h1>
-      <div className={(shoppingList.length == 0) ? 'show' : 'hide' }>
+      <div className={(mealplan.length == 0) ? 'show' : 'hide' }>
         <p>No recipes selected for shopping list!</p>
       </div>
       <div className={(mealplan.length == 0) ? 'hide' : 'show' }>
@@ -43,6 +46,7 @@ function ShoppingList({mealplan, dispatch, auth, shoppingList}) {
             </div>
           </div>
         </div>
+         <button onClick={() => clearShoppingList()}>Clear Recipes and Shopping List</button>
       </div>
     </div>
   )
