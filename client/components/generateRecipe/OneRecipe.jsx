@@ -23,11 +23,14 @@ class OneRecipe extends React.Component{
   handleClick(e) {
     e.preventDefault()
     let target = document.getElementById('inputfood')
-    let selectedIngredient = target.value
+    let enteredItem = target.value.toLowerCase()
+    let ingredientList = [...this.state.selectedIngredients]
+    let found = ingredientList.find(item => item == enteredItem)
+    if (!found) {
+      ingredientList.push(enteredItem)
+      this.setState({selectedIngredients: ingredientList})
+    }
     target.value = ''
-    const newState = {...this.state}
-    newState.selectedIngredients.push(selectedIngredient)
-    this.setState(newState)
   }
 
   showRecipe() {
@@ -36,10 +39,19 @@ class OneRecipe extends React.Component{
   }
 
   handleCheckbox(e) {
-    let selectedIngredient = e.target.value
-    const newState = {...this.state}
-    newState.selectedIngredients.push(selectedIngredient)
-    this.setState(newState)
+    let selectedItem = e.target.value
+    let ingredientList = [...this.state.selectedIngredients]
+    let found = ingredientList.find(item => item == selectedItem)
+    if (found) {
+      if (e.target.checked === false) {
+        ingredientList = ingredientList.filter(item => item != selectedItem)
+      }
+    } else {
+      if (e.target.checked === true) {
+        ingredientList.push(e.target.value)
+      }
+    }
+    this.setState({selectedIngredients: ingredientList})
   }
 
   removeItem(item) {
@@ -56,8 +68,8 @@ class OneRecipe extends React.Component{
   render() {
     return (
       <div>
-        <form>
-          {this.props.pantry ? this.props.pantry.map((ingredient, index) => <div><input type="checkbox" value={ingredient.name_of_food} onChange={this.handleCheckbox} checked={ingredient.checked} />{' '+ingredient.name_of_food[0].toUpperCase()+ ingredient.name_of_food.substring(1)}</div>) : <p>Pantry loading</p>}
+        <form onSubmit={(e) => e.preventDefault()}>
+          {this.props.pantry ? this.props.pantry.map((ingredient, index) => <div key={"ing-" + index}><input type="checkbox" value={ingredient.name_of_food} onChange={this.handleCheckbox} checked={ingredient.checked} />{' '+ingredient.name_of_food[0].toUpperCase()+ ingredient.name_of_food.substring(1)}</div>) : <p>Pantry loading</p>}
         <br/>
           <div className="container-fluid">
             <div className="row">
@@ -65,12 +77,12 @@ class OneRecipe extends React.Component{
                 <input autoComplete="off" id="inputfood" className="form-control mb-1 font-pLato" placeholder="Add Ingredient" type="text" />
               </div>
               <div className='col-md-3 marginZero'>
-                <input className="btn btn-md btn-green btn-block mb-3" value="Add" type="submit" onSubmit={this.handleClick} />
+                <input className="btn btn-md btn-green btn-block mb-3" value="Add" type="submit" onClick={this.handleClick}/>
               </div>
             </div>
           </div>
-          {this.state.selectedIngredients.map(item => {
-            return <p className='centered font-p'>{item}&nbsp;
+          {this.state.selectedIngredients.map((item, index) => {
+            return <p key={"ing-" + index} className='centered font-p'>{item} &nbsp;
               <button className="btn btn-sm mb-1 font-pLato btn-green-x" onClick={() => this.removeItem(item)}>X</button>
               </p>
           })
@@ -89,8 +101,7 @@ const mapStateToProps = (state) => {
     recipes: state.recipes,
     user: state.user,
     dietaryRestrictions: state.dietaryRestrictions,
-    pantry: state.pantry
-,
+    pantry: state.pantry,
     recipe: state.recipe
 
   }

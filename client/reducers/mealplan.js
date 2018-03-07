@@ -1,18 +1,13 @@
-let initialState = []
-
-function updateMealplan(state=initialState, action) {
-  let newState=[...state]
+export default function (state=[], action) {
+  let emptyState=[]
   switch (action.type) {
     case 'UPDATE_MEALPLAN':
-      return [...state, action.mealplan]
+      return [...state, {...action.mealplan}]
 
-    case 'DELETE_SHOPPING_ITEM':
-      return [...newState].filter(ingredient => ingredient.ingredient !== action.ingredient.ingredient)
+      case 'CLEAR_MEALPLAN':
+        return emptyState
 
     default:
       return state
   }
 }
-
-
-export default updateMealplan

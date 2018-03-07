@@ -87,7 +87,7 @@ class Profile extends React.Component {
               </div>
               <div className="col-sm-3 centered">
                 <button className="btn btn-lg btn-green btn-block mb-3">My Pantry</button>
-                {this.props.pantry ? this.props.pantry.map((ingredient, index) => <p className="font-p">{ingredient.name_of_food[0].toUpperCase()+ingredient.name_of_food.substring(1)}</p>) : <p>Pantry loading</p>}
+                {this.props.pantry ? this.props.pantry.map((ingredient, index) => <p key={"ing-" + index} className="font-p">{ingredient.name_of_food[0].toUpperCase()+ingredient.name_of_food.substring(1)}</p>) : <p>Pantry loading</p>}
               </div>
           </div>
          </div>
