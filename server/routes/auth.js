@@ -47,7 +47,6 @@ function register (req, res) {
 
             createUser(first_name, last_name, user_name, email, password)
                 .then((arr) => {
-                    console.log('api/auth/register: arr: ', arr)
                     res.status(200).json({message: 'Account successfully created'})
                 })
                 .catch(err => {

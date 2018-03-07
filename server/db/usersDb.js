@@ -91,7 +91,6 @@ function createAuth(user_name, email, password, testDb) {
         .insert({user_name, email, hash})
         .returning('id')
         .then(arr => {
-          console.log('usersDb:createAuth arr: ', arr)
           resolve(arr[0])
         })
         .catch(err => {

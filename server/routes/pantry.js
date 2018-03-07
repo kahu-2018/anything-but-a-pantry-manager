@@ -19,4 +19,12 @@ router.delete('/', (req, res) => {
   .catch(err => res.status(500).send(err.message + 'SERVER ERROR'))
 })
 
+router.post('/', (req, res) => {
+  db.addItem(req.body.item)
+  .then(newItem => {
+    res.json(newItem[0])
+  })
+  .catch(err => res.status(500).send(err.message + 'SERVER ERROR'))
+})
+
 module.exports = router

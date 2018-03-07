@@ -14,6 +14,12 @@ function deleteItem(ingredient) {
   }
 }
 
+function addItem(item) {
+  return {
+    type: 'ADD_ITEM',
+    item
+  }
+}
 
 export function getPantry() {
   return (dispatch) => {
@@ -22,6 +28,18 @@ export function getPantry() {
       dispatch(receivePantry(res.body))
     })
     .catch((err, res) => {
+      console.log('error', err)
+    })
+  }
+}
+
+export function addPantryItem(item){
+  return (dispatch) => {
+    return request ('post', 'pantry', {item})
+    .then(res => {
+      dispatch(addItem(res.body))
+    })
+    .catch((err) => {
       console.log('error', err)
     })
   }
