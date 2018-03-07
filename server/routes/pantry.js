@@ -19,9 +19,9 @@ router.delete('/', (req, res) => {
   .catch(err => res.status(500).send(err.message + 'SERVER ERROR'))
 })
 
-router.put('/', (req, res) => {
-  db.addItem(req.body)
-  .then(() => res.sendStatus(202))
+router.post('/', (req, res) => {
+  db.addItem(req.body.item)
+  .then(() => res.sendStatus(200).send('Item successfully added to pantry!'))
   .catch(err => res.status(500).send(err.message + 'SERVER ERROR'))
 })
 

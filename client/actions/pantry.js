@@ -14,6 +14,12 @@ function deleteItem(ingredient) {
   }
 }
 
+function addItem(item) {
+  return {
+    type: 'ADD_ITEM',
+    item
+  }
+}
 
 export function getPantry() {
   return (dispatch) => {
@@ -22,25 +28,17 @@ export function getPantry() {
       dispatch(receivePantry(res.body))
     })
     .catch((err, res) => {
-      // console.log('error', err)
+      console.log('error', err)
     })
   }
 }
 
 export function addPantryItem(item){
   return (dispatch) => {
-    return request ('put', 'pantry', item)
+    return request ('post', 'pantry', {item})
     .then(res => {
-      return request ('get', 'pantry')
-      .then(res => {
-        dispatch(receivePantry(res.body))
-      })
-      .catch((err, res) => {
-        console.log('error', err)
-      })
-    })
-    .then(res => {
-      dispatch(getPantry())
+      console.log('dispatch', item)
+      dispatch(addItem(item))
     })
     .catch((err) => {
       console.log('error', err)

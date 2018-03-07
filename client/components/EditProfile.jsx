@@ -5,6 +5,7 @@ import { getUserProfile } from '../actions/user'
 import { editProfileRequest } from '../actions/user'
 import {getPantry} from '../actions/pantry'
 import {removePantryIngredient} from '../actions/pantry'
+import {addPantryItem} from '../actions/pantry'
 
 import { Link } from 'react-router-dom'
 
@@ -59,11 +60,9 @@ class EditProfile extends React.Component {
   handlePantryFoods(e) {
     e.preventDefault()
     let target = document.getElementById('pantry')
-    let selectedPantryIngredient = target.value
+    let item = target.value
+    this.props.dispatch(addPantryItem(item))
     target.value = ''
-    const newState = { ...this.state }
-    newState.pantry.push(selectedPantryIngredient)
-    this.setState(newState)
   }
 
   removePantryItem(ingredient){
@@ -71,7 +70,6 @@ class EditProfile extends React.Component {
   }
 
   render() {
-    console.log(this.state.favoriteFoods)
     let username = ''
     let email = ''
     if (this.props.auth.user) {
@@ -169,7 +167,7 @@ class EditProfile extends React.Component {
                     <div className="container-fluid">
                       <div className="row">
                         <div className='col-sm-9 marginZero'>
-                          <input autoComplete="off" id="inputfood" className="form-control mb-1 font-pLato" placeholder="Add Pantry Item" type="text" required autoFocus=""  />
+                          <input autoComplete="off" id="pantry" className="form-control mb-1 font-pLato" placeholder="Add Pantry Item" type="text" required autoFocus=""  />
                         </div>
                         <div className='col-md-3 marginZero'>
                           <input className="btn btn-md btn-green btn-block mb-3" value="Add" type="submit" onClick={this.handlePantryFoods}/>
