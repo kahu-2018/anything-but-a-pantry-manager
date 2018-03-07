@@ -23,11 +23,14 @@ class OneRecipe extends React.Component{
   handleClick(e) {
     e.preventDefault()
     let target = document.getElementById('inputfood')
-    let selectedIngredient = target.value
+    let enteredItem = target.value.toLowerCase()
+    let ingredientList = [...this.state.selectedIngredients]
+    let found = ingredientList.find(item => item == enteredItem)
+    if (!found) {
+      ingredientList.push(enteredItem)
+      this.setState({selectedIngredients: ingredientList})
+    }
     target.value = ''
-    const newState = {...this.state}
-    newState.selectedIngredients.push(selectedIngredient)
-    this.setState(newState)
   }
 
   showRecipe() {
