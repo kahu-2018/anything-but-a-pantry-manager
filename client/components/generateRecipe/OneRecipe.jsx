@@ -56,7 +56,7 @@ class OneRecipe extends React.Component{
   render() {
     return (
       <div>
-        <form >
+        <form onSubmit={(e) => e.preventDefault()}>
           {this.props.pantry ? this.props.pantry.map((ingredient, index) => <div><input type="checkbox" value={ingredient.name_of_food} onChange={this.handleCheckbox} checked={ingredient.checked} />{' '+ingredient.name_of_food[0].toUpperCase()+ ingredient.name_of_food.substring(1)}</div>) : <p>Pantry loading</p>}
         <br/>
           <div className="container-fluid">
