@@ -65,8 +65,7 @@ class Profile extends React.Component {
                 <h3 className='greenText'>{this.props.auth.user.user_name}</h3>
                 <p>{this.props.auth.user.email}</p>
                 <h3 className='greenText'>Friends</h3>
-                <input className="btn btn-lg btn-green btn-block mb-3" value="Go to Shopping List" type="submit" />
-                <input className="btn btn-lg btn-green btn-block mb-3" value="History" type="submit" />
+                <Link to='/shoppinglist'><input className="btn btn-lg btn-green btn-block mb-3" value="Go to Shopping List" type="submit" /></Link>
               </div>
               <div className="col-sm-3">
                 <button className="btn btn-lg btn-green btn-block mb-3">Favourite Recipes</button>
@@ -83,6 +82,7 @@ class Profile extends React.Component {
 
                   <h4 className ='greenText'>Food I Love</h4>
                   <p className="centered font-p">{this.props.user.favourite_food}</p>
+                  <p className="centered font-p"  >{this.props.user.favourite_food}</p>
 
               </div>
               <div className="col-sm-3 centered">

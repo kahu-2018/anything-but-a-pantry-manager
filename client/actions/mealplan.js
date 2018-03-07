@@ -5,8 +5,21 @@ function updateMealplan(recipe) {
   }
 }
 
+function deleteItem(ingredient) {
+  return {
+    type: 'DELETE_SHOPPING_ITEM',
+    ingredient
+  }
+}
+
 export function addToMealplan(recipe) {
   return (dispatch) => {
    dispatch(updateMealplan(recipe))
+  }
+}
+
+export function removeItem(ingredient) {
+  return (dispatch) => {
+    dispatch(deleteItem(ingredient))
   }
 }

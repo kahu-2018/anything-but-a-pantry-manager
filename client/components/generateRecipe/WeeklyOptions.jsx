@@ -65,7 +65,7 @@ class WeeklyOptions extends React.Component{
   onClick(e){
     const recipeName = this.props.buttonInfo[2].value
     this.props.toggleButtons(recipeName)
-    this.showRecipe
+    this.showRecipe()
   }
 
   render(props) {
