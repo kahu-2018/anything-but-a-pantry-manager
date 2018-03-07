@@ -69,7 +69,7 @@ function createUser (first_name, last_name, user_name, email, password, testDb) 
   return createAuth(user_name, email, password, testDb)
     .then((auth_id) => {
 
-      const image = 'images/kubz.jpg'
+      const image = 'images/profile-image-default.png'
       const dietary_restrictions = ''
       const favourite_food = ''
       return db('users')
