@@ -2,7 +2,6 @@ import { get, set, remove } from './localstorage'
 
 
 export function saveUserProfile(profile) {
-    console.log('saveUserProfile: ', profile)
     if (profile) {
         set('pf_first_name', profile.first_name)
         set('pf_last_name', profile.last_name)
@@ -23,7 +22,6 @@ export function getLocalUserProfile() {
         profile.dietary_restrictions = dietRestrictions
         profile.image = image
     }
-    console.log('getLocalUserProfile: ', profile)
     return profile
 }
 

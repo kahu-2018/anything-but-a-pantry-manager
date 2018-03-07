@@ -26,7 +26,6 @@ export function saveUserToken (token) {
 }
 
 export function getUserTokenInfo () {
-  console.log('getUserTokenInfo is called ')
   const token = get('token')
   return token ? decode(token) : null
 }
