@@ -56,16 +56,16 @@ class OneRecipe extends React.Component{
   render() {
     return (
       <div>
-        <form onSubmit={this.handleClick}>
+        <form>
           {this.props.pantry ? this.props.pantry.map((ingredient, index) => <div><input type="checkbox" value={ingredient.name_of_food} onChange={this.handleCheckbox} checked={ingredient.checked} />{' '+ingredient.name_of_food[0].toUpperCase()+ ingredient.name_of_food.substring(1)}</div>) : <p>Pantry loading</p>}
         <br/>
           <div className="container-fluid">
             <div className="row">
               <div className='col-sm-9 marginZero'>
-                <input autoComplete="off" id="inputfood" className="form-control mb-1 font-pLato" placeholder="Add Another Ingredient" type="text" required autoFocus=""  />
+                <input autoComplete="off" id="inputfood" className="form-control mb-1 font-pLato" placeholder="Add Ingredient" type="text" />
               </div>
               <div className='col-md-3 marginZero'>
-                <input className="btn btn-md btn-green btn-block mb-3" value="Add" type="submit" />
+                <input className="btn btn-md btn-green btn-block mb-3" value="Add" type="submit" onSubmit={this.handleClick} />
               </div>
             </div>
           </div>
