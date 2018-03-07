@@ -71,6 +71,7 @@ class EditProfile extends React.Component {
   }
 
   render() {
+    console.log(this.state.favoriteFoods)
     let username = ''
     let email = ''
     if (this.props.auth.user) {
@@ -141,15 +142,14 @@ class EditProfile extends React.Component {
             </div>
             <div className="col-sm-3">
               <h4 className="greenText centered">Favorite Foods</h4>
-
-              <form onSubmit={this.handleFavoriteFoods}>
+              <form >
                 <div className="container-fluid">
                   <div className="row">
                     <div className='col-sm-9 marginZero'>
-                      <input autoComplete="off" id="inputfood" className="form-control mb-1 font-pLato" placeholder="Stuff you love" type="text" required autoFocus=""  />
+                      <input autoComplete="off" id="favoriteFood" className="form-control mb-1 font-pLato" placeholder="Stuff you love" type="text" autoFocus="" />
                     </div>
                     <div className='col-md-3 marginZero'>
-                      <input className="btn btn-md btn-green btn-block mb-3" value="Add" type="submit" />
+                      <input className="btn btn-md btn-green btn-block mb-3" value="Add" type="submit" onClick={this.handleFavoriteFoods}/>
                     </div>
                   </div>
                 </div>
@@ -162,7 +162,7 @@ class EditProfile extends React.Component {
             </div>
             <div className="col-sm-3">
               <h4 className="greenText centered">Pantry</h4>
-              <form>
+              <form onSubmit={(e) =>e.preventDefault()}>
                 {this.props.pantry.length > 0 ? this.props.pantry.map((ingredient, index) =><p className='centered'>{ingredient.name_of_food[0].toUpperCase()+ingredient.name_of_food.substring(1)} &nbsp;
                   <button className='btn btn-sm mb-1 font-pLato btn-green-x' onClick={() => this.removePantryItem(ingredient)}>X</button></p>) : <p className='centered'>Pantry is empty</p>}
 
@@ -176,7 +176,6 @@ class EditProfile extends React.Component {
                         </div>
                       </div>
                     </div>
-
               </form>
             </div>
           </div>
