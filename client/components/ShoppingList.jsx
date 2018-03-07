@@ -49,8 +49,7 @@ function ShoppingList({mealplan, dispatch, auth}) {
                 <div>
                   <input type="checkbox" value={ingredient.ingredient} checked={ingredient.checked} className="strikethrough"/>
                   <span>{'   '+ingredient.count+' '+ingredient.ingredient[0].toUpperCase()+ ingredient.ingredient.substring(1)} &nbsp;
-                   <button onClick={() => removeIngredient(ingredient)}>x
-      </button></span>
+                   <button className="btn btn-sm mb-1 font-pLato btn-green-x" onClick={() => removeIngredient(ingredient)}>X</button></span>
                 </div>)}
 
                 <div className={(mealplan.length == 0) ? 'show' : 'hide' }>

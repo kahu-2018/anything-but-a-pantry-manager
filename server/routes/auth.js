@@ -46,16 +46,17 @@ function register (req, res) {
             }
 
             createUser(first_name, last_name, user_name, email, password)
-                .then(() => {
+                .then((arr) => {
+                    console.log('api/auth/register: arr: ', arr)
                     res.status(200).json({message: 'Account successfully created'})
                 })
                 .catch(err => {
-                    console.log('api/auth/register server error: ', err.message)
+                    console.log('api/auth/register: server error: ', err.message)
                     res.status(500).send({message: "Server Error"})
                 })
         })
         .catch(err => {
-            console.log('api/auth/register server error: ', err.message)
+            console.log('api/auth/register: server error: ', err.message)
             res.status(500).send({message: "Server Error"})
         })
 

@@ -22,18 +22,19 @@ class RandomRecipe extends React.Component{
     let length = this.props.pantry.length
     let randomNumber = Math.floor(Math.random()*length)
     this.setState({selectedIngredient: this.props.pantry[randomNumber]})
-    this.selectRecipe()
   }
 
   selectRecipe() {
-    this.props.dispatch(getRecipes(this.state.selectedIngredient, this.props.dietaryRestrictions))
+    this.props.dispatch(getRecipes(this.state.selectedIngredients, this.props.dietaryRestrictions))
     this.setState({recipeVisible: true})
   }
+
 
   onClick(e){
     const recipeName = this.props.buttonInfo[1].value
     this.props.toggleButtons(recipeName)
     this.randomizeNumber()
+    this.selectRecipe()
     }
 
   render() {
