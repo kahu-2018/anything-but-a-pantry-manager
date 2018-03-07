@@ -27,6 +27,18 @@ export function getPantry() {
   }
 }
 
+export function addPantryItem(item){
+  return (dispatch) => {
+    return request ('put', 'pantry', item)
+    .then(res => {
+      dispatch(getPantry())
+    })
+    .catch((err) => {
+      console.log('error', err)
+    })
+  }
+}
+
 export function removePantryIngredient(ingredient) {
   return (dispatch) => {
     return request ('delete', 'pantry', ingredient)

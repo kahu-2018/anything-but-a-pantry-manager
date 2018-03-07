@@ -14,7 +14,14 @@ function deleteItem(ingredient, testDb) {
   .del()
 }
 
+function addItem(item, testDb) {
+  const db = testDb || liveDb
+  return db('pantry')
+  .insert(item)
+}
+
 module.exports = {
   getPantry,
-  deleteItem
+  deleteItem,
+  addItem
 }
