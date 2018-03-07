@@ -1,14 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+
 
 class Home extends React.Component {
   render() {
     return (
       <div>
         <img className='headerImage' src="images/pantry-to-plate-home.jpg" alt='header'/>
-
-        <div>
           <div className="container-fluid full-width">
+
+            {this.props.auth.isAuthenticated ? '':
             <div className="row">
               <div className="col-sm-3">
                 <Link to='/login'><input className="btn btn-lg btn-green btn-block mb-3" value="Login" type="submit" /></Link>
@@ -16,8 +18,7 @@ class Home extends React.Component {
               <div className="col-sm-3">
                 <Link to='/register'><input className="btn btn-lg btn-green btn-block mb-3" value="Register" type="submit" /></Link>
               </div>
-            </div>
-          </div>
+          </div>}
 
           <div className="container-fluid full-width">
             <h2>Welcome to Pantry to Plate</h2>
@@ -44,4 +45,10 @@ class Home extends React.Component {
 }
 
 
-export default Home
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+  }
+}
+
+export default connect(mapStateToProps)(Home)
