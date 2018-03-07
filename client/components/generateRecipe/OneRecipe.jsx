@@ -45,7 +45,9 @@ class OneRecipe extends React.Component{
         ingredientList = ingredientList.filter(item => item != selectedItem)
       }
     } else {
-      ingredientList.push(e.target.value)
+      if (e.target.checked === true) {
+        ingredientList.push(e.target.value)
+      }
     }
     this.setState({selectedIngredients: ingredientList})
   }
