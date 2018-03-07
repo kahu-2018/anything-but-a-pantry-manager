@@ -75,7 +75,7 @@ class WeeklyOptions extends React.Component{
     return (
 
       <div>
-        <form onSubmit={this.handleClick}>
+        <form>
 
         <div className="form-group">
           <label form="exampleSelect1">How many meals do you need?</label>
@@ -95,10 +95,10 @@ class WeeklyOptions extends React.Component{
           <div className="container-fluid">
             <div className="row">
               <div className='col-sm-9 marginZero'>
-                <input autoComplete="off" id="inputfood" className="form-control mb-1 font-pLato" placeholder="Add" type="text" required autoFocus="" onKeyPress={this.handleButtonPress} onChange={this.handleChange} />
+                <input autoComplete="off" id="inputfood" className="form-control mb-1 font-pLato" placeholder="Add Ingredient" type="text" required autoFocus="" onKeyPress={this.handleButtonPress} onChange={this.handleChange} />
               </div>
               <div className='col-md-3 marginZero'>
-                <input className="btn btn-md btn-green btn-block mb-3" value="Add" type="submit" />
+                <input className="btn btn-md btn-green btn-block mb-3" value="Add" type="submit" onSubmit={this.handleClick}/>
               </div>
             </div>
           </div>
