@@ -79,9 +79,11 @@ class EditProfile extends React.Component {
 
     let firstName = ''
     let lastName = ''
+    let userImage = ''
     if (this.props.user) {
       firstName = this.props.user.first_name
       lastName = this.props.user.last_name
+      userImage = this.props.user.image
     }
 
     const {user} = this.props
@@ -105,7 +107,7 @@ class EditProfile extends React.Component {
           <div className="row">
 
             <div className="col-sm-3">
-              <img className='profileImage' src='./images/kubz.jpg' alt='profile image' />
+              <img className='profileImage' src={userImage} alt='profile image' />
               <div className="form-group">
                 <label htmlFor="exampleInputFile"></label>
                 <input type="file" className="form-control-file centered" id="imageUpload" aria-describedby="fileHelp"></input>
