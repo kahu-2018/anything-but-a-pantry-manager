@@ -73,6 +73,7 @@ function createUser (first_name, last_name, user_name, email, password, testDb) 
       const favourite_food = ''
       return db('users')
         .insert({first_name, last_name, image, dietary_restrictions, auth_id, favourite_food})
+        .returning('id')
         .catch(err => {
           console.log('usersDb: createUser error: ', err.message)
           reject(err)
@@ -90,6 +91,7 @@ function createAuth(user_name, email, password, testDb) {
       }
       db('auth')
         .insert({user_name, email, hash})
+        .returning('id')
         .then(id_arr => {
           resolve(id_arr[0])
         })
