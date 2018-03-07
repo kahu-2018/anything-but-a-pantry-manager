@@ -104,13 +104,13 @@ class WeeklyOptions extends React.Component{
           </div>
 
       </form>
-        {this.state.selectedIngredients.map(item => {
-          return <p className='centered font-p'>{item}</p>
+        {this.state.selectedIngredients.map((item, index) => {
+          return <p key={"ing-" + index} className='centered font-p'>{item}</p>
           })
         }
 
         <button onClick={this.onClick} className="btn btn-lg btn-outline-green btn-block mb-3" type="submit">Find New</button>
-          {this.state.recipeVisible ? this.state.recipeArray.map(x => <Recipe />) : ''}
+          {this.state.recipeVisible ? this.state.recipeArray.map((x, index) => <Recipe key={"ing-" + index} />) : ''}
       </div>
         )}
 }
