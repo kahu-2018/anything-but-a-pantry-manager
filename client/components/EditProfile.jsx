@@ -152,8 +152,8 @@ class EditProfile extends React.Component {
                   </div>
                 </div>
 
-                {this.state.favoriteFoods.map(item => {
-                  return <p className='centered font-p'>{item}</p>
+                {this.state.favoriteFoods.map((item, idx) => {
+                  return <p className='centered font-p' key={idx}>{item}</p>
                 })
                 }
               </form>
@@ -161,7 +161,7 @@ class EditProfile extends React.Component {
             <div className="col-sm-3">
               <h4 className="greenText centered">Pantry</h4>
               <form onSubmit={(e) =>e.preventDefault()}>
-                {this.props.pantry.length > 0 ? this.props.pantry.map((ingredient, index) =><p className='centered'>{ingredient.name_of_food[0].toUpperCase()+ingredient.name_of_food.substring(1)} &nbsp;
+                {this.props.pantry.length > 0 ? this.props.pantry.map((ingredient, idx) =><p className='centered' key={idx}>{ingredient.name_of_food[0].toUpperCase()+ingredient.name_of_food.substring(1)} &nbsp;
                   <button className='btn btn-sm mb-1 font-pLato btn-green-x' onClick={() => this.removePantryItem(ingredient)}>X</button></p>) : <p className='centered'>Pantry is empty</p>}
 
                     <div className="container-fluid">

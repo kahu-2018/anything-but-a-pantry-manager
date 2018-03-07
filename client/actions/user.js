@@ -1,5 +1,5 @@
 import request from '../utils/api'
-import {get} from '../utils/localstorage'
+import { saveUserProfile } from '../utils/user'
 
 
 function receivedUser(user) {
@@ -25,6 +25,7 @@ export function getUserProfile(userId) {
     request('get', endpoint)
       .then(res => {
         if (res.body.user) {
+          saveUserProfile(res.body.user)
           dispatch(receivedUser(res.body.user))
           dispatch(receivedDietaryRestriction(res.body.user))
         }

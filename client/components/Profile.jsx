@@ -38,6 +38,17 @@ class Profile extends React.Component {
       email = this.props.auth.user.email
     }
 
+    let firstName = ''
+    let lastName = ''
+    let userImage = ''
+    let favouriteFood = ''
+    if (this.props.user) {
+      firstName = this.props.user.first_name
+      lastName = this.props.user.last_name
+      userImage = this.props.user.image
+      favouriteFood = this.props.user.favourite_food
+    }
+
     let splitDietaryReq = []
     if (this.props.dietaryRestrictions) {
       splitDietaryReq = this.props.dietaryRestrictions.split(' ')
@@ -52,7 +63,7 @@ class Profile extends React.Component {
               <div className='col-sm-3'>
             </div>
               <div className='col-sm-6'>
-            <h1 className='greenText'>Welcome {this.props.user.first_name} {this.props.user.last_name}</h1>
+            <h1 className='greenText'>Welcome {firstName} {lastName}</h1>
             </div>
             <div className='col-sm-3'>
               <Link to='/editProfile'><input className="btn btn-md btn-green float-right" value="Edit" type="submit" /></Link>
@@ -61,7 +72,7 @@ class Profile extends React.Component {
 
           <div className="row">
               <div className="col-sm-3 centered">
-                <img className='profileImage' src={this.props.user.image} alt='profile image'/>
+                <img className='profileImage' src={userImage} alt='profile image'/>
                 <h3 className='greenText'>{this.props.auth.user.user_name}</h3>
                 <p>{this.props.auth.user.email}</p>
                 <Link to='/shoppinglist'><input className="btn btn-lg btn-green btn-block mb-3" value="Go to Shopping List" type="submit" /></Link>
@@ -80,8 +91,7 @@ class Profile extends React.Component {
                 )}
 
                   <h4 className ='greenText'>Food I Love</h4>
-                  <p className="centered font-p">{this.props.user.favourite_food}</p>
-                  <p className="centered font-p"  >{this.props.user.favourite_food}</p>
+                  <p className="centered font-p">{favouriteFood}</p>
 
               </div>
               <div className="col-sm-3 centered">

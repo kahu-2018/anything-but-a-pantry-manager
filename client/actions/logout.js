@@ -1,4 +1,5 @@
-import { removeUser } from '../utils/auth'
+import { removeUserToken } from '../utils/auth'
+import { removeUserProfile } from '../utils/user'
 
 function requestLogout () {
   return {
@@ -17,7 +18,8 @@ export function logoutUser () {
   return dispatch => {
     document.location = "/#/"
     dispatch(requestLogout())
-    removeUser()
+    removeUserToken()
+    removeUserProfile()
     dispatch(receiveLogout())
   }
 }
