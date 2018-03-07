@@ -5,6 +5,7 @@ import { getUserProfile } from '../actions/user'
 import { editProfileRequest } from '../actions/user'
 import {getPantry} from '../actions/pantry'
 import {removePantryIngredient} from '../actions/pantry'
+import {addItem} from '../actions/pantry'
 
 import { Link } from 'react-router-dom'
 
@@ -14,7 +15,6 @@ class EditProfile extends React.Component {
     this.state = {
       dietaryRestrictions: ['Dairy-free', 'Vegan', 'Gluten-free', 'Vegetarian', 'Paleo', 'Egg-free', 'Nut-allergy', 'Peanut-allergy', 'Soy-free'],
       favoriteFoods: [],
-      pantry: []
     }
 
     this.user = {}
@@ -59,11 +59,10 @@ class EditProfile extends React.Component {
   handlePantryFoods(e) {
     e.preventDefault()
     let target = document.getElementById('pantry')
-    let selectedPantryIngredient = target.value
+    let item = target.value
     target.value = ''
-    const newState = { ...this.state }
-    newState.pantry.push(selectedPantryIngredient)
-    this.setState(newState)
+    console.log('add the pantry foods here')
+    this.props.dispatch(addItem(item))
   }
 
   removePantryItem(ingredient){
@@ -71,7 +70,6 @@ class EditProfile extends React.Component {
   }
 
   render() {
-    console.log(this.state.favoriteFoods)
     let username = ''
     let email = ''
     if (this.props.auth.user) {
@@ -162,14 +160,15 @@ class EditProfile extends React.Component {
             </div>
             <div className="col-sm-3">
               <h4 className="greenText centered">Pantry</h4>
-              <form onSubmit={(e) =>e.preventDefault()}>
-                {this.props.pantry.length > 0 ? this.props.pantry.map((ingredient, index) =><p className='centered'>{ingredient.name_of_food[0].toUpperCase()+ingredient.name_of_food.substring(1)} &nbsp;
-                  <button className='btn btn-sm mb-1 font-pLato btn-green-x' onClick={() => this.removePantryItem(ingredient)}>X</button></p>) : <p className='centered'>Pantry is empty</p>}
+              {this.props.pantry.length > 0 ? this.props.pantry.map((ingredient, index) => <p className='centered'>{ingredient.name_of_food[0].toUpperCase()+ingredient.name_of_food.substring(1)} &nbsp;
+              <button className='btn btn-sm mb-1 font-pLato btn-green-x' onClick={() => this.removePantryItem(ingredient)}>X</button></p>) : <p className='centered'>Pantry is empty</p>}
+              <form>
 
                     <div className="container-fluid">
                       <div className="row">
                         <div className='col-sm-9 marginZero'>
-                          <input autoComplete="off" id="inputfood" className="form-control mb-1 font-pLato" placeholder="Add Pantry Item" type="text" required autoFocus=""  />
+                          <input autoComplete="off" id="pantry" className="form-control mb-1 font-pLato" placeholder="Add Pantry Item" type="text" autoFocus="" />
+                          <input type="text" />
                         </div>
                         <div className='col-md-3 marginZero'>
                           <input className="btn btn-md btn-green btn-block mb-3" value="Add" type="submit" onClick={this.handlePantryFoods}/>
@@ -185,6 +184,7 @@ class EditProfile extends React.Component {
   }
 }
 const mapStateToProps = (state) => {
+  console.log('mapStateToProps')
   return {
     auth: state.auth,
     user: state.user,
