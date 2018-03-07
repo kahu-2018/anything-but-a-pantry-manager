@@ -36,7 +36,6 @@ class OneRecipe extends React.Component{
   }
 
   handleCheckbox(e) {
-    console.log("handleCheckbox: e.target.checked", e.target.checked)
     let selectedItem = e.target.value
     let ingredientList = [...this.state.selectedIngredients]
     let found = ingredientList.find(item => item == selectedItem)
