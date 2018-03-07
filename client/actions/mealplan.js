@@ -5,21 +5,46 @@ function updateMealplan(recipe) {
   }
 }
 
-function deleteItem(ingredient) {
+function deleteItem(item) {
   return {
     type: 'DELETE_SHOPPING_ITEM',
-    ingredient
+    item
+  }
+}
+
+function updateShoppingList(shoppingList) {
+  return {
+    type: 'UPDATE_SHOPPING_LIST',
+    shoppingList
+  }
+}
+
+function clearMealplanState() {
+  return {
+    type: 'CLEAR_MEALPLAN'
   }
 }
 
 export function addToMealplan(recipe) {
   return (dispatch) => {
    dispatch(updateMealplan(recipe))
+ }
+}
+
+export function setShoppingList(shoppingList) {
+  return (dispatch) => {
+    dispatch(updateShoppingList(shoppingList))
   }
 }
 
-export function removeItem(ingredient) {
+export function removeItem(item) {
   return (dispatch) => {
-    dispatch(deleteItem(ingredient))
+    dispatch(deleteItem(item))
+  }
+}
+
+export function clearMealplan() {
+  return (dispatch) => {
+    dispatch(clearMealplanState())
   }
 }
