@@ -1,7 +1,6 @@
 import request from '../utils/api'
 
 function receivePantry(pantry) {
-  console.log('pantry reducer', pantry)
   return {
     type: 'RECEIVE_PANTRY',
     pantry
@@ -23,7 +22,7 @@ export function getPantry() {
       dispatch(receivePantry(res.body))
     })
     .catch((err, res) => {
-      console.log('error', err)
+      // console.log('error', err)
     })
   }
 }
