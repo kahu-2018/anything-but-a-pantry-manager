@@ -75,7 +75,7 @@ class WeeklyOptions extends React.Component{
     return (
 
       <div>
-        <form onSubmit={(e) => e.preventDefault()}</form>>
+        <form onSubmit={(e) => e.preventDefault()}>
 
         <div className="form-group">
           <label form="exampleSelect1">How many meals do you need?</label>
