@@ -102,8 +102,7 @@ function createAuth(user_name, email, password, testDb) {
 }
 
 
-function updateUserByUserId (id, data, testDb) {
-  if (!id) return null
+function updateUserByUserId (id, data, testDb) {  
   const db = testDb || liveDb
 
   return db('users').where('id', id)
@@ -112,7 +111,6 @@ function updateUserByUserId (id, data, testDb) {
     )
     .catch(err => {
       console.log('userDb: updateUserByUserId error: ', err.message)
-      reject(err)
     })
 
 }

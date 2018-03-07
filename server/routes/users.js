@@ -19,6 +19,7 @@ router.put('/profile/:id', decode, (req, res) => {
       .then(()=>{
         res.status(200).send('Profile id ', req.params.id, ' is updated')
       })
+      .catch(err => {})
   } else {
     res.status(400).send('Invalid data')
   }
