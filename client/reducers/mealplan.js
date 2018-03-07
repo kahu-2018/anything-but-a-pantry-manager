@@ -1,9 +1,10 @@
-function updateMealplan(state=[], action) {
+export default function (state=[], action) {
   let newState=[...state]
+  console.log('reducer', action)
   switch (action.type) {
     case 'UPDATE_MEALPLAN':
-      return [...action.mealplan]
-
+      console.log({action});
+      return [...state, {...action.mealplan}]
     case 'DELETE_SHOPPING_ITEM':
       return [...newState].filter(ingredient => ingredient.ingredient !== action.ingredient.ingredient)
 
@@ -11,6 +12,3 @@ function updateMealplan(state=[], action) {
       return state
   }
 }
-
-
-export default updateMealplan

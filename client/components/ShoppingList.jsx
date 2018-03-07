@@ -4,30 +4,9 @@ import { connect } from 'react-redux'
 import {removeItem} from '../actions/mealplan'
 
 
-function ShoppingList({mealplan, dispatch, auth}) {
-
-
-//Pull ingredients out of meal plan recipes
-  function mealplanIngredients(mealplan) {
-    return mealplan.reduce((arr, {ingredients}) =>
-    {
-      let ingrArr= ingredients.split(', ')
-      ingrArr.forEach(entry => arr.push(entry))
-      return arr
-    }
-    , [])
-  }
-
-//Remove duplicate ingredients and create count for each
-  let noDuplicates = mealplanIngredients(mealplan)
-  let count = {}
-  noDuplicates.forEach((ingredient) => count[ingredient] = (count[ingredient] || 0)+1)
-
-//Transform count object into array
-  let ingredientList= Object.keys(count).map((ingredient) => ({ingredient: ingredient, count: count[ingredient]}))
+function ShoppingList({mealplan, dispatch, auth, shoppingList}) {
 
 //Delete item from Shopping List
-
   function removeIngredient(e){
     let item = e.target.value
     ingredientList = ingredientList.filter(ingredient => ingredient.ingredient !== item)
@@ -86,6 +65,7 @@ function ShoppingList({mealplan, dispatch, auth}) {
 
 
 const mapStateToProps = (state) => {
+  // console.log('state', state)
   return {
     auth: state.auth,
     // mealplan: state.mealplan
