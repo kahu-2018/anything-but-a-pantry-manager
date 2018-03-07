@@ -5,7 +5,11 @@ import { getUserProfile } from '../actions/user'
 import { editProfileRequest } from '../actions/user'
 import {getPantry} from '../actions/pantry'
 import {removePantryIngredient} from '../actions/pantry'
+<<<<<<< HEAD
 import {addPantryItem} from '../actions/pantry'
+=======
+import {addItem} from '../actions/pantry'
+>>>>>>> front end done
 
 import { Link } from 'react-router-dom'
 
@@ -15,7 +19,6 @@ class EditProfile extends React.Component {
     this.state = {
       dietaryRestrictions: ['Dairy-free', 'Vegan', 'Gluten-free', 'Vegetarian', 'Paleo', 'Egg-free', 'Nut-allergy', 'Peanut-allergy', 'Soy-free'],
       favoriteFoods: [],
-      pantry: []
     }
 
     this.user = {}
@@ -61,8 +64,14 @@ class EditProfile extends React.Component {
     e.preventDefault()
     let target = document.getElementById('pantry')
     let item = target.value
+<<<<<<< HEAD
     this.props.dispatch(addPantryItem(item))
     target.value = ''
+=======
+    target.value = ''
+    console.log('add the pantry foods here')
+    this.props.dispatch(addItem(item))
+>>>>>>> front end done
   }
 
   removePantryItem(ingredient){
@@ -167,7 +176,7 @@ class EditProfile extends React.Component {
                     <div className="container-fluid">
                       <div className="row">
                         <div className='col-sm-9 marginZero'>
-                          <input autoComplete="off" id="pantry" className="form-control mb-1 font-pLato" placeholder="Add Pantry Item" type="text" required autoFocus=""  />
+                          <input autoComplete="off" id="pantry" className="form-control mb-1 font-pLato" placeholder="Add Pantry Item" type="text" autoFocus="" />
                         </div>
                         <div className='col-md-3 marginZero'>
                           <input className="btn btn-md btn-green btn-block mb-3" value="Add" type="submit" onClick={this.handlePantryFoods}/>
@@ -183,6 +192,7 @@ class EditProfile extends React.Component {
   }
 }
 const mapStateToProps = (state) => {
+  console.log('mapStateToProps')
   return {
     auth: state.auth,
     user: state.user,
