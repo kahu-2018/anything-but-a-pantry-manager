@@ -70,7 +70,7 @@ class OneRecipe extends React.Component{
             </div>
           </div>
           {this.state.selectedIngredients.map(item => {
-            return <p className='centered font-p'>{item}&nbsp;
+            return <p className='centered font-p'>{item} &nbsp;
               <button className="btn btn-sm mb-1 font-pLato btn-green-x" onClick={() => this.removeItem(item)}>X</button>
               </p>
           })
@@ -89,8 +89,7 @@ const mapStateToProps = (state) => {
     recipes: state.recipes,
     user: state.user,
     dietaryRestrictions: state.dietaryRestrictions,
-    pantry: state.pantry
-,
+    pantry: state.pantry,
     recipe: state.recipe
 
   }
