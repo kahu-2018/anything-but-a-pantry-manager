@@ -22,7 +22,6 @@ function addItem(name_of_food, testDb) {
 }
 
 const getItemById = (item_id, testDb) => {
-  console.log(item_id)
   return (testDb || db)('pantry')
     .where('id', item_id)
     .select()
