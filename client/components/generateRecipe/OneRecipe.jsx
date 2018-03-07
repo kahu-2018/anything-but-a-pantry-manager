@@ -57,7 +57,7 @@ class OneRecipe extends React.Component{
     return (
       <div>
         <form onSubmit={(e) => e.preventDefault()}>
-          {this.props.pantry ? this.props.pantry.map((ingredient, index) => <div><input type="checkbox" value={ingredient.name_of_food} onChange={this.handleCheckbox} checked={ingredient.checked} />{' '+ingredient.name_of_food[0].toUpperCase()+ ingredient.name_of_food.substring(1)}</div>) : <p>Pantry loading</p>}
+          {this.props.pantry ? this.props.pantry.map((ingredient, index) => <div key={"ing-" + index}><input type="checkbox" value={ingredient.name_of_food} onChange={this.handleCheckbox} checked={ingredient.checked} />{' '+ingredient.name_of_food[0].toUpperCase()+ ingredient.name_of_food.substring(1)}</div>) : <p>Pantry loading</p>}
         <br/>
           <div className="container-fluid">
             <div className="row">
@@ -69,8 +69,8 @@ class OneRecipe extends React.Component{
               </div>
             </div>
           </div>
-          {this.state.selectedIngredients.map(item => {
-            return <p className='centered font-p'>{item} &nbsp;
+          {this.state.selectedIngredients.map((item, index) => {
+            return <p key={"ing-" + index} className='centered font-p'>{item} &nbsp;
               <button className="btn btn-sm mb-1 font-pLato btn-green-x" onClick={() => this.removeItem(item)}>X</button>
               </p>
           })

@@ -28,14 +28,14 @@ function ShoppingList({mealplan, dispatch, auth, shoppingList}) {
           <div className="row">
             <div className='col-sm-3'></div>
             <div className='col-sm-3'>
-              {mealplan.map(meal =>
-                  <a target="_blank" href={meal.href}><button className="btn btn-sm btn-outline-green btn-block mb-3">{meal.title}</button></a>
+              {mealplan.map((meal, index) =>
+                  <a key={"ing-" + index} target="_blank" href={meal.href}><button className="btn btn-sm btn-outline-green btn-block mb-3">{meal.title}</button></a>
               )}
             </div>
 
             <div className='col-sm-3'>
-              {shoppingList.map(ingredient =>
-                <div>
+              {shoppingList.map((ingredient, index) =>
+                <div key={"ing-" + index}>
                   <input type="checkbox" value={ingredient.ingredient} checked={ingredient.checked} className="strikethrough"/>
                   <span>{'   '+ingredient.count+' '+ingredient.ingredient[0].toUpperCase()+ ingredient.ingredient.substring(1)} &nbsp;
                    </span>
