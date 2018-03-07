@@ -1,15 +1,15 @@
-const initialState = {
+import { getLocalUserProfile } from '../utils/user'
 
-}
-function user(state={}, action) {
-  let newState = {...state}
-    switch (action.type) {
-      case 'RECEIVED_USER':
-        return {...action.user}
-  
-      default:
-        return state
-    }
+const initialState = getLocalUserProfile()
+
+function user(state = initialState, action) {
+  switch (action.type) {
+    case 'RECEIVED_USER':
+      return {...action.user}
+
+    default:
+      return state
+  }
 }
 
 export default user

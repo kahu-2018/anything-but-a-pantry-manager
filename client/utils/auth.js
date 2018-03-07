@@ -10,7 +10,8 @@ export function isAuthenticated () {
     const expiry = payload.exp
 
     if (expiry < new Date().getTime() / 1000) {
-      removeUser()
+      removeUserToken()
+      removeUserProfile()
       return false
     }
     return true
@@ -25,10 +26,12 @@ export function saveUserToken (token) {
 }
 
 export function getUserTokenInfo () {
+  console.log('getUserTokenInfo is called ')
   const token = get('token')
   return token ? decode(token) : null
 }
 
-export function removeUser () {
+export function removeUserToken () {
   remove('token')
 }
+
