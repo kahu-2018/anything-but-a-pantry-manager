@@ -8,12 +8,12 @@ describe('pantry reducer', () => {
   it('should handle RECEIVE_PANTRY', () => {
     const action = {
       type: 'RECEIVE_PANTRY',
-      pantry: 'tomato'
+      pantry: {id: 3, name_of_food: 'tomato'}
     }
     expect(
-      pantry([Orange, Apple], action)
+      pantry([{id: 1, name_of_food: 'orange'}, {id: 2, name_of_food: 'apple'}], action)
     ).toEqual(
-      [Orange, Apple, tomato]
+      [{id: 1, name_of_food: 'orange'}, {id: 2, name_of_food: 'apple'}, {id: 3, name_of_food: 'tomato'}]
     )
   })
 })
