@@ -20,7 +20,8 @@ function ShoppingList({mealplan, dispatch, auth, shoppingList}) {
       <img className='headerImage' src="images/pantry-to-plate-xsml.jpg" alt='header'/>
       <h1 className='centered greenText'>My Shopping List</h1>
       <div className={(mealplan.length == 0) ? 'show' : 'hide' }>
-        <p>No recipes selected for shopping list!</p>
+        <br/>
+        <h4 className="centered pink">No recipes selected for shopping list!</h4>
       </div>
       <div className={(mealplan.length == 0) ? 'hide' : 'show' }>
 
@@ -39,14 +40,16 @@ function ShoppingList({mealplan, dispatch, auth, shoppingList}) {
                   <input type="checkbox" value={ingredient.ingredient} checked={ingredient.checked} className="strikethrough"/>
                   <span>{'   '+ingredient.count+' '+ingredient.ingredient[0].toUpperCase()+ ingredient.ingredient.substring(1)} &nbsp;
                    </span>
-                   <button value={ingredient.ingredient} onClick={(e) => removeIngredient(e)}>x</button>
-                </div>
+                   <button className='btn btn-sm mb-1 font-pLato btn-green-x' value={ingredient.ingredient} onClick={(e) => removeIngredient(e)}>X</button>
+                   </div>
               )}
+              <div>
+                    <button className="btn btn-lg btn-green btn-block mb-3" onClick={() => clearShoppingList()}>Clear Recipes and Shopping List</button>
+                    </div>
                 <div className='col-sm-3'></div>
             </div>
           </div>
         </div>
-         <button onClick={() => clearShoppingList()}>Clear Recipes and Shopping List</button>
       </div>
     </div>
   )
