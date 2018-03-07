@@ -183,6 +183,7 @@ class EditProfile extends React.Component {
   }
 }
 const mapStateToProps = (state) => {
+  console.log('pantry', state.pantry)
   return {
     auth: state.auth,
     user: state.user,

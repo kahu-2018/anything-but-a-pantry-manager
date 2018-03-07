@@ -15,6 +15,7 @@ function deleteItem(ingredient) {
 }
 
 function addItem(item) {
+  console.log('additem', item)
   return {
     type: 'ADD_ITEM',
     item
@@ -22,6 +23,7 @@ function addItem(item) {
 }
 
 export function getPantry() {
+  console.log('after res')
   return (dispatch) => {
     return request ('get', 'pantry')
     .then(res => {
@@ -37,8 +39,7 @@ export function addPantryItem(item){
   return (dispatch) => {
     return request ('post', 'pantry', {item})
     .then(res => {
-      console.log('dispatch', item)
-      dispatch(addItem(item))
+      dispatch(addItem(res.body))
     })
     .catch((err) => {
       console.log('error', err)

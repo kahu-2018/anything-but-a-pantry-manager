@@ -18,6 +18,14 @@ function addItem(name_of_food, testDb) {
   const db = testDb || liveDb
   return db('pantry')
   .insert({name_of_food})
+  .then(item_id => getItemById(item_id[0], db))
+}
+
+const getItemById = (item_id, testDb) => {
+  console.log(item_id)
+  return (testDb || db)('pantry')
+    .where('id', item_id)
+    .select()
 }
 
 module.exports = {

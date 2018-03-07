@@ -21,7 +21,9 @@ router.delete('/', (req, res) => {
 
 router.post('/', (req, res) => {
   db.addItem(req.body.item)
-  .then(() => res.sendStatus(200).send('Item successfully added to pantry!'))
+  .then(newItem => {
+    res.json(newItem[0])
+  })
   .catch(err => res.status(500).send(err.message + 'SERVER ERROR'))
 })
 
