@@ -36,10 +36,18 @@ class OneRecipe extends React.Component{
   }
 
   handleCheckbox(e) {
-    let selectedIngredient = e.target.value
-    const newState = {...this.state}
-    newState.selectedIngredients.push(selectedIngredient)
-    this.setState(newState)
+    console.log("handleCheckbox: e.target.checked", e.target.checked)
+    let selectedItem = e.target.value
+    let ingredientList = [...this.state.selectedIngredients]
+    let found = ingredientList.find(item => item == selectedItem)
+    if (found) {
+      if (e.target.checked === false) {
+        ingredientList = ingredientList.filter(item => item != selectedItem)
+      }
+    } else {
+      ingredientList.push(e.target.value)
+    }
+    this.setState({selectedIngredients: ingredientList})
   }
 
   removeItem(item) {
