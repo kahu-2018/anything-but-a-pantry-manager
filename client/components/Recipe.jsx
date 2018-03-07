@@ -36,7 +36,7 @@ function Recipe ({recipes, dispatch, recipe, mealplan}) {
 
     //Transform count object into array
       let shoppingList= Object.keys(count).map((ingredient) => ({ingredient: ingredient, count: count[ingredient]}))
-      console.log({shoppingList});
+
     //Change global state
     dispatch(setShoppingList(shoppingList))
   }
@@ -53,7 +53,6 @@ function Recipe ({recipes, dispatch, recipe, mealplan}) {
 }
 
 const mapStateToProps = (state) => {
-  console.log('state', state)
   return {
     auth: state.auth,
     mealplan: state.mealplan,

@@ -19,5 +19,4 @@ export default combineReducers({
   pantry,
   recipe,
   shoppingList
-
 })

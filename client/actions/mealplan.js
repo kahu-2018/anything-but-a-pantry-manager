@@ -1,16 +1,14 @@
 function updateMealplan(recipe) {
-  console.log('addToMealplan', recipe)
   return {
     type: 'UPDATE_MEALPLAN',
     mealplan: recipe
   }
 }
 
-function deleteItem(ingredient) {
-  console.log('action-reducer', ingredient)
+function deleteItem(item) {
   return {
     type: 'DELETE_SHOPPING_ITEM',
-    ingredient
+    item
   }
 }
 
@@ -33,10 +31,8 @@ export function setShoppingList(shoppingList) {
   }
 }
 
-
-export function removeItem(ingredient) {
-  console.log('action', ingredient)
+export function removeItem(item) {
   return (dispatch) => {
-    dispatch(deleteItem(ingredient))
+    dispatch(deleteItem(item))
   }
 }
